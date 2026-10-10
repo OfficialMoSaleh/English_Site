@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#5B51DE" />
+    <meta name="description" content="Official CEFR English Level Examination — Timed, Adaptive, Mixed Format Assessment (A1 to C2)." />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="./img/Craftwork.png" />
+
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+    <!-- Font-Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Main Stylesheet & Test Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=20261011a" />
+    <link rel="stylesheet" href="test.css?v=20261011a" />
+
+    <title>CEFR English Level Examination | Official Assessment</title>
+  </head>
+  <body class="test-body" oncopy="return false;" onpaste="return false;" oncut="return false;" oncontextmenu="return false;">
+    <!-- Top Progress Bar -->
+    <div class="exam-progress-container" aria-hidden="true">
+      <div class="exam-progress-bar" id="exam-progress-bar"></div>
+    </div>
+
+    <!-- Examination Header Bar -->
+    <header class="exam-header">
+      <div class="exam-header-inner">
+        <a href="index.html" class="exam-brand" title="Return to Homepage">
+          <img class="logo" src="./img/Craftwork.png" alt="English Site Logo" />
+          <div class="exam-badge">
+            <span class="badge-dot"></span>
+            <span>CEFR Assessment A1–C2</span>
+          </div>
+        </a>
+
+        <!-- Live Countdown Timer -->
+        <div class="exam-timer-box" id="exam-timer-box">
+          <i class="fa-solid fa-clock"></i>
+          <span class="timer-label">Time Remaining:</span>
+          <span class="timer-digits" id="timer-digits">30:00</span>
+        </div>
+
+        <div class="exam-header-controls">
+          <button id="theme-toggle" class="theme-btn" title="Toggle Theme" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          
+          <button class="btn btn-secondary btn-sm" id="exit-exam-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Exit</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Examination Workspace -->
+    <main class="exam-main-container">
+      <div class="container">
+        
+        <!-- Pre-Test Registration Splash (Visible at Start) -->
+        <div class="exam-splash-card" id="exam-splash-card">
+          <!-- Left: Overview -->
+          <section class="splash-overview" aria-labelledby="splash-title">
+            <span class="sub-label"><i class="fa-solid fa-certificate"></i> Official Diagnostic Standard</span>
+            <h1 class="splash-title" id="splash-title">CEFR English Proficiency Examination</h1>
+            <p class="splash-desc">
+              A standardized assessment that places you on the international scale from
+              <strong>A1 Beginner</strong> to <strong>C2 Proficient</strong>, using grammar, vocabulary,
+              sentence completion and listening tasks.
+            </p>
+
+            <div class="splash-stats">
+              <div class="splash-stat">
+                <span class="stat-icon"><i class="fa-solid fa-list-ol"></i></span>
+                <div><strong>30</strong><span>Questions</span></div>
+              </div>
+              <div class="splash-stat">
+                <span class="stat-icon"><i class="fa-solid fa-stopwatch"></i></span>
+                <div><strong>30 min</strong><span>Time limit</span></div>
+              </div>
+              <div class="splash-stat">
+                <span class="stat-icon"><i class="fa-solid fa-headphones"></i></span>
+                <div><strong>Audio</strong><span>Listening tasks</span></div>
+              </div>
+              <div class="splash-stat">
+                <span class="stat-icon"><i class="fa-solid fa-award"></i></span>
+                <div><strong>A1 - C2</strong><span>Named certificate</span></div>
+              </div>
+            </div>
+
+            <div class="splash-levels" aria-hidden="true">
+              <span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span>
+            </div>
+          </section>
+
+          <!-- Right: Candidate Registration -->
+          <section class="splash-register" aria-labelledby="register-title">
+            <h2 class="register-title" id="register-title">Candidate Registration</h2>
+            <p class="register-sub">Complete both steps to unlock the examination.</p>
+
+            <!-- Step 1: Full Name -->
+            <div class="register-step" id="step-name">
+              <div class="step-head">
+                <span class="step-num">1</span>
+                <label for="candidate-name-input">Full Name (First, Middle, Last)</label>
+              </div>
+              <div class="name-input-wrap">
+                <i class="fa-solid fa-user"></i>
+                <input
+                  type="text"
+                  id="candidate-name-input"
+                  class="candidate-name-input"
+                  placeholder="e.g. Mohamed Ahmed Saleh"
+                  autocomplete="name"
+                  spellcheck="false"
+                  maxlength="70"
+                />
+                <i class="fa-solid fa-circle-check name-valid-icon"></i>
+              </div>
+              <span class="field-hint" id="candidate-name-hint">Enter your three-part name in English letters. It will appear on your certificate.</span>
+            </div>
+
+            <!-- Step 2: Examination Rules -->
+            <div class="register-step" id="step-rules">
+              <div class="step-head">
+                <span class="step-num">2</span>
+                <span class="step-label">Confirm the Examination Rules</span>
+              </div>
+
+              <div class="rules-checklist" id="rules-checklist">
+                <label class="rule-check">
+                  <input type="checkbox" class="rule-checkbox" />
+                  <span class="check-box"><i class="fa-solid fa-check"></i></span>
+                  <span class="check-text"><strong>30-minute limit.</strong> The test submits automatically when time runs out.</span>
+                </label>
+                <label class="rule-check">
+                  <input type="checkbox" class="rule-checkbox" />
+                  <span class="check-box"><i class="fa-solid fa-check"></i></span>
+                  <span class="check-text"><strong>Working audio.</strong> My speakers or headphones are on. Each clip can be played 3 times.</span>
+                </label>
+                <label class="rule-check">
+                  <input type="checkbox" class="rule-checkbox" />
+                  <span class="check-box"><i class="fa-solid fa-check"></i></span>
+                  <span class="check-text"><strong>No outside help.</strong> I will not use dictionaries, translators or other people.</span>
+                </label>
+                <label class="rule-check">
+                  <input type="checkbox" class="rule-checkbox" />
+                  <span class="check-box"><i class="fa-solid fa-check"></i></span>
+                  <span class="check-text"><strong>Restricted actions.</strong> Copy, paste, right-click and shortcuts are disabled.</span>
+                </label>
+                <label class="rule-check">
+                  <input type="checkbox" class="rule-checkbox" />
+                  <span class="check-box"><i class="fa-solid fa-check"></i></span>
+                  <span class="check-text"><strong>One sitting.</strong> I will complete the test without leaving or closing this page.</span>
+                </label>
+              </div>
+
+              <button type="button" class="select-all-rules" id="select-all-rules-btn">
+                <i class="fa-regular fa-square-check"></i> <span>I agree to all rules</span>
+              </button>
+            </div>
+
+            <div class="register-progress">
+              <div class="register-progress-track"><div class="register-progress-fill" id="register-progress-fill"></div></div>
+              <span id="register-progress-text">0 of 2 steps completed</span>
+            </div>
+
+            <button class="btn btn-cta btn-lg start-exam-btn" id="start-exam-now-btn" disabled>
+              <i class="fa-solid fa-lock" id="start-exam-icon"></i>
+              <span id="start-exam-label">Complete Registration to Begin</span>
+            </button>
+          </section>
+        </div>
+
+        <!-- Live Question Container (Hidden until started) -->
+        <div class="exam-workspace" id="exam-workspace" style="display: none;">
+          
+          <!-- Question Navigation Pills Strip -->
+          <div class="question-navigator-strip">
+            <div class="nav-pills-list" id="nav-pills-list">
+              <!-- Dynamically populated 1 to 30 -->
+            </div>
+            <div class="nav-legend">
+              <span class="legend-item"><span class="legend-dot answered"></span> Answered</span>
+              <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+              <span class="legend-item"><span class="legend-dot flagged"></span> Flagged</span>
+            </div>
+          </div>
+
+          <!-- Active Question Card -->
+          <div class="active-question-card">
+            <div class="question-meta-bar">
+              <div class="question-id-wrap">
+                <span class="q-badge" id="q-counter-badge">Question 1 of 30</span>
+                <span class="level-badge" id="q-level-badge">CEFR B2 Level</span>
+                <span class="type-badge" id="q-type-badge">Multiple Choice</span>
+              </div>
+              <button class="flag-question-btn" id="flag-question-btn" title="Flag for review">
+                <i class="fa-regular fa-bookmark"></i>
+                <span>Flag</span>
+              </button>
+            </div>
+
+            <!-- Question Prompt Box -->
+            <div class="question-prompt-area">
+              <h2 class="question-headline" id="q-prompt-text">
+                Loading examination question...
+              </h2>
+              <p class="question-subtext" id="q-subtext">Select the best answer from the options below.</p>
+            </div>
+
+            <!-- Dynamic Answer Formats (Rendered by JS) -->
+            <div class="answers-area" id="answers-area">
+              <!-- Rendered dynamically: Options or Fill-in-the-Blank input -->
+            </div>
+
+            <!-- Question Navigation Bottom Bar -->
+            <div class="exam-nav-bar">
+              <button class="btn btn-secondary" id="prev-question-btn" disabled>
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Previous</span>
+              </button>
+
+              <div class="center-actions">
+                <span class="answered-status" id="answered-status">Not answered yet</span>
+              </div>
+
+              <div class="right-nav-actions">
+                <button class="btn btn-secondary" id="next-question-btn">
+                  <span>Next</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-primary btn-submit-exam" id="submit-exam-btn" style="display: none;">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Submit Exam</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Examination Report & Diagnostic Breakdown (Hidden until finished) -->
+        <div class="exam-report-card" id="exam-report-card" style="display: none;">
+          <div class="report-header">
+            <div class="report-badge-pill">
+              <i class="fa-solid fa-award"></i>
+              <span>Official Examination Complete</span>
+            </div>
+            <h1 class="report-title">Your CEFR Proficiency Certificate</h1>
+            <p class="report-subtitle">
+              Verified evaluation based on the Common European Framework of Reference for Languages.
+            </p>
+          </div>
+
+          <div class="cert-toolbar"><button class="btn btn-primary cert-download-btn" id="download-certificate-btn" type="button"><i class="fa-solid fa-download"></i><span>Download Certificate</span></button></div>
+          <!-- Named Certificate -->
+          <div class="named-certificate" id="named-certificate">
+            <div class="cert-corner cert-corner-tl"></div>
+            <div class="cert-corner cert-corner-br"></div>
+            <span class="cert-eyebrow">Certificate of English Proficiency</span>
+            <p class="cert-intro">This is to certify that</p>
+            <h2 class="cert-name" id="cert-candidate-name">Candidate Name</h2>
+            <p class="cert-intro">has successfully completed the CEFR English Proficiency Examination and attained</p>
+            <div class="cert-level-row">
+              <span class="cert-level-code" id="cert-level-code">B1</span>
+              <span class="cert-level-label" id="cert-level-label">Intermediate</span>
+            </div>
+            <div class="cert-signature-row"><div class="cert-seal" aria-hidden="true"><span class="seal-top">CEFR</span><i class="fa-solid fa-award"></i><span class="seal-bottom">VERIFIED</span></div><div class="cert-signature"><span class="signature-script">Mohamed Saleh Mahfouz</span><span class="signature-line"></span><strong class="signature-name">Mohamed Saleh Mahfouz</strong><span class="signature-role">Founder &amp; Owner</span></div></div>
+            <div class="cert-meta">
+              <div><span>Date Issued</span><strong id="cert-date">-</strong></div>
+              <div><span>Score</span><strong id="cert-score">-</strong></div>
+              <div><span>Certificate ID</span><strong id="cert-id">-</strong></div>
+            </div>
+          </div>
+
+          <!-- Main Level Circle / Grade Banner -->
+          <div class="report-score-banner">
+            <div class="score-circle-wrap">
+              <div class="score-circle-outer">
+                <span class="score-cefr-code" id="final-cefr-code">B2</span>
+                <span class="score-cefr-sub">Upper-Intermediate</span>
+              </div>
+            </div>
+
+            <div class="score-summary-details">
+              <h3 id="final-level-heading">B2 – Upper-Intermediate User</h3>
+              <p id="final-level-narrative">
+                You can understand the main ideas of complex text, interact with native speakers with fluency, and produce clear, detailed communication on professional and everyday topics.
+              </p>
+              
+              <div class="score-meta-metrics">
+                <div class="metric-pill">
+                  <span class="metric-label">Raw Score:</span>
+                  <strong id="final-raw-score">11 / 12</strong>
+                </div>
+                <div class="metric-pill">
+                  <span class="metric-label">Percentage:</span>
+                  <strong id="final-percentage">91.6%</strong>
+                </div>
+                <div class="metric-pill">
+                  <span class="metric-label">Time Taken:</span>
+                  <strong id="final-time-taken">06:42</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comprehensive Skills Matrix -->
+          <div class="report-skills-section">
+            <h3 class="section-title"><i class="fa-solid fa-chart-column text-primary"></i> Detailed Competency Breakdown</h3>
+            <div class="skills-grid">
+              <div class="competency-card">
+                <div class="comp-head">
+                  <span>Grammar & Syntax</span>
+                  <strong id="comp-grammar-pct">92%</strong>
+                </div>
+                <div class="comp-bar"><div class="fill" id="comp-grammar-fill" style="width: 92%;"></div></div>
+                <span class="comp-note">Sentence structure, conditionals & inversion</span>
+              </div>
+
+              <div class="competency-card">
+                <div class="comp-head">
+                  <span>Lexical Resource</span>
+                  <strong id="comp-vocab-pct">88%</strong>
+                </div>
+                <div class="comp-bar"><div class="fill" id="comp-vocab-fill" style="width: 88%;"></div></div>
+                <span class="comp-note">Collocations, idioms & advanced vocabulary</span>
+              </div>
+
+              <div class="competency-card">
+                <div class="comp-head">
+                  <span>Fill-in-the-Blank Accuracy</span>
+                  <strong id="comp-fill-pct">85%</strong>
+                </div>
+                <div class="comp-bar"><div class="fill" id="comp-fill-fill" style="width: 85%;"></div></div>
+                <span class="comp-note">Orthography, prepositions & verb tenses</span>
+              </div>
+
+              <div class="competency-card">
+                <div class="comp-head">
+                  <span>Discourse Coherence</span>
+                  <strong id="comp-coherence-pct">94%</strong>
+                </div>
+                <div class="comp-bar"><div class="fill" id="comp-coherence-fill" style="width: 94%;"></div></div>
+                <span class="comp-note">Concessions, transitions & formal registers</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question-by-Question Diagnostic Review -->
+          <div class="report-review-section">
+            <div class="review-toggle-bar">
+              <h3 class="section-title"><i class="fa-solid fa-list-check text-primary"></i> Detailed Question Review</h3>
+              <button class="btn btn-secondary btn-sm" id="toggle-all-reviews-btn">
+                <span>Toggle Explanations</span>
+              </button>
+            </div>
+            
+            <div class="review-items-list" id="review-items-list">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Report Action Footer -->
+          <div class="report-footer-actions">
+            <button class="btn btn-primary" id="retake-exam-fresh-btn">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Retake with New Questions</span>
+            </button>
+            <button class="btn btn-secondary" onclick="window.print();">
+              <i class="fa-solid fa-print"></i>
+              <span>Print / Save PDF Report</span>
+            </button>
+            <a href="index.html" class="btn btn-secondary">
+              <i class="fa-solid fa-house"></i>
+              <span>Return to Homepage</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Global Toast Container -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <!-- Chic Confirmation Modal -->
+    <div class="exam-modal-overlay" id="exam-confirm-modal" aria-hidden="true" style="display: none;">
+      <div class="exam-modal-card">
+        <div class="exam-modal-icon-wrap" id="modal-icon-wrap">
+          <i class="fa-solid fa-circle-question" id="modal-icon"></i>
+        </div>
+        <h3 class="exam-modal-title" id="modal-title">Confirmation Required</h3>
+        <p class="exam-modal-message" id="modal-message">Are you sure you want to proceed with this action?</p>
+        <div class="exam-modal-actions">
+          <button type="button" class="btn btn-secondary modal-btn-cancel" id="modal-cancel-btn">
+            <span>Cancel</span>
+          </button>
+          <button type="button" class="btn btn-primary modal-btn-confirm" id="modal-confirm-btn">
+            <span>Confirm</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Examination Script -->
+    <script src="test.js?v=20261011a"></script>
+  </body>
+</html>

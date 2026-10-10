@@ -1,0 +1,22 @@
+{
+  "name": "English Language Academy - Fluency & Tutors",
+  "short_name": "EnglishSchool",
+  "description": "Next-Gen interactive English language learning platform with AI speech recognition and certified native tutors.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#5B51DE",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./img/Craftwork.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/Craftwork.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

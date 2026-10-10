@@ -1,319 +1,581 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="keywords" content="website, blog, to learn, Learning languages ,learn English ,English ,English language community">
-        <meta name="author" content="Mohamed Saleh">
-        <meta name="publisher" content="Mohamed Saleh">
-        <meta name="copyright" content="Mohamed Saleh">
-        <meta name="description" content="A website for learning and knowing everything related to the English language.">
-        <meta name="page-topic" content="Media">
-        <meta name="page-type" content="Blogging">
-        <meta name="audience" content="Everyone">
-        <!--=============== FAVICON ===============-->
-        <link
-        rel="shortcut icon"
-        type="image/ico"
-        href="./img/Craftwork.png"
-        />
-      <!--=============== FONT-AWESOME ===============-->
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      />
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="style.css" />
-      <title>English Site </title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#5B51DE" />
+    <meta name="keywords" content="website, blog, to learn, Learning languages, learn English, English, English language community, CEFR test" />
+    <meta name="author" content="Mohamed Saleh" />
+    <meta name="description" content="A modern professional platform for learning and mastering the English language with certified native tutors." />
+
+    <!-- Favicon & PWA Manifest -->
+    <link rel="shortcut icon" type="image/ico" href="./img/Craftwork.png" />
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font-Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=20261011_v1" />
+
+    <title>English Site | Professional Language Learning</title>
   </head>
   <body>
+    <!-- Top Scroll Progress Bar -->
+    <div class="scroll-progress-container" aria-hidden="true">
+      <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
 
-    <!-- start header -->
+    <!-- ==============================================
+         START HEADER
+         ============================================== -->
     <header class="header">
-      <div id="menu-btn" class="fas fa-bars"></div>
+      <div class="header-inner">
+        <a href="#" class="brand-link" aria-label="English Site Home">
+          <img class="logo" src="./img/Craftwork.png" alt="English Site Logo" />
+        </a>
 
-      <a href="#"><img class="logo" src="./img/Craftwork.png" alt="" /></a>
+        <nav class="navbar" id="navbar">
+          <a href="#landing" class="nav-item active">Home</a>
+          <a href="test.html" class="nav-item">Level Examination <span class="tag-pill">Official</span></a>
+          <a href="#learn" class="nav-item">Skills Tested</a>
+          <a href="#service" class="nav-item">Why Take the Test</a>
+          <a href="#stats" class="nav-item">Test Stats</a>
+          <a href="#upgrade" class="nav-item">Roadmap</a>
+          <a href="#faq" class="nav-item">FAQ</a>
+        </nav>
 
-      <nav class="navbar">
-        <a href="#tutors">Tutors <i class="fa-solid fa-chevron-down"></i></a>
-        <a href="#group-classes">Group classes</a>
-        <a href="#corporate-training">Corporate training</a>
-        <a href="#become-a-tutor">Become a tutor</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="theme-btn" title="Toggle Theme" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
 
-      <div id="login-btn">
-        <button class="btn">Login</button>
+          <a href="test.html" class="btn btn-take-test">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Take Test</span>
+          </a>
+
+          <button id="menu-btn" class="fas fa-bars" aria-label="Toggle navigation menu" type="button"></button>
+        </div>
       </div>
     </header>
-    <!-- end header  -->
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <!-- END HEADER -->
 
-    <!-- Landing -->
-    <main class="landing">
+    <!-- ==============================================
+         LANDING / HERO SECTION (Original Layout with Focus on Testing)
+         ============================================== -->
+    <main class="landing" id="landing">
       <div class="container">
+        <!-- Left: Illustration with floating effect and clean background -->
         <div class="img">
-          <img src="./img/illustrations.png" alt="layout" />
+          <div class="img-wrapper">
+            <img src="./img/illustrations-clean.png" alt="English Assessment Illustration" class="hero-illustration" />
+            <div class="floating-stat stat-one">
+              <i class="fa-solid fa-certificate text-primary"></i>
+              <div>
+                <strong>CEFR Standard</strong>
+                <span>A1 to C2 Benchmarks</span>
+              </div>
+            </div>
+            <div class="floating-stat stat-two">
+              <i class="fa-solid fa-circle-check text-success"></i>
+              <div>
+                <strong>Timed & Adaptive</strong>
+                <span>MCQ & Fill-in-the-Blank</span>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <!-- Right: Description and Action focused on Testing -->
         <div class="desc">
+          <div class="badge-tag">
+            <span class="pulse-indicator"></span>
+            <span>Official CEFR Proficiency Assessment</span>
+          </div>
+
           <div class="text">
             <h1 class="head">
-              <span class="auto-type"></span>
-              <!-- Effective english courses for kids and teenagers -->
+              Accurate English assessment for 
+              <span class="headline-dynamic">
+                <span class="auto-type"></span>
+              </span>
             </h1>
             <p class="para">
-              With professional teachers, flexible learning schedules and
-              courses for all levels you will speak confidently in no time.
+              Test your grammar, vocabulary, sentence completion, and listening comprehension with our timed, anti-cheating CEFR examination. Features 30 realistic questions with instant verified certification.
             </p>
           </div>
 
-          <div class="inpu">
-            <form action="#">
-              <input class="tes" type="text" placeholder="Email" />
-              <button class="btn">Get Started</button>
-            </form>
+          <div class="hero-actions">
+            <a href="test.html" class="btn btn-cta">
+              <i class="fa-solid fa-play"></i>
+              <span>Launch 30-Question Examination</span>
+            </a>
+          </div>
+
+          <div class="trust-strip">
+            <span><i class="fa-solid fa-circle-check"></i> 100% Free Evaluation</span>
+            <span><i class="fa-solid fa-circle-check"></i> No Login or Account Required</span>
+            <span><i class="fa-solid fa-circle-check"></i> Instant CEFR Placement</span>
           </div>
         </div>
       </div>
     </main>
-    <!--end Landing -->
+    <!-- END LANDING -->
 
-    <!-- learn section -->
-    <section class="learn">
+    <!-- ==============================================
+         LEARN SECTION (Original Layout)
+         ============================================== -->
+    <section class="learn" id="learn">
       <div class="container">
         <div class="text">
-          <h1 class="head-learn">Learn English for everyday situations</h1>
+          <span class="sub-label">Immersive Speaking</span>
+          <h2 class="head-learn">Learn English for everyday situations</h2>
           <p class="para-learn">
-            Through our rotation of international teachers, you’ll be exposed to
-            a wide variety of accents, all contexts, expressions and cultures.
+            Through our rotation of international certified teachers, you will be exposed to
+            a wide variety of authentic accents, real-world contexts, everyday idioms and global cultures.
           </p>
-          <button class="btn">Start learning</button>
 
-          <img src="./img/Line.png" alt="line" class="line" />
+          <a href="#placement-test" class="btn btn-learn">
+            <span>Start Learning</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
 
-          <p class="para-down">
-            “My time slot didn't work well, thanks to teacher's patience and
-            tips, very helpful!”
-          </p>
-          <h3 class="name">Leonardo DiCaprio,<span> 17 years old</span></h3>
+          <img src="./img/Line.png" alt="Decorative Divider" class="line" />
+
+          <div class="testimonial-bubble">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="para-down">
+              "My time slot did not work well initially, but thanks to the teacher's patience and practical tips, I improved my speaking fluency tremendously!"
+            </p>
+            <h3 class="name">Leonardo DiCaprio, <span>17 years old</span></h3>
+          </div>
         </div>
 
         <div class="card">
           <div class="img-learn">
-            <img src="./img/picture cart.png" alt="learn" class="learn-pic" />
+            <img src="./img/picture cart.png" alt="Daily Communication" class="learn-pic" />
           </div>
 
           <div class="text-card">
-            <h3 class="daily">Daily communication</h3>
+            <h3 class="daily">Daily Communication</h3>
             <div class="card-lis">
               <ul>
-                <li>School .</li>
-                <li>Classes .</li>
-                <li>Sports .</li>
-                <li>Friends</li>
+                <li><i class="fa-solid fa-check"></i> School & Academic English</li>
+                <li><i class="fa-solid fa-check"></i> Interactive Group Classes</li>
+                <li><i class="fa-solid fa-check"></i> Sports & Daily Hobbies</li>
+                <li><i class="fa-solid fa-check"></i> Socializing with Friends</li>
               </ul>
 
-              <button class="btn">
-                <i class="fa-solid fa-play"></i> Watch a video
+              <button class="btn btn-video" id="watch-video-btn">
+                <i class="fa-solid fa-play"></i>
+                <span>Watch a Video</span>
               </button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!--end learn section -->
+    <!-- END LEARN SECTION -->
 
-    <div class="heading">
-      <h2 class="art-head">Top-notch teachers, limitless learning</h2>
-      <p class="p-head">
-        Language learning on your schedule, with teachers you can trust. For
-        language learners just like you.
-      </p>
-    </div>
-
-    <!-- service  -->
-    <div class="service">
-      <div class="box">
-        <img src="./img/image.png" alt="img-1" />
-        <h3 class="head-serv">1. Verified teachers</h3>
-        <p class="para-serv">
-          Our community has over 10,000 expert tutors – all with prior teaching
-          experience, vetted by our team.
-        </p>
-      </div>
-
-      <div class="box">
-        <img src="./img/illustration.png" alt="img-2" />
-        <h3 class="head-serv">2. Affordable lessons</h3>
-        <p class="para-serv">
-          With lesson prices starting at $20, Verbling provides remote language
-          learning to fit any budget.
-        </p>
-      </div>
-
-      <div class="box">
-        <img src="./img/bus.png" alt="img-3" />
-        <h3 class="head-serv">3.Convenience & flexibility</h3>
-        <p class="para-serv">
-          We make learning happen on your schedule. Book lessons whenever you
-          want to learn.
-        </p>
-      </div>
-    </div>
-    <!-- end service  -->
-
-    <!-- feadback section -->
-    <article class="feadback">
-      <div class="container">
-        <div class="img">
-          <img src="./img/pic.png" alt="person" />
-        </div>
-
-        <div class="text">
-          <p class="para-fead">
-            “Your platform gave me an amazing opportunity to form a new habit to
-            learn language regularly and of course improve my language skills. I
-            received a letter with congratulations from the team.”
+    <!-- ==============================================
+         HEADING & SERVICE SECTION (Original Layout)
+         ============================================== -->
+    <section class="services-wrapper" id="service">
+      <div class="heading">
+        <div class="container">
+          <span class="sub-label">Why Choose Us</span>
+          <h2 class="art-head">Top-notch teachers, limitless learning</h2>
+          <p class="p-head">
+            Language learning on your schedule, with accredited teachers you can trust. Designed for ambitious learners just like you.
           </p>
-          <h3 class="name">Margot Robbie,<span> 16 years old</span></h3>
-        </div>
-
-        <img class="vector" src="./img/Vector.png" alt="vetor" />
-      </div>
-    </article>
-    <!--end feadback section -->
-
-    <!-- Start Stats  -->
-    <div class="stats" id="stats">
-      <div class="number-container">
-        <div class="box">
-          <i class="fa-sharp fa-solid fa-gem"></i>
-          <span class="number">97.95%</span>
-          <span class="text">Completing rate</span>
-          <br />
-          <span class="boot">of all our courses</span>
-        </div>
-
-        <div class="box nums">
-          <i class="fa-solid fa-users"></i>
-          <span class="number" data-goal="3704">2900</span>
-          <span class="text">Happy students</span>
-          <br />
-          <span class="boot">in our courses</span>
-        </div>
-
-        <div class="box nums">
-          <i class="fa-brands fa-youtube"></i>
-          <span class="number" data-goal="5000">4000</span>
-          <span class="text">Video lessons</span>
-          <br />
-          <span class="boot">of all our courses</span>
-        </div>
-
-        <div class="box nums">
-          <i class="fa-sharp fa-solid fa-circle-check"></i>
-          <span class="number" data-goal="40">0</span>
-          <span class="text">Certificated professionals</span>
-          <br />
-          <span class="boot">in our team</span>
         </div>
       </div>
-    </div>
-    <!-- End Stats  -->
 
-    <!-- start upgrade  -->
-    <main class="upgrade">
+      <div class="service">
+        <div class="container service-grid">
+          <div class="box">
+            <div class="box-icon-wrap">
+              <img src="./img/image.png" alt="Verified Teachers" />
+            </div>
+            <h3 class="head-serv">1. Verified Teachers</h3>
+            <p class="para-serv">
+              Our global community has over 10,000 expert tutors &mdash; all with extensive classroom experience and thoroughly vetted by our pedagogical team.
+            </p>
+          </div>
 
+          <div class="box">
+            <div class="box-icon-wrap">
+              <img src="./img/illustration.png" alt="Affordable Lessons" />
+            </div>
+            <h3 class="head-serv">2. Affordable Lessons</h3>
+            <p class="para-serv">
+              With flexible lesson packages starting affordably, our academy provides high-caliber language coaching tailored to fit every budget.
+            </p>
+          </div>
+
+          <div class="box">
+            <div class="box-icon-wrap">
+              <img src="./img/bus.png" alt="Convenience & Flexibility" />
+            </div>
+            <h3 class="head-serv">3. Convenience & Flexibility</h3>
+            <p class="para-serv">
+              We make learning happen on your terms. Easily reschedule or book lessons 24/7 whenever you have time to practice.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <article class="feadback">
+        <div class="container">
+          <div class="img">
+            <div class="student-avatar-frame">
+              <img src="./img/pic.png" alt="Student Margot Robbie" />
+            </div>
+          </div>
+
+          <div class="text">
+            <i class="fa-solid fa-quote-left quote-large"></i>
+            <p class="para-fead">
+              "Your platform gave me an amazing opportunity to form a consistent habit to learn English regularly and naturally improve my speaking skills. I achieved my goal score and received congratulations from the entire teaching faculty!"
+            </p>
+            <h3 class="name">Margot Robbie, <span>16 years old</span></h3>
+            <span class="role-badge"><i class="fa-solid fa-award"></i> Graduate Student</span>
+          </div>
+
+          <img class="vector" src="./img/Vector.png" alt="Decorative Pattern" />
+        </div>
+      </article>
+    </section>
+    <!-- END SERVICE SECTION -->
+
+    <!-- ==============================================
+         STATS & DIAGNOSTIC SECTION
+         ============================================== -->
+    <section class="stats-wrapper" id="stats">
+      <div class="stats">
+        <div class="container">
+          <div class="number-container">
+            <div class="box">
+              <div class="stat-icon-circle"><i class="fa-sharp fa-solid fa-gem"></i></div>
+              <span class="number"><span class="counter" data-target="98.5">98.5</span>%</span>
+              <span class="text">Completion Rate</span>
+              <span class="boot">of all our courses</span>
+            </div>
+
+            <div class="box nums">
+              <div class="stat-icon-circle"><i class="fa-solid fa-users"></i></div>
+              <span class="number"><span class="counter" data-target="3704">3,700</span>+</span>
+              <span class="text">Happy Students</span>
+              <span class="boot">in our courses</span>
+            </div>
+
+            <div class="box nums">
+              <div class="stat-icon-circle"><i class="fa-brands fa-youtube"></i></div>
+              <span class="number"><span class="counter" data-target="5000">5,000</span>+</span>
+              <span class="text">Video Lessons</span>
+              <span class="boot">across our curriculum</span>
+            </div>
+
+            <div class="box nums">
+              <div class="stat-icon-circle"><i class="fa-sharp fa-solid fa-circle-check"></i></div>
+              <span class="number"><span class="counter" data-target="45">45</span>+</span>
+              <span class="text">Certified Mentors</span>
+              <span class="boot">in our faculty</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END STATS SECTION -->
+
+      <!-- ==============================================
+           CEFR EXAMINATION HUB & SPECIFICATIONS
+           (Questions moved to dedicated test.html page)
+           ============================================== -->
+      <div class="placement-section" id="placement-test">
+        <div class="container">
+          <div class="heading text-center">
+            <span class="sub-label">Official Diagnostic Center</span>
+            <h2 class="art-head">Comprehensive CEFR English Examination</h2>
+            <p class="p-head">
+              Experience our rigorous 30-question diagnostic evaluation covering grammar, vocabulary, sentence completion, and listening comprehension.
+            </p>
+          </div>
+
+          <div class="exam-hub-card">
+            <div class="exam-hub-header">
+              <div class="hub-tag">
+                <i class="fa-solid fa-certificate"></i>
+                <span>International Standard Assessment</span>
+              </div>
+              <div class="hub-timer-badge">
+                <i class="fa-solid fa-clock"></i>
+                <span>30 Minutes Duration</span>
+              </div>
+            </div>
+
+            <div class="exam-format-grid">
+              <div class="format-card">
+                <div class="format-icon">
+                  <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h4>Multiple Choice</h4>
+                <p>Test grammar mechanics, syntactic inversion, conditionals, collocations, and idiomatic precision across CEFR levels A1 to C2.</p>
+                <span class="format-count">12 Questions</span>
+              </div>
+
+              <div class="format-card">
+                <div class="format-icon">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <h4>Sentence Completion</h4>
+                <p>Type the exact missing prepositions, irregular verbs, dependent particles, and derived word forms directly into live sentences.</p>
+                <span class="format-count">12 Questions</span>
+              </div>
+
+              <div class="format-card">
+                <div class="format-icon">
+                  <i class="fa-solid fa-headphones"></i>
+                </div>
+                <h4>Audio Dictation & Listening</h4>
+                <p>Listen to realistic spoken English recordings and transcribe or answer critical listening comprehension queries.</p>
+                <span class="format-count">6 Audio Questions</span>
+              </div>
+            </div>
+
+            <div class="exam-hub-features">
+              <div class="hub-feature-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Anti-Cheating Integrity Protocol</span>
+              </div>
+              <div class="hub-feature-item">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Real-Time Diagnostic Scoring</span>
+              </div>
+              <div class="hub-feature-item">
+                <i class="fa-solid fa-award"></i>
+                <span>CEFR Certified Performance Breakdown</span>
+              </div>
+              <div class="hub-feature-item">
+                <i class="fa-solid fa-shuffle"></i>
+                <span>Dynamic Non-Repeating Question Engine</span>
+              </div>
+            </div>
+
+            <div class="exam-hub-cta">
+              <a href="test.html" class="btn btn-primary btn-launch-exam">
+                <span>Begin Official 30-Question Examination</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <span class="cta-note"><i class="fa-solid fa-circle-info"></i> Headphone or speakers recommended for audio listening sections</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END PLACEMENT TEST SECTION -->
+
+    <!-- ==============================================
+         START UPGRADE SECTION (Original Layout)
+         ============================================== -->
+    <main class="upgrade" id="upgrade">
       <div class="container">
-        
         <div class="desc">
           <div class="text">
-            <h1 class="head">Upgrade your language skills with our team</h1>
+            <span class="sub-label">Join Our Community</span>
+            <h2 class="head">Upgrade your language skills with our team</h2>
             <p class="para">
               Our native-level teachers are located worldwide. Book them online
-              by either following our curriculum or by choosing the order
-              yourself for greater flexibility.
+              by either following our structured curriculum or by choosing the schedule
+              yourself for greater convenience and flexibility.
             </p>
           </div>
 
           <div class="inpu">
-            <form action="#">
-              <input class="tes" type="text" placeholder="Enter your email adress"/>
-              <button class="btn">Join Now</button>
+            <form action="#" id="upgrade-form" onsubmit="event.preventDefault(); window.EnglishApp.handleUpgradeForm();">
+              <div class="input-with-icon">
+                <i class="fa-solid fa-envelope"></i>
+                <input class="tes" id="upgrade-email-input" type="email" placeholder="Enter your email address" required />
+              </div>
+              <button type="submit" class="btn btn-upgrade">
+                <span>Join Now</span>
+                <i class="fa-solid fa-user-plus"></i>
+              </button>
             </form>
           </div>
         </div>
 
         <div class="img">
-          <img src="./img/sixth blockk.png" alt="boxx" />
+          <div class="upgrade-img-wrap">
+            <img src="./img/sixth blockk.png" alt="Upgrade Illustration" />
+          </div>
         </div>
       </div>
     </main>
-    <!-- end upgrade  -->
+    <!-- END UPGRADE -->
 
-
-    <!-- start footer -->
-    <section class="footer">
-
-        <div class="box-container">
-
-        <div class="box">
-        <h3>Product</h3>
-        <a href="#">Autocapture</a>
-        <a href="#">Data Governance</a>
-        <a href="#">Virtual Events</a>
-        <a href="#">Virtual Users</a>
-        <a href="#">Behavioral Analytics</a>
-        <a href="#">Connect</a>
+    <!-- ==============================================
+         FAQ ACCORDION SECTION (Original Menu Anchor)
+         ============================================== -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="heading text-center">
+          <span class="sub-label">Help Center</span>
+          <h2 class="art-head">Frequently Asked Questions</h2>
+          <p class="p-head">
+            Everything you need to know about our lessons, schedules, tutors, and learning materials.
+          </p>
         </div>
 
-        <div class="box">
-          <h3>Explore</h3>
-          <a href="#">Resources</a>
-          <a href="#">Blog</a>
-          <a href="#">Documents</a>
+        <div class="faq-list" id="faq-list">
+          <div class="faq-item active">
+            <div class="faq-question">
+              <h4>How does the free 25-minute trial session work?</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Your free trial session connects you 1-on-1 with an accredited native tutor. They evaluate your spoken fluency, identify strengths, and build your personalized learning syllabus. No payment information is required.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Can I choose between American and British English accents?</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Yes, absolutely. Our tutors represent diverse native accents from the United States, United Kingdom, Canada, and Australia. You can select teachers based on your preferred accent.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Can I reschedule classes if my work schedule changes?</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Yes, 100%. You can reschedule or cancel any session free of charge up to 4 hours prior to the lesson start time directly from your student dashboard.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Do I receive a certificate upon finishing my course level?</h4>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              Yes. Upon completing any CEFR level (A1, A2, B1, B2, C1, or C2), you will receive a verifiable digital certificate to showcase on LinkedIn and your resume.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         START FOOTER (Original Layout)
+         ============================================== -->
+    <section class="footer">
+      <div class="container">
+        <div class="box-container">
+          <div class="box">
+            <h3>Product</h3>
+            <a href="#learn">Everyday English</a>
+            <a href="#service">Verified Teachers</a>
+            <a href="#placement-test">Level Assessment</a>
+            <a href="#upgrade">Flexible Booking</a>
+            <a href="#stats">Course Analytics</a>
+          </div>
+
+          <div class="box">
+            <h3>Explore</h3>
+            <a href="#">Resources & Grammar</a>
+            <a href="#">Vocabulary Blog</a>
+            <a href="#">Study Documents</a>
+            <a href="#">Student Success Stories</a>
           </div>
 
           <div class="box">
             <h3>Community</h3>
             <a href="#">Community Central</a>
-            <a href="#">Support</a>
-            <a href="#">Help</a>
-            <a href="#">My info</a>
-            </div>
+            <a href="#">Student Support</a>
+            <a href="#faq">Help Center</a>
+            <a href="#">Study Groups</a>
+          </div>
 
-            <div class="box">
-              <h3>Company</h3>
-              <a href="#">About us</a>
-              <a href="#">Partners</a>
-              <a href="#">Customers</a>
-              <a href="#">Contact us</a>
-              </div>
-          
-
+          <div class="box">
+            <h3>Company</h3>
+            <a href="#">About Us</a>
+            <a href="#">Our Methodology</a>
+            <a href="#">Teaching Standards</a>
+            <a href="#">Contact Us</a>
+          </div>
         </div>
 
         <div class="credit">
-          <img src="./img/Craftwork.png" alt="logo">
-          <p>&#169; [El-Saleh]. 2024. All rigths reserved</p>
-            
-                <div class="box">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
-              </div>
+          <div class="credit-brand">
+            <img src="./img/Craftwork.png" alt="English Site Logo" />
+            <p>&copy; 2026 Mohamed Saleh Mahfouz. All rights reserved.</p>
+          </div>
 
+          <div class="social-box">
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
         </div>
-
+      </div>
     </section>
-    <!-- end footer -->
-    
-    
+    <!-- END FOOTER -->
+
+    <!-- Video Preview Modal -->
+    <div class="modal-overlay" id="video-modal" aria-hidden="true">
+      <div class="modal-card modal-video-card">
+        <button class="modal-close-btn" id="close-video-modal" aria-label="Close dialog">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="video-placeholder">
+          <i class="fa-solid fa-circle-play video-play-big"></i>
+          <h3>Daily Spoken English Demo Session</h3>
+          <p>Watch how our native tutors conduct interactive 1-on-1 speaking classes.</p>
+          <button class="btn btn-primary" onclick="window.EnglishApp.closeVideoModal()">Close Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <!-- Scroll Back To Top Button -->
+    <button class="scroll-top-btn" id="back-to-top" title="Scroll to top" aria-label="Scroll to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- External Typed.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="main.js"></script>
+
+    <!-- Core Main JS -->
+    <script src="main.js?v=20261011_v1"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>
+
