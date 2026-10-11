@@ -2257,14 +2257,6 @@ function submitExamination() {
     certIdEl.textContent = `CEFR-${cefrCode}-${stamp}${rand}`;
   }
   document.title = `${certName} - CEFR ${cefrCode} Certificate`;
-  lastCertificateData = {
-    name: certName,
-    code: cefrCode,
-    label: cefrSub,
-    date: certDateEl ? certDateEl.textContent : '',
-    score: certScoreEl ? certScoreEl.textContent : '',
-    id: certIdEl ? certIdEl.textContent : ''
-  };
 
   // Competency percentages
   const grammarPct = grammarTotal > 0 ? Math.round((grammarCorrect / grammarTotal) * 100) : percentage;
@@ -2284,8 +2276,33 @@ function submitExamination() {
   document.getElementById('comp-coherence-pct').textContent = `${audioPct}%`;
   document.getElementById('comp-coherence-fill').style.width = `${audioPct}%`;
 
+  lastCertificateData = {
+    name: certName,
+    code: cefrCode,
+    label: cefrSub,
+    heading: cefrHeading,
+    desc: cefrDesc,
+    date: certDateEl ? certDateEl.textContent : '',
+    score: certScoreEl ? certScoreEl.textContent : `${rawScore} / ${total} (${percentage}%)`,
+    id: certIdEl ? certIdEl.textContent : `CEFR-${cefrCode}-${Date.now().toString(36).toUpperCase()}`,
+    rawScore: rawScore,
+    total: total,
+    percentage: percentage,
+    timeTaken: timeTakenStr,
+    timestamp: issueDate.getTime(),
+    competencies: {
+      grammarPct,
+      vocabPct,
+      fillPct,
+      audioPct
+    }
+  };
+
+  // Automatically save to local storage for permanent retrieval
+  saveCertificateToStorage(lastCertificateData);
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  showExamToast(`Examination completed: Placed at ${cefrCode} (${percentage}%)!`, 'success', 'fa-award');
+  showExamToast(`Examination complete! Placed at ${cefrCode} (${percentage}%) - Certificate saved locally.`, 'success', 'fa-award');
 }
 
 // Retake Exam Listener with Chic Modal
@@ -2342,6 +2359,7 @@ function triggerSessionCheckOnce() {
   if (restoreCheckInitiated) return;
   restoreCheckInitiated = true;
   checkAndRestoreExamSession();
+  renderSavedCertificatesBanner();
 }
 
 document.addEventListener('DOMContentLoaded', triggerSessionCheckOnce);
@@ -2671,3 +2689,394 @@ const downloadCertificateBtn = document.getElementById('download-certificate-btn
 if (downloadCertificateBtn) {
   downloadCertificateBtn.addEventListener('click', downloadCertificate);
 }
+
+// ==========================================
+// 10. LOCAL STORAGE CERTIFICATE PERSISTENCE & HISTORY
+// ==========================================
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+const SAVED_LATEST_CERT_KEY = 'novaspeak_latest_certificate';
+const SAVED_CERTS_LIST_KEY = 'novaspeak_saved_certificates';
+
+function saveCertificateToStorage(certData) {
+  if (!certData || !certData.code) return;
+  try {
+    localStorage.setItem(SAVED_LATEST_CERT_KEY, JSON.stringify(certData));
+
+    let list = [];
+    const raw = localStorage.getItem(SAVED_CERTS_LIST_KEY);
+    if (raw) {
+      try { list = JSON.parse(raw) || []; } catch (e) { list = []; }
+    }
+    // Remove if already exists with same id
+    list = list.filter(item => item && item.id !== certData.id);
+    list.unshift(certData);
+    if (list.length > 20) list = list.slice(0, 20);
+    localStorage.setItem(SAVED_CERTS_LIST_KEY, JSON.stringify(list));
+
+    renderSavedCertificatesBanner();
+  } catch (err) {
+    console.warn('Could not save certificate to localStorage:', err);
+  }
+}
+
+function getLatestSavedCertificate() {
+  try {
+    const raw = localStorage.getItem(SAVED_LATEST_CERT_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (e) {
+    return null;
+  }
+}
+
+function getAllSavedCertificates() {
+  try {
+    const raw = localStorage.getItem(SAVED_CERTS_LIST_KEY);
+    if (!raw) {
+      const latest = getLatestSavedCertificate();
+      return latest ? [latest] : [];
+    }
+    const list = JSON.parse(raw);
+    return Array.isArray(list) ? list : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function deleteSavedCertificate(certId) {
+  try {
+    let list = getAllSavedCertificates();
+    list = list.filter(item => item && item.id !== certId);
+    localStorage.setItem(SAVED_CERTS_LIST_KEY, JSON.stringify(list));
+
+    const latest = getLatestSavedCertificate();
+    if (latest && latest.id === certId) {
+      if (list.length > 0) {
+        localStorage.setItem(SAVED_LATEST_CERT_KEY, JSON.stringify(list[0]));
+      } else {
+        localStorage.removeItem(SAVED_LATEST_CERT_KEY);
+      }
+    }
+    renderSavedCertificatesBanner();
+    renderCertsHistoryList();
+    showExamToast('Certificate record removed from storage.', 'info', 'fa-trash-can');
+  } catch (e) {}
+}
+
+function clearAllSavedCertificates() {
+  try {
+    localStorage.removeItem(SAVED_LATEST_CERT_KEY);
+    localStorage.removeItem(SAVED_CERTS_LIST_KEY);
+    renderSavedCertificatesBanner();
+    closeCertsHistoryModal();
+    showExamToast('All saved certificates cleared from storage.', 'info', 'fa-check');
+  } catch (e) {}
+}
+
+// Banner rendering
+let savedBannerDismissed = false;
+
+function renderSavedCertificatesBanner() {
+  const banner = document.getElementById('saved-certs-banner');
+  if (!banner) return;
+
+  const isExamInProgress = typeof examStarted !== 'undefined' && examStarted;
+  const latest = getLatestSavedCertificate();
+  if (!latest || savedBannerDismissed || isExamInProgress) {
+    banner.style.display = 'none';
+    return;
+  }
+
+  const nameEl = document.getElementById('saved-banner-name');
+  const codeEl = document.getElementById('saved-banner-level-code');
+  const levelTitleEl = document.getElementById('saved-banner-level-title');
+  const dateEl = document.getElementById('saved-banner-date');
+  const historyBtn = document.getElementById('open-history-modal-btn');
+  const historyLabel = document.getElementById('history-btn-label');
+
+  if (nameEl) nameEl.textContent = latest.name || 'Candidate';
+  if (codeEl) codeEl.textContent = latest.code || 'B2';
+  if (levelTitleEl) levelTitleEl.textContent = `${latest.code} ${latest.label || ''}`;
+  if (dateEl) dateEl.textContent = latest.date || 'Recent';
+
+  const allCerts = getAllSavedCertificates();
+  if (historyBtn) {
+    if (allCerts.length > 1) {
+      historyBtn.style.display = 'inline-flex';
+      if (historyLabel) historyLabel.textContent = `History (${allCerts.length})`;
+    } else {
+      historyBtn.style.display = 'none';
+    }
+  }
+
+  banner.style.display = 'block';
+}
+
+function displaySavedCertificateReport(certData) {
+  if (!certData) return;
+
+  lastCertificateData = certData;
+
+  // Hide splash & workspace, display report card
+  const splashCard = document.getElementById('exam-splash-card');
+  const workspace = document.getElementById('exam-workspace');
+  const reportCard = document.getElementById('exam-report-card');
+  if (splashCard) splashCard.style.display = 'none';
+  if (workspace) workspace.style.display = 'none';
+  if (reportCard) reportCard.style.display = 'flex';
+
+  // Fill named certificate
+  const certNameEl = document.getElementById('cert-candidate-name');
+  const certCodeEl = document.getElementById('cert-level-code');
+  const certLabelEl = document.getElementById('cert-level-label');
+  const certDateEl = document.getElementById('cert-date');
+  const certScoreEl = document.getElementById('cert-score');
+  const certIdEl = document.getElementById('cert-id');
+
+  if (certNameEl) certNameEl.textContent = certData.name || 'Candidate';
+  if (certCodeEl) certCodeEl.textContent = certData.code || 'B2';
+  if (certLabelEl) certLabelEl.textContent = certData.label || 'Upper-Intermediate';
+  if (certDateEl) certDateEl.textContent = certData.date || '';
+  if (certScoreEl) certScoreEl.textContent = certData.score || `${certData.rawScore || 0} / ${certData.total || 30} (${certData.percentage || 0}%)`;
+  if (certIdEl) certIdEl.textContent = certData.id || `CEFR-${certData.code || 'B2'}-VERIFIED`;
+
+  // Fill report card summary
+  const finalCode = document.getElementById('final-cefr-code');
+  const finalSub = document.querySelector('.score-cefr-sub');
+  const finalHeading = document.getElementById('final-level-heading');
+  const finalDesc = document.getElementById('final-level-narrative');
+  const finalRaw = document.getElementById('final-raw-score');
+  const finalPct = document.getElementById('final-percentage');
+  const finalTime = document.getElementById('final-time-taken');
+
+  if (finalCode) finalCode.textContent = certData.code || 'B2';
+  if (finalSub) finalSub.textContent = certData.label || 'Upper-Intermediate';
+  if (finalHeading) finalHeading.textContent = certData.heading || `${certData.code} – ${certData.label} User`;
+  if (finalDesc) finalDesc.textContent = certData.desc || 'Verified evaluation based on the Common European Framework of Reference for Languages.';
+  if (finalRaw) finalRaw.textContent = `${certData.rawScore ?? '-'} / ${certData.total ?? '30'}`;
+  if (finalPct) finalPct.textContent = `${certData.percentage ?? 0}%`;
+  if (finalTime) finalTime.textContent = certData.timeTaken || 'Completed';
+
+  // Fill competencies
+  const comp = certData.competencies || {};
+  const g = comp.grammarPct ?? certData.percentage ?? 80;
+  const v = comp.vocabPct ?? certData.percentage ?? 80;
+  const f = comp.fillPct ?? certData.percentage ?? 80;
+  const a = comp.audioPct ?? certData.percentage ?? 80;
+
+  const compGPct = document.getElementById('comp-grammar-pct');
+  const compGFill = document.getElementById('comp-grammar-fill');
+  const compVPct = document.getElementById('comp-vocab-pct');
+  const compVFill = document.getElementById('comp-vocab-fill');
+  const compFPct = document.getElementById('comp-fill-pct');
+  const compFFill = document.getElementById('comp-fill-fill');
+  const compCPct = document.getElementById('comp-coherence-pct');
+  const compCFill = document.getElementById('comp-coherence-fill');
+
+  if (compGPct) compGPct.textContent = `${g}%`;
+  if (compGFill) compGFill.style.width = `${g}%`;
+  if (compVPct) compVPct.textContent = `${v}%`;
+  if (compVFill) compVFill.style.width = `${v}%`;
+  if (compFPct) compFPct.textContent = `${f}%`;
+  if (compFFill) compFFill.style.width = `${f}%`;
+  if (compCPct) compCPct.textContent = `${a}%`;
+  if (compCFill) compCFill.style.width = `${a}%`;
+
+  // Question review notice
+  const reviewList = document.getElementById('review-items-list');
+  if (reviewList && (!reviewList.children || reviewList.children.length === 0)) {
+    reviewList.innerHTML = `
+      <div class="review-saved-notice">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <strong>Viewing Saved Certificate:</strong> Certificate ID <code>${escapeHtml(certData.id || '')}</code> issued on ${escapeHtml(certData.date || '')}.
+          Detailed per-question breakdown is captured during live testing sessions.
+        </div>
+      </div>
+    `;
+    reviewList.style.display = 'flex';
+  }
+
+  document.title = `${certData.name} - CEFR ${certData.code} Certificate`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof showExamToast === 'function') {
+    showExamToast(`Loaded saved certificate for ${certData.name} (${certData.code}). Ready to download.`, 'success', 'fa-award');
+  }
+}
+
+function returnToRegistrationScreen() {
+  const splashCard = document.getElementById('exam-splash-card');
+  const workspace = document.getElementById('exam-workspace');
+  const reportCard = document.getElementById('exam-report-card');
+  if (reportCard) reportCard.style.display = 'none';
+  if (workspace) workspace.style.display = 'none';
+  if (splashCard) splashCard.style.display = '';
+  document.title = 'CEFR English Proficiency Examination';
+  renderSavedCertificatesBanner();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// History Modal
+function openCertsHistoryModal() {
+  const modal = document.getElementById('certs-history-modal');
+  if (!modal) return;
+  renderCertsHistoryList();
+  modal.style.display = 'flex';
+  modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeCertsHistoryModal() {
+  const modal = document.getElementById('certs-history-modal');
+  if (!modal) return;
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
+}
+
+function renderCertsHistoryList() {
+  const listEl = document.getElementById('certs-history-list');
+  if (!listEl) return;
+
+  const certs = getAllSavedCertificates();
+  if (certs.length === 0) {
+    listEl.innerHTML = `
+      <div class="history-empty-notice">
+        <i class="fa-regular fa-folder-open"></i>
+        <p>No saved certificates found on this device.</p>
+      </div>
+    `;
+    return;
+  }
+
+  listEl.innerHTML = '';
+  certs.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'history-item';
+    row.innerHTML = `
+      <div class="history-item-left">
+        <div class="history-item-badge">${escapeHtml(item.code || 'B2')}</div>
+        <div class="history-item-meta">
+          <div class="history-item-name">${escapeHtml(item.name || 'Candidate')}</div>
+          <div class="history-item-sub">
+            <span>${escapeHtml(item.date || '')}</span> &bull; 
+            <span>Score: ${escapeHtml(item.score || '')}</span>
+          </div>
+        </div>
+      </div>
+      <div class="history-item-actions">
+        <button type="button" class="btn btn-secondary btn-sm history-view-btn" data-id="${escapeHtml(item.id)}">
+          <i class="fa-solid fa-eye"></i>
+          <span>View</span>
+        </button>
+        <button type="button" class="history-del-btn" data-id="${escapeHtml(item.id)}" title="Delete record" aria-label="Delete certificate">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+      </div>
+    `;
+
+    // View button
+    const viewBtn = row.querySelector('.history-view-btn');
+    if (viewBtn) {
+      viewBtn.addEventListener('click', () => {
+        closeCertsHistoryModal();
+        displaySavedCertificateReport(item);
+      });
+    }
+
+    // Delete button
+    const delBtn = row.querySelector('.history-del-btn');
+    if (delBtn) {
+      delBtn.addEventListener('click', async () => {
+        const confirmed = await showConfirmModal({
+          title: 'Delete Saved Certificate?',
+          message: `Are you sure you want to remove the certificate for "${item.name}" (${item.code}) from this device?`,
+          confirmText: 'Delete',
+          cancelText: 'Keep',
+          icon: 'fa-trash-can',
+          type: 'danger'
+        });
+        if (confirmed) {
+          deleteSavedCertificate(item.id);
+        }
+      });
+    }
+
+    listEl.appendChild(row);
+  });
+}
+
+// Event Listeners for Banner and History
+const viewSavedCertBtn = document.getElementById('view-saved-cert-btn');
+if (viewSavedCertBtn) {
+  viewSavedCertBtn.addEventListener('click', () => {
+    const latest = getLatestSavedCertificate();
+    if (latest) {
+      displaySavedCertificateReport(latest);
+    } else {
+      showExamToast('No saved certificate found.', 'warning', 'fa-circle-exclamation');
+    }
+  });
+}
+
+const dismissSavedBannerBtn = document.getElementById('dismiss-saved-banner-btn');
+if (dismissSavedBannerBtn) {
+  dismissSavedBannerBtn.addEventListener('click', () => {
+    savedBannerDismissed = true;
+    const banner = document.getElementById('saved-certs-banner');
+    if (banner) banner.style.display = 'none';
+  });
+}
+
+const openHistoryModalBtn = document.getElementById('open-history-modal-btn');
+if (openHistoryModalBtn) {
+  openHistoryModalBtn.addEventListener('click', openCertsHistoryModal);
+}
+
+const closeHistoryModalBtn = document.getElementById('close-history-modal-btn');
+if (closeHistoryModalBtn) {
+  closeHistoryModalBtn.addEventListener('click', closeCertsHistoryModal);
+}
+
+const closeHistoryBtnSecondary = document.getElementById('close-history-btn-secondary');
+if (closeHistoryBtnSecondary) {
+  closeHistoryBtnSecondary.addEventListener('click', closeCertsHistoryModal);
+}
+
+const clearAllCertsBtn = document.getElementById('clear-all-certs-btn');
+if (clearAllCertsBtn) {
+  clearAllCertsBtn.addEventListener('click', async () => {
+    const confirmed = await showConfirmModal({
+      title: 'Clear All Certificates?',
+      message: 'This will permanently remove all saved certificates and levels from this browser.',
+      confirmText: 'Clear All',
+      cancelText: 'Cancel',
+      icon: 'fa-trash-can',
+      type: 'danger'
+    });
+    if (confirmed) {
+      clearAllSavedCertificates();
+    }
+  });
+}
+
+// Back to registration from report card
+const reportBackToRegBtn = document.getElementById('report-back-to-reg-btn');
+if (reportBackToRegBtn) {
+  reportBackToRegBtn.addEventListener('click', returnToRegistrationScreen);
+}
+
+const reportFooterBackRegBtn = document.getElementById('report-footer-back-reg-btn');
+if (reportFooterBackRegBtn) {
+  reportFooterBackRegBtn.addEventListener('click', returnToRegistrationScreen);
+}
+
+// Initial banner check on load
+renderSavedCertificatesBanner();

@@ -70,6 +70,42 @@
     <main class="exam-main-container">
       <div class="container">
         
+        <!-- Saved Certificate Quick-Access Banner (Displayed if saved certificates exist in localStorage) -->
+        <aside class="saved-certs-banner" id="saved-certs-banner" style="display: none;" aria-label="Saved Certificate Notice">
+          <div class="saved-certs-inner">
+            <div class="saved-certs-info">
+              <div class="saved-certs-badge" id="saved-banner-level-badge">
+                <i class="fa-solid fa-award"></i>
+                <span id="saved-banner-level-code">B2</span>
+              </div>
+              <div class="saved-certs-details">
+                <div class="saved-certs-title-row">
+                  <h2 class="saved-certs-heading">Saved Certificate Available</h2>
+                  <span class="saved-certs-tag"><i class="fa-solid fa-hard-drive"></i> Local Storage</span>
+                </div>
+                <p class="saved-certs-text">
+                  Candidate: <strong id="saved-banner-name">Candidate</strong> &bull;
+                  Level: <strong id="saved-banner-level-title">B2 Upper-Intermediate</strong> &bull;
+                  Issued: <span id="saved-banner-date">Date</span>
+                </p>
+              </div>
+            </div>
+            <div class="saved-certs-actions">
+              <button type="button" class="btn btn-primary btn-sm" id="view-saved-cert-btn">
+                <i class="fa-solid fa-certificate"></i>
+                <span>View &amp; Download</span>
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="open-history-modal-btn" style="display: none;">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span id="history-btn-label">History</span>
+              </button>
+              <button type="button" class="saved-banner-dismiss-btn" id="dismiss-saved-banner-btn" title="Dismiss notice" aria-label="Dismiss banner">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </aside>
+
         <!-- Pre-Test Registration Splash (Visible at Start) -->
         <div class="exam-splash-card" id="exam-splash-card">
           <!-- Left: Overview -->
@@ -265,7 +301,16 @@
             </p>
           </div>
 
-          <div class="cert-toolbar"><button class="btn btn-primary cert-download-btn" id="download-certificate-btn" type="button"><i class="fa-solid fa-download"></i><span>Download Certificate</span></button></div>
+          <div class="cert-toolbar">
+            <button class="btn btn-secondary cert-back-btn" id="report-back-to-reg-btn" type="button">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Back to Registration</span>
+            </button>
+            <button class="btn btn-primary cert-download-btn" id="download-certificate-btn" type="button">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Certificate</span>
+            </button>
+          </div>
           <!-- Named Certificate -->
           <div class="named-certificate" id="named-certificate">
             <div class="cert-corner cert-corner-tl"></div>
@@ -376,6 +421,10 @@
 
           <!-- Report Action Footer -->
           <div class="report-footer-actions">
+            <button class="btn btn-secondary" id="report-footer-back-reg-btn" type="button">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Take Another Test</span>
+            </button>
             <button class="btn btn-primary" id="retake-exam-fresh-btn">
               <i class="fa-solid fa-rotate-right"></i>
               <span>Retake with New Questions</span>
@@ -416,7 +465,39 @@
       </div>
     </div>
 
+    <!-- Saved Certificates History Modal -->
+    <div class="exam-modal-overlay" id="certs-history-modal" aria-hidden="true" style="display: none;">
+      <div class="exam-modal-card history-modal-card">
+        <div class="history-modal-header">
+          <div class="history-modal-title-wrap">
+            <div class="history-title-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div>
+              <h3 class="exam-modal-title">Saved Certificates</h3>
+              <p class="history-modal-sub">Stored locally on this device</p>
+            </div>
+          </div>
+          <button type="button" class="history-close-btn" id="close-history-modal-btn" aria-label="Close modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="certs-history-list" id="certs-history-list">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="history-modal-actions">
+          <button type="button" class="btn btn-secondary modal-btn-cancel" id="clear-all-certs-btn">
+            <i class="fa-solid fa-trash-can"></i>
+            <span>Clear All Saved</span>
+          </button>
+          <button type="button" class="btn btn-primary modal-btn-confirm" id="close-history-btn-secondary">
+            <span>Done</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Core Examination Script -->
-    <script src="test.js?v=20261011a"></script>
+    <script src="test.js?v=20261011b"></script>
   </body>
 </html>
