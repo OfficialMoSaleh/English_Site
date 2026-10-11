@@ -2394,6 +2394,8 @@ async function ensureCertificateFonts() {
       document.fonts.load('800 72px "Plus Jakarta Sans"'),
       document.fonts.load('700 26px "Outfit"'),
       document.fonts.load('400 26px "Outfit"'),
+      document.fonts.load('64px "Alex Brush"'),
+      document.fonts.load('64px "Allura"'),
       document.fonts.load('64px "Great Vibes"')
     ]);
   } catch (e) {}
@@ -2625,7 +2627,7 @@ async function renderCertificateCanvas(data) {
   ctx.save();
   ctx.translate(sigX, rowY + 30);
   ctx.fillStyle = '#1e1b4b';
-  fitCanvasText(ctx, OWNER_SIGNATURE_NAME, 520, 82, '{size}px "Great Vibes", "Brush Script MT", cursive');
+  fitCanvasText(ctx, OWNER_SIGNATURE_NAME, 520, 84, '{size}px "Alex Brush", "Allura", "Great Vibes", cursive');
   ctx.fillText(OWNER_SIGNATURE_NAME, 0, 0);
   ctx.restore();
 
