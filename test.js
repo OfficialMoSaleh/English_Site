@@ -2623,10 +2623,9 @@ async function renderCertificateCanvas(data) {
   // Signature
   const sigX = W - 420;
   ctx.save();
-  ctx.translate(sigX, rowY + 10);
-  ctx.rotate(-0.06);
+  ctx.translate(sigX, rowY + 30);
   ctx.fillStyle = '#1e1b4b';
-  fitCanvasText(ctx, OWNER_SIGNATURE_NAME, 520, 74, '{size}px "Great Vibes", "Brush Script MT", cursive');
+  fitCanvasText(ctx, OWNER_SIGNATURE_NAME, 520, 82, '{size}px "Great Vibes", "Brush Script MT", cursive');
   ctx.fillText(OWNER_SIGNATURE_NAME, 0, 0);
   ctx.restore();
 
@@ -2637,12 +2636,9 @@ async function renderCertificateCanvas(data) {
   ctx.fillStyle = sl;
   ctx.fillRect(sigX - 260, rowY + 40, 520, 2);
 
-  ctx.fillStyle = ink;
-  ctx.font = '800 24px "Outfit", sans-serif';
-  drawSpacedText(ctx, OWNER_SIGNATURE_NAME.toUpperCase(), sigX, rowY + 82, 3);
   ctx.fillStyle = muted;
-  ctx.font = '400 22px "Outfit", sans-serif';
-  ctx.fillText(OWNER_SIGNATURE_ROLE, sigX, rowY + 116);
+  ctx.font = '600 22px "Outfit", sans-serif';
+  drawSpacedText(ctx, OWNER_SIGNATURE_ROLE.toUpperCase(), sigX, rowY + 76, 3);
 
   // Certificate ID footer
   ctx.fillStyle = muted;

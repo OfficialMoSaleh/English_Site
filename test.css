@@ -1762,11 +1762,11 @@ body.exam-idle .exam-progress-container { visibility: hidden; }
 
 .signature-script {
   font-family: "Great Vibes", "Brush Script MT", cursive;
-  font-size: 2.3rem;
+  font-size: 2.6rem;
   line-height: 1;
   color: #1e1b4b;
-  transform: rotate(-4deg);
-  margin-bottom: 2px;
+  transform: none;
+  margin-bottom: -4px;
   white-space: nowrap;
 }
 
@@ -1776,21 +1776,15 @@ body.dark-theme .signature-script { color: #c7d2fe; }
   width: 100%;
   height: 1.5px;
   background: linear-gradient(90deg, transparent, var(--black-color), transparent);
-  margin: 4px 0 6px;
-}
-
-.signature-name {
-  font-size: 0.86rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--black-color);
+  margin: 0 0 6px;
 }
 
 .signature-role {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--gray-color);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 560px) {
