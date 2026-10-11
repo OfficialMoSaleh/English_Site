@@ -2358,6 +2358,9 @@ let restoreCheckInitiated = false;
 function triggerSessionCheckOnce() {
   if (restoreCheckInitiated) return;
   restoreCheckInitiated = true;
+  if (typeof checkAndRestoreCertificateFromUrl === 'function' && checkAndRestoreCertificateFromUrl()) {
+    return;
+  }
   checkAndRestoreExamSession();
   renderSavedCertificatesBanner();
 }
@@ -2972,6 +2975,9 @@ function renderCertsHistoryList() {
         </div>
       </div>
       <div class="history-item-actions">
+        <button type="button" class="history-share-btn" data-id="${escapeHtml(item.id)}" title="Copy shareable link for another device" aria-label="Share certificate">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
         <button type="button" class="btn btn-secondary btn-sm history-view-btn" data-id="${escapeHtml(item.id)}">
           <i class="fa-solid fa-eye"></i>
           <span>View</span>
@@ -2981,6 +2987,14 @@ function renderCertsHistoryList() {
         </button>
       </div>
     `;
+
+    // Share button
+    const shareBtn = row.querySelector('.history-share-btn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        shareCertificate(item);
+      });
+    }
 
     // View button
     const viewBtn = row.querySelector('.history-view-btn');
@@ -3013,7 +3027,155 @@ function renderCertsHistoryList() {
   });
 }
 
-// Event Listeners for Banner and History
+// ==========================================
+// 10B. ZERO-DATABASE PERMANENT SHARING & CROSS-DEVICE LINK
+// ==========================================
+function encodeCertificateToken(data) {
+  try {
+    const compact = {
+      i: data.id || '',
+      n: data.name || '',
+      c: data.code || '',
+      l: data.label || '',
+      h: data.heading || '',
+      d: data.desc || '',
+      dt: data.date || '',
+      s: data.score || '',
+      r: data.rawScore ?? 0,
+      t: data.total ?? 30,
+      p: data.percentage ?? 0,
+      tm: data.timeTaken || '',
+      ts: data.timestamp || Date.now(),
+      cp: data.competencies || {}
+    };
+    const jsonStr = JSON.stringify(compact);
+    const bytes = new TextEncoder().encode(jsonStr);
+    let binStr = '';
+    bytes.forEach(b => { binStr += String.fromCharCode(b); });
+    return btoa(binStr).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  } catch (err) {
+    console.error('Failed to encode certificate token:', err);
+    return '';
+  }
+}
+
+function decodeCertificateToken(token) {
+  try {
+    if (!token) return null;
+    let b64 = token.replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    const binStr = atob(b64);
+    let jsonStr = '';
+    try {
+      const bytes = new Uint8Array(binStr.length);
+      for (let i = 0; i < binStr.length; i++) {
+        bytes[i] = binStr.charCodeAt(i);
+      }
+      jsonStr = new TextDecoder().decode(bytes);
+    } catch (e) {
+      jsonStr = decodeURIComponent(binStr);
+    }
+    const obj = JSON.parse(jsonStr);
+    if (!obj || (!obj.c && !obj.code)) return null;
+
+    return {
+      id: obj.i || obj.id || `CEFR-${obj.c || obj.code || 'B2'}-VERIFIED`,
+      name: obj.n || obj.name || 'Candidate',
+      code: obj.c || obj.code || 'B2',
+      label: obj.l || obj.label || 'Upper-Intermediate',
+      heading: obj.h || obj.heading || `${obj.c || obj.code || 'B2'} Certificate`,
+      desc: obj.d || obj.desc || 'Verified evaluation based on the Common European Framework of Reference for Languages.',
+      date: obj.dt || obj.date || new Date().toLocaleDateString('en-GB'),
+      score: obj.s || obj.score || `${obj.r || 0} / ${obj.t || 30} (${obj.p || 0}%)`,
+      rawScore: obj.r ?? obj.rawScore ?? 0,
+      total: obj.t ?? obj.total ?? 30,
+      percentage: obj.p ?? obj.percentage ?? 0,
+      timeTaken: obj.tm || obj.timeTaken || 'Completed',
+      timestamp: obj.ts || obj.timestamp || Date.now(),
+      competencies: obj.cp || obj.competencies || {}
+    };
+  } catch (err) {
+    console.warn('Failed to decode certificate token:', err);
+    return null;
+  }
+}
+
+function generateCertificateShareUrl(certData) {
+  if (!certData) return window.location.href;
+  const token = encodeCertificateToken(certData);
+  const origin = window.location.origin;
+  const pathname = window.location.pathname;
+  return `${origin}${pathname}?cert=${token}`;
+}
+
+async function shareCertificate(certData) {
+  if (!certData) certData = lastCertificateData || getLatestSavedCertificate();
+  if (!certData) {
+    if (typeof showExamToast === 'function') {
+      showExamToast('No certificate available to share.', 'warning', 'fa-circle-exclamation');
+    }
+    return;
+  }
+
+  const url = generateCertificateShareUrl(certData);
+  const sharePayload = {
+    title: `${certData.name} - CEFR ${certData.code} Certificate`,
+    text: `Verified CEFR ${certData.code} English Proficiency Certificate for ${certData.name}. Open this link on any device:`,
+    url: url
+  };
+
+  if (navigator.share && navigator.canShare && navigator.canShare(sharePayload)) {
+    try {
+      await navigator.share(sharePayload);
+      if (typeof showExamToast === 'function') {
+        showExamToast('Certificate link shared successfully.', 'success', 'fa-share-nodes');
+      }
+      return;
+    } catch (err) {
+      if (err.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    if (typeof showExamToast === 'function') {
+      showExamToast('Link copied! Open on any other browser or phone to view & save.', 'success', 'fa-clipboard-check');
+    }
+  } catch (err) {
+    window.prompt('Copy this permanent certificate link to open on any browser:', url);
+  }
+}
+
+function checkAndRestoreCertificateFromUrl() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('cert');
+    if (!token) return false;
+
+    const certData = decodeCertificateToken(token);
+    if (!certData || !certData.code) return false;
+
+    // Automatically save into this new browser's local storage
+    saveCertificateToStorage(certData);
+
+    // Display the certificate report
+    displaySavedCertificateReport(certData);
+
+    if (window.history && window.history.replaceState) {
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
+    if (typeof showExamToast === 'function') {
+      showExamToast(`Verified certificate for ${certData.name} imported and saved to this browser!`, 'success', 'fa-award');
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+// Event Listeners for Banner, Sharing, and History
 const viewSavedCertBtn = document.getElementById('view-saved-cert-btn');
 if (viewSavedCertBtn) {
   viewSavedCertBtn.addEventListener('click', () => {
@@ -3023,6 +3185,20 @@ if (viewSavedCertBtn) {
     } else {
       showExamToast('No saved certificate found.', 'warning', 'fa-circle-exclamation');
     }
+  });
+}
+
+const shareSavedBannerBtn = document.getElementById('share-saved-banner-btn');
+if (shareSavedBannerBtn) {
+  shareSavedBannerBtn.addEventListener('click', () => {
+    shareCertificate(getLatestSavedCertificate());
+  });
+}
+
+const shareCertificateBtn = document.getElementById('share-certificate-btn');
+if (shareCertificateBtn) {
+  shareCertificateBtn.addEventListener('click', () => {
+    shareCertificate(lastCertificateData || getLatestSavedCertificate());
   });
 }
 

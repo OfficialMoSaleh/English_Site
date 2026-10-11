@@ -81,7 +81,6 @@
               <div class="saved-certs-details">
                 <div class="saved-certs-title-row">
                   <h2 class="saved-certs-heading">Saved Certificate Available</h2>
-                  <span class="saved-certs-tag"><i class="fa-solid fa-hard-drive"></i> Local Storage</span>
                 </div>
                 <p class="saved-certs-text">
                   Candidate: <strong id="saved-banner-name">Candidate</strong> &bull;
@@ -94,6 +93,10 @@
               <button type="button" class="btn btn-primary btn-sm" id="view-saved-cert-btn">
                 <i class="fa-solid fa-certificate"></i>
                 <span>View &amp; Download</span>
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="share-saved-banner-btn" title="Copy link to open on another browser or phone">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Share Link</span>
               </button>
               <button type="button" class="btn btn-secondary btn-sm" id="open-history-modal-btn" style="display: none;">
                 <i class="fa-solid fa-clock-rotate-left"></i>
@@ -306,10 +309,16 @@
               <i class="fa-solid fa-arrow-left"></i>
               <span>Back to Registration</span>
             </button>
-            <button class="btn btn-primary cert-download-btn" id="download-certificate-btn" type="button">
-              <i class="fa-solid fa-download"></i>
-              <span>Download Certificate</span>
-            </button>
+            <div class="cert-toolbar-actions">
+              <button class="btn btn-secondary cert-share-btn" id="share-certificate-btn" type="button">
+                <i class="fa-solid fa-share-nodes"></i>
+                <span>Share / Copy Link</span>
+              </button>
+              <button class="btn btn-primary cert-download-btn" id="download-certificate-btn" type="button">
+                <i class="fa-solid fa-download"></i>
+                <span>Download Certificate</span>
+              </button>
+            </div>
           </div>
           <!-- Named Certificate -->
           <div class="named-certificate" id="named-certificate">
@@ -498,6 +507,6 @@
     </div>
 
     <!-- Core Examination Script -->
-    <script src="test.js?v=20261011b"></script>
+    <script src="test.js?v=20261011c"></script>
   </body>
 </html>
