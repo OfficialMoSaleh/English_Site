@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>High-Energy 15s Motion Showreel • 60 FPS • Mohamed Saleh</title>
+
+    <!-- Meta SEO -->
+    <meta name="description" content="High-energy 15-second cinematic motion graphics showreel running at 60 FPS. Featuring 3D CSS geometry, procedural particle physics, kinetic typography, and Web Audio synthesis." />
+    <meta name="author" content="Mohamed Saleh Mahfouz" />
+    <meta name="theme-color" content="#07080d" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="./img/Craftwork.png" />
+
+    <!-- Google Fonts: Syne, Space Grotesk, Outfit, Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Space+Grotesk:wght@400;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Font-Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Motion Reel Stylesheet -->
+    <link rel="stylesheet" href="showreel.css?v=20261012a" />
+  </head>
+  <body class="showreel-body">
+    <!-- Grain Noise Filter Canvas -->
+    <canvas id="bg-canvas" class="viewport-canvas"></canvas>
+    <canvas id="fx-canvas" class="viewport-canvas fx-canvas"></canvas>
+
+    <!-- Ambient Vignette & Scanline Overlay -->
+    <div class="screen-vignette" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <!-- HUD Chrome Top Bar -->
+    <header class="hud-header">
+      <div class="hud-left">
+        <a href="index.html" class="hud-back-btn" title="Return to Homepage">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Homepage</span>
+        </a>
+        <div class="hud-pill live-pill">
+          <span class="live-dot"></span>
+          <span>REEL 2026</span>
+        </div>
+        <div class="hud-meta">
+          <span class="meta-label">CODEC</span>
+          <span class="meta-value">WEBGL / 60FPS</span>
+        </div>
+      </div>
+
+      <div class="hud-center">
+        <span class="brand-monogram">MSM</span>
+        <span class="brand-title">MOHAMED SALEH &bull; MOTION LAB</span>
+      </div>
+
+      <div class="hud-right">
+        <div class="fps-meter" id="fps-display">
+          <span class="fps-num">60</span>
+          <span class="fps-unit">FPS</span>
+        </div>
+        <button type="button" class="hud-btn" id="audio-toggle-btn" title="Toggle Procedural Audio FX" aria-label="Toggle Audio">
+          <i class="fa-solid fa-volume-high" id="audio-icon"></i>
+          <span id="audio-status-label">SOUND ON</span>
+        </button>
+        <button type="button" class="hud-btn" id="fullscreen-btn" title="Toggle Fullscreen" aria-label="Fullscreen">
+          <i class="fa-solid fa-expand" id="fullscreen-icon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main 3D Motion Stage -->
+    <main class="motion-stage" id="motion-stage">
+      
+      <!-- SCENE 1: THE HYPERDRIVE IGNITION (0.0s - 2.8s) -->
+      <section class="scene scene-1" id="scene-1">
+        <div class="quantum-singularity">
+          <div class="core-ring core-ring-1"></div>
+          <div class="core-ring core-ring-2"></div>
+          <div class="core-ring core-ring-3"></div>
+          <div class="singularity-core"></div>
+          <div class="energy-shockwave"></div>
+        </div>
+
+        <div class="kinetic-type-cluster">
+          <div class="kinetic-line line-eyebrow">
+            <span class="tag-tech"><i class="fa-solid fa-bolt"></i> SYSTEM VELOCITY OVERDRIVE</span>
+          </div>
+          <h1 class="kinetic-hero-title">
+            <span class="char-wrap" data-text="UNLEASH">UNLEASH</span>
+            <span class="char-wrap accent-cyan" data-text="KINETIC">KINETIC</span>
+            <span class="char-wrap gradient-text" data-text="POWER">POWER</span>
+          </h1>
+          <p class="kinetic-sub">Next-generation motion graphics engineered at 60 frames per second.</p>
+        </div>
+
+        <div class="hud-corner-brackets" aria-hidden="true">
+          <span class="bracket-tl">+ [00:01:24]</span>
+          <span class="bracket-tr">LAT 30.0444° N</span>
+          <span class="bracket-bl">SYS: PRIMED</span>
+          <span class="bracket-br">RES: 4K HIGH-DPI</span>
+        </div>
+      </section>
+
+      <!-- SCENE 2: ISOMETRIC 3D GLASS & NEOMORPHIC UI (2.8s - 6.2s) -->
+      <section class="scene scene-2" id="scene-2">
+        <div class="scene-title-badge">
+          <i class="fa-solid fa-cubes"></i>
+          <span>DIMENSIONAL ARCHITECTURE</span>
+        </div>
+
+        <div class="iso-cards-rig" id="iso-rig">
+          <!-- Glass Card 1: Audio Spectrum -->
+          <div class="iso-card card-audio" id="card-1">
+            <div class="card-glass-reflection"></div>
+            <div class="card-head">
+              <div class="card-chip">
+                <i class="fa-solid fa-wave-square"></i>
+                <span>SONIC SYNTHESIS</span>
+              </div>
+              <span class="card-stat">96 kHz</span>
+            </div>
+            <div class="audio-spectrum-bars">
+              <span class="spec-bar b1"></span>
+              <span class="spec-bar b2"></span>
+              <span class="spec-bar b3"></span>
+              <span class="spec-bar b4"></span>
+              <span class="spec-bar b5"></span>
+              <span class="spec-bar b6"></span>
+              <span class="spec-bar b7"></span>
+              <span class="spec-bar b8"></span>
+              <span class="spec-bar b9"></span>
+              <span class="spec-bar b10"></span>
+              <span class="spec-bar b11"></span>
+              <span class="spec-bar b12"></span>
+            </div>
+            <div class="card-meta-row">
+              <span>PROCEDURAL HARMONICS</span>
+              <strong>ACTIVE</strong>
+            </div>
+          </div>
+
+          <!-- Glass Card 2: Central Prism Hologram -->
+          <div class="iso-card card-centerpiece" id="card-2">
+            <div class="card-glass-reflection"></div>
+            <div class="holo-prism-wrapper">
+              <div class="prism-cube">
+                <div class="prism-face front"><span>MSM</span></div>
+                <div class="prism-face back"><span>60FPS</span></div>
+                <div class="prism-face right"><i class="fa-solid fa-gem"></i></div>
+                <div class="prism-face left"><i class="fa-solid fa-infinity"></i></div>
+                <div class="prism-face top"></div>
+                <div class="prism-face bottom"></div>
+              </div>
+            </div>
+            <h2 class="centerpiece-title">PURE FLUID MOTION</h2>
+            <p class="centerpiece-desc">Sub-pixel precision with zero frame drops.</p>
+          </div>
+
+          <!-- Glass Card 3: Telemetry & Dials -->
+          <div class="iso-card card-dial" id="card-3">
+            <div class="card-glass-reflection"></div>
+            <div class="card-head">
+              <div class="card-chip">
+                <i class="fa-solid fa-gauge-high"></i>
+                <span>GPU PIPELINE</span>
+              </div>
+              <span class="card-stat">0.2ms</span>
+            </div>
+            <div class="dial-container">
+              <svg class="dial-svg" viewBox="0 0 100 100">
+                <circle class="dial-track" cx="50" cy="50" r="42"></circle>
+                <circle class="dial-progress" cx="50" cy="50" r="42"></circle>
+              </svg>
+              <div class="dial-center-label">
+                <strong>99.8</strong>
+                <span>EFFICIENCY</span>
+              </div>
+            </div>
+            <div class="card-meta-row">
+              <span>HARDWARE ACCELERATION</span>
+              <strong>ENGAGED</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENE 3: CHROMATIC CYBER LIQUID & LASER GRID (6.2s - 9.4s) -->
+      <section class="scene scene-3" id="scene-3">
+        <div class="laser-grid-plane" aria-hidden="true"></div>
+        <div class="warp-speed-tunnel" aria-hidden="true"></div>
+
+        <div class="kinetic-marquee-cluster">
+          <div class="marquee-track track-left">
+            <span class="marquee-item">UNSTOPPABLE DYNAMICS &bull; 60 FRAMES PER SECOND &bull;</span>
+            <span class="marquee-item">UNSTOPPABLE DYNAMICS &bull; 60 FRAMES PER SECOND &bull;</span>
+          </div>
+          <div class="marquee-track track-right">
+            <span class="marquee-item outline-text">NO COMPROMISE &bull; STATE OF THE ART &bull;</span>
+            <span class="marquee-item outline-text">NO COMPROMISE &bull; STATE OF THE ART &bull;</span>
+          </div>
+        </div>
+
+        <div class="cyber-liquid-orb">
+          <div class="liquid-glare"></div>
+          <div class="liquid-mesh"></div>
+          <div class="liquid-core-ring"></div>
+        </div>
+
+        <div class="center-punch-typography">
+          <h2 class="punch-word w1">DISRUPT</h2>
+          <h2 class="punch-word w2">ELEVATE</h2>
+          <h2 class="punch-word w3">DOMINATE</h2>
+        </div>
+      </section>
+
+      <!-- SCENE 4: SWISS DYNAMICS & GEOMETRIC EXPLOSION (9.4s - 12.3s) -->
+      <section class="scene scene-4" id="scene-4">
+        <div class="geometric-shapes-arena" aria-hidden="true">
+          <div class="geo-shape ring-expand"></div>
+          <div class="geo-shape diamond-spin"></div>
+          <div class="geo-shape cross-pulse"></div>
+          <div class="geo-shape hexagon-orbit"></div>
+          <div class="geo-shape triangle-burst"></div>
+        </div>
+
+        <div class="kinetic-strobe-grid">
+          <div class="strobe-col">
+            <span class="strobe-num">01</span>
+            <h3 class="strobe-title">CONCEPT</h3>
+            <p class="strobe-text">Crafted from first principles</p>
+          </div>
+          <div class="strobe-col active-accent">
+            <span class="strobe-num">02</span>
+            <h3 class="strobe-title">VELOCITY</h3>
+            <p class="strobe-text">Hypersonic smooth rendering</p>
+          </div>
+          <div class="strobe-col">
+            <span class="strobe-num">03</span>
+            <h3 class="strobe-title">PRECISION</h3>
+            <p class="strobe-text">Every single pixel calculated</p>
+          </div>
+        </div>
+
+        <div class="speed-slash-lines" aria-hidden="true">
+          <span class="slash-line s1"></span>
+          <span class="slash-line s2"></span>
+          <span class="slash-line s3"></span>
+          <span class="slash-line s4"></span>
+        </div>
+      </section>
+
+      <!-- SCENE 5: THE CLIMAX & BRAND SIGN-OFF (12.3s - 15.0s) -->
+      <section class="scene scene-5" id="scene-5">
+        <div class="climax-supernova" aria-hidden="true">
+          <div class="supernova-glow"></div>
+          <div class="supernova-shockwave"></div>
+          <div class="stardust-emitter"></div>
+        </div>
+
+        <div class="master-brand-card" id="master-brand-card">
+          <div class="brand-crest">
+            <div class="crest-ring"></div>
+            <i class="fa-solid fa-crown crest-icon"></i>
+          </div>
+
+          <span class="brand-eyebrow">PORTFOLIO MOTION PIECE &bull; 2026</span>
+          <h1 class="brand-name">MOHAMED SALEH</h1>
+          <p class="brand-subtitle">Lead Full-Stack Engineer &amp; Creative Motion Technologist</p>
+
+          <div class="brand-tags">
+            <span class="pill-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> 60FPS Native</span>
+            <span class="pill-tag"><i class="fa-solid fa-layer-group"></i> 3D CSS Core</span>
+            <span class="pill-tag"><i class="fa-solid fa-music"></i> Web Audio Synth</span>
+            <span class="pill-tag"><i class="fa-solid fa-award"></i> Ultra Premium</span>
+          </div>
+
+          <div class="end-actions">
+            <button type="button" class="btn btn-replay" id="replay-btn">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>Replay 15s Showreel</span>
+            </button>
+            <a href="index.html" class="btn btn-home">
+              <i class="fa-solid fa-house"></i>
+              <span>Return to Site</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Interactive Control Deck -->
+    <footer class="timeline-deck">
+      <div class="deck-inner">
+        <!-- Play / Pause Button -->
+        <button type="button" class="deck-btn play-pause-btn" id="play-pause-btn" title="Play / Pause Showreel" aria-label="Play or Pause">
+          <i class="fa-solid fa-pause" id="play-pause-icon"></i>
+        </button>
+
+        <!-- Current Timecode -->
+        <div class="timecode-display" id="timecode-display">
+          <span class="time-current" id="time-current">00:00.00</span>
+          <span class="time-divider">/</span>
+          <span class="time-total">00:15.00</span>
+        </div>
+
+        <!-- Interactive Progress Scrubber -->
+        <div class="scrubber-wrapper" id="scrubber-wrapper">
+          <div class="scrubber-track" id="scrubber-track">
+            <!-- Scene chapter marks -->
+            <div class="chapter-marker" style="left: 0%;" title="Scene 1: Ignition"></div>
+            <div class="chapter-marker" style="left: 18.66%;" title="Scene 2: 3D Isometric"></div>
+            <div class="chapter-marker" style="left: 41.33%;" title="Scene 3: Cyber Liquid"></div>
+            <div class="chapter-marker" style="left: 62.66%;" title="Scene 4: Swiss Dynamics"></div>
+            <div class="chapter-marker" style="left: 82%;" title="Scene 5: Climax"></div>
+
+            <div class="scrubber-fill" id="scrubber-fill"></div>
+            <div class="scrubber-head" id="scrubber-head"></div>
+          </div>
+        </div>
+
+        <!-- Playback Speed Controls -->
+        <div class="speed-selector">
+          <button type="button" class="speed-btn" data-speed="0.5">0.5x</button>
+          <button type="button" class="speed-btn active" data-speed="1.0">1.0x</button>
+          <button type="button" class="speed-btn" data-speed="2.0">2.0x</button>
+        </div>
+
+        <!-- Sound Quick Toggle Icon -->
+        <button type="button" class="deck-btn mute-btn" id="deck-sound-btn" title="Toggle Sound Engine">
+          <i class="fa-solid fa-volume-high" id="deck-sound-icon"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Interactive Custom Magnetic Cursor -->
+    <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+      <div class="cursor-dot"></div>
+      <div class="cursor-ring"></div>
+    </div>
+
+    <!-- Script Core -->
+    <script src="showreel.js?v=20261012a"></script>
+  </body>
+</html>
