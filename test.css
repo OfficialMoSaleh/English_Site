@@ -44,18 +44,20 @@
 }
 
 .exam-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 74px;
   background: var(--header-bg);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
-  z-index: 999;
+  z-index: 1000;
   display: flex;
   align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: background-color var(--main-transition), box-shadow 0.3s ease;
 }
 
 .exam-header-inner {
@@ -102,19 +104,49 @@
   animation: pulseDot 2s infinite;
 }
 
-/* Timer Box */
+/* Floating Dynamic Timer Bubble */
 .exam-timer-box {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 18px;
+  padding: 8px 20px;
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid rgba(91, 81, 222, 0.28);
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 6px 20px -3px rgba(91, 81, 222, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
   font-weight: 600;
   color: var(--black-color);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.exam-timer-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--main-color);
+  box-shadow: 0 10px 26px -3px rgba(91, 81, 222, 0.32);
+}
+
+.timer-bubble-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: timerBubblePulse 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes timerBubblePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
 }
 
 .exam-timer-box i {
@@ -138,7 +170,13 @@
 .exam-timer-box.warning {
   border-color: #ef4444;
   background: rgba(239, 68, 68, 0.1);
+  box-shadow: 0 8px 28px -4px rgba(239, 68, 68, 0.35);
   animation: timerWarning 1s infinite alternate;
+}
+
+.exam-timer-box.warning .timer-bubble-dot {
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
 }
 
 .exam-timer-box.warning i,
@@ -162,7 +200,7 @@
    -------------------------------------------------- */
 .exam-main-container {
   flex: 1;
-  padding: 40px 0 60px;
+  padding: 104px 0 60px;
 }
 
 .exam-main-container .container {
@@ -1621,6 +1659,14 @@ body.dark-theme .question-guideline-box {
   animation: modalFadeIn 0.25s ease-out;
 }
 
+#certs-history-modal {
+  z-index: 10000;
+}
+
+#exam-confirm-modal {
+  z-index: 10500;
+}
+
 @keyframes modalFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -1871,7 +1917,7 @@ body.dark-theme .question-guideline-box {
 .splash-title { font-size: 2.1rem; }
 
 @media (max-width: 960px) {
-  .exam-main-container { padding: 20px 0 40px; }
+  .exam-main-container { padding: 92px 0 40px; }
   .exam-splash-card { grid-template-columns: minmax(0, 1fr); margin: 0 auto; }
   .splash-overview { padding: 30px 24px; gap: 16px; }
   .splash-register { padding: 26px 20px; }
@@ -1880,9 +1926,13 @@ body.dark-theme .question-guideline-box {
 }
 
 @media (max-width: 560px) {
+  .exam-main-container { padding: 88px 0 30px; }
   .exam-main-container .container { padding: 0 12px; }
   .exam-header-inner { padding: 0 12px; gap: 10px; }
   .exam-badge { display: none; }
+  .exam-timer-box { padding: 6px 12px; gap: 6px; }
+  .timer-label { display: none; }
+  .timer-digits { font-size: 1rem; }
   .splash-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .splash-stat { padding: 10px; gap: 8px; }
   .stat-icon { width: 32px; height: 32px; font-size: 0.9rem; }

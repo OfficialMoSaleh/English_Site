@@ -46,8 +46,9 @@
           </div>
         </a>
 
-        <!-- Live Countdown Timer -->
-        <div class="exam-timer-box" id="exam-timer-box">
+        <!-- Live Countdown Timer (Floating Dynamic Bubble) -->
+        <div class="exam-timer-box" id="exam-timer-box" title="Remaining Exam Time">
+          <span class="timer-bubble-dot" aria-hidden="true"></span>
           <i class="fa-solid fa-clock"></i>
           <span class="timer-label">Time Remaining:</span>
           <span class="timer-digits" id="timer-digits">30:00</span>
@@ -455,25 +456,6 @@
       </div>
     </div>
 
-    <!-- Chic Confirmation Modal -->
-    <div class="exam-modal-overlay" id="exam-confirm-modal" aria-hidden="true" style="display: none;">
-      <div class="exam-modal-card">
-        <div class="exam-modal-icon-wrap" id="modal-icon-wrap">
-          <i class="fa-solid fa-circle-question" id="modal-icon"></i>
-        </div>
-        <h3 class="exam-modal-title" id="modal-title">Confirmation Required</h3>
-        <p class="exam-modal-message" id="modal-message">Are you sure you want to proceed with this action?</p>
-        <div class="exam-modal-actions">
-          <button type="button" class="btn btn-secondary modal-btn-cancel" id="modal-cancel-btn">
-            <span>Cancel</span>
-          </button>
-          <button type="button" class="btn btn-primary modal-btn-confirm" id="modal-confirm-btn">
-            <span>Confirm</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- Saved Certificates History Modal -->
     <div class="exam-modal-overlay" id="certs-history-modal" aria-hidden="true" style="display: none;">
       <div class="exam-modal-card history-modal-card">
@@ -501,6 +483,25 @@
           </button>
           <button type="button" class="btn btn-primary modal-btn-confirm" id="close-history-btn-secondary">
             <span>Done</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chic Confirmation Modal (Placed after and layered on top of all modals) -->
+    <div class="exam-modal-overlay" id="exam-confirm-modal" aria-hidden="true" style="display: none;">
+      <div class="exam-modal-card">
+        <div class="exam-modal-icon-wrap" id="modal-icon-wrap">
+          <i class="fa-solid fa-circle-question" id="modal-icon"></i>
+        </div>
+        <h3 class="exam-modal-title" id="modal-title">Confirmation Required</h3>
+        <p class="exam-modal-message" id="modal-message">Are you sure you want to proceed with this action?</p>
+        <div class="exam-modal-actions">
+          <button type="button" class="btn btn-secondary modal-btn-cancel" id="modal-cancel-btn">
+            <span>Cancel</span>
+          </button>
+          <button type="button" class="btn btn-primary modal-btn-confirm" id="modal-confirm-btn">
+            <span>Confirm</span>
           </button>
         </div>
       </div>

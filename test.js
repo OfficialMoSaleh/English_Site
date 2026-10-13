@@ -2584,6 +2584,13 @@ function formatTimer(seconds) {
 function startCountdownTimer() {
   clearInterval(timerInterval);
   if (timerDigits) timerDigits.textContent = formatTimer(timeRemaining);
+  if (timerContainer) {
+    if (timeRemaining <= 180) {
+      timerContainer.classList.add('warning');
+    } else {
+      timerContainer.classList.remove('warning');
+    }
+  }
 
   timerInterval = setInterval(() => {
     timeRemaining--;
@@ -3172,6 +3179,7 @@ function beginExamination() {
   clearExamSession();
   document.body.classList.remove('exam-idle');
   document.body.classList.add('exam-in-progress');
+  if (timerContainer) timerContainer.classList.remove('warning');
   examSplashCard.style.display = 'none';
   examWorkspace.style.display = 'block';
   examStarted = true;
@@ -3254,6 +3262,7 @@ if (submitExamBtn) {
 function submitExamination() {
   examCompleted = true;
   document.body.classList.remove('exam-in-progress');
+  if (timerContainer) timerContainer.classList.remove('warning');
   hideSecurityCurtain();
   clearExamSession();
   clearInterval(timerInterval);
