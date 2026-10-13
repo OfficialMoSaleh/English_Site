@@ -405,6 +405,234 @@ window.addEventListener('focus', () => {
   }
 });
 
+// ==========================================
+// 4C. MICRO-SOUND FX ENGINE (Web Audio API)
+// ==========================================
+let audioFxCtx = null;
+let soundFxEnabled = true;
+
+try {
+  const savedFx = localStorage.getItem('novaspeak_sound_fx');
+  if (savedFx !== null) soundFxEnabled = savedFx === 'true';
+} catch (e) {}
+
+function getAudioFxContext() {
+  if (!audioFxCtx) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      audioFxCtx = new AudioContextClass();
+    }
+  }
+  if (audioFxCtx && audioFxCtx.state === 'suspended') {
+    audioFxCtx.resume().catch(() => {});
+  }
+  return audioFxCtx;
+}
+
+function playMicroTone(freq, type = 'sine', duration = 0.07, gainVal = 0.08) {
+  if (!soundFxEnabled) return;
+  try {
+    const ctx = getAudioFxContext();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+    gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
+  } catch (e) {}
+}
+
+const soundFx = {
+  select() {
+    playMicroTone(740, 'sine', 0.05, 0.07);
+  },
+  navigate() {
+    playMicroTone(520, 'sine', 0.06, 0.05);
+  },
+  flag() {
+    if (!soundFxEnabled) return;
+    playMicroTone(550, 'triangle', 0.06, 0.07);
+    setTimeout(() => playMicroTone(720, 'triangle', 0.09, 0.07), 60);
+  },
+  warning() {
+    if (!soundFxEnabled) return;
+    playMicroTone(260, 'sawtooth', 0.12, 0.06);
+    setTimeout(() => playMicroTone(210, 'sawtooth', 0.15, 0.06), 100);
+  },
+  celebrate() {
+    if (!soundFxEnabled) return;
+    const chord = [523.25, 659.25, 783.99, 1046.50];
+    chord.forEach((freq, idx) => {
+      setTimeout(() => playMicroTone(freq, 'triangle', 0.28, 0.09), idx * 90);
+    });
+  }
+};
+
+const fxToggleBtn = document.getElementById('fx-toggle-btn');
+function updateFxToggleUI() {
+  if (!fxToggleBtn) return;
+  const icon = fxToggleBtn.querySelector('i');
+  if (icon) {
+    icon.className = soundFxEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+  }
+  fxToggleBtn.setAttribute('title', soundFxEnabled ? 'Sound Effects: Active' : 'Sound Effects: Muted');
+}
+
+if (fxToggleBtn) {
+  updateFxToggleUI();
+  fxToggleBtn.addEventListener('click', () => {
+    soundFxEnabled = !soundFxEnabled;
+    try { localStorage.setItem('novaspeak_sound_fx', String(soundFxEnabled)); } catch (e) {}
+    updateFxToggleUI();
+    if (soundFxEnabled) soundFx.select();
+    showExamToast(soundFxEnabled ? 'Audio feedback enabled.' : 'Audio feedback muted.', 'info', soundFxEnabled ? 'fa-volume-high' : 'fa-volume-xmark');
+  });
+}
+
+// ==========================================
+// 4D. FULLSCREEN LOCKDOWN & PROCTORING API
+// ==========================================
+let isFullscreenEnforced = false;
+
+function enterFullscreenMode() {
+  isFullscreenEnforced = true;
+  const docEl = document.documentElement;
+  const rfs = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+  if (rfs) {
+    rfs.call(docEl).catch(() => {});
+  }
+}
+
+function isFullscreenActive() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+const curtainResumeBtn = document.getElementById('curtain-resume-btn');
+if (curtainResumeBtn) {
+  curtainResumeBtn.addEventListener('click', () => {
+    enterFullscreenMode();
+    hideSecurityCurtain();
+  });
+}
+
+function handleFullscreenEvent() {
+  if (!isExamInProgress() || isProctorModalActive) return;
+
+  if (!isFullscreenActive() && isFullscreenEnforced) {
+    soundFx.warning();
+    if (curtainResumeBtn) curtainResumeBtn.style.display = 'inline-flex';
+    showSecurityCurtain(
+      'Fullscreen Mode Required',
+      'The examination must be taken in active fullscreen mode to prevent background assistance. Please return to fullscreen immediately.'
+    );
+    tabSwitchDetected = true;
+  } else if (isFullscreenActive()) {
+    if (curtainResumeBtn) curtainResumeBtn.style.display = 'none';
+    if (tabSwitchDetected && !isProctorModalActive) {
+      handleTabSwitchReturn();
+    } else if (!isCurtainShieldActive) {
+      hideSecurityCurtain();
+    }
+  }
+}
+
+document.addEventListener('fullscreenchange', handleFullscreenEvent);
+document.addEventListener('webkitfullscreenchange', handleFullscreenEvent);
+document.addEventListener('mozfullscreenchange', handleFullscreenEvent);
+document.addEventListener('MSFullscreenChange', handleFullscreenEvent);
+
+// ==========================================
+// 4E. KEYBOARD QUICK-SELECTION CONTROLLER
+// (Keys 1-4, A-D, F, Arrows, Enter)
+// ==========================================
+window.addEventListener('keydown', (e) => {
+  if (!isExamInProgress() || isProctorModalActive) return;
+
+  const activeEl = document.activeElement;
+  const isTyping = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
+  if (isTyping) return;
+
+  const key = e.key.toLowerCase();
+  const q = activeExamQuestions[currentQIndex];
+  if (!q) return;
+
+  // MCQ selection (A, B, C, D or 1, 2, 3, 4)
+  if (q.type === 'mcq' || (q.type === 'audio' && q.audioFormat === 'mcq')) {
+    let optIdx = -1;
+    if (key === 'a' || key === '1') optIdx = 0;
+    else if (key === 'b' || key === '2') optIdx = 1;
+    else if (key === 'c' || key === '3') optIdx = 2;
+    else if (key === 'd' || key === '4') optIdx = 3;
+
+    if (optIdx >= 0 && q.options && q.options[optIdx]) {
+      e.preventDefault();
+      userAnswers[currentQIndex] = q.options[optIdx].text;
+      soundFx.select();
+
+      const cards = document.querySelectorAll('.mcq-option-card');
+      cards.forEach((c, i) => {
+        if (i === optIdx) c.classList.add('selected');
+        else c.classList.remove('selected');
+      });
+
+      updateAnswerStatusDisplay();
+      renderNavigatorPills();
+      saveExamSession();
+      return;
+    }
+  }
+
+  // Toggle Flag with F
+  if (key === 'f') {
+    e.preventDefault();
+    if (flaggedQuestions.has(currentQIndex)) {
+      flaggedQuestions.delete(currentQIndex);
+    } else {
+      flaggedQuestions.add(currentQIndex);
+      soundFx.flag();
+      showExamToast(`Question ${currentQIndex + 1} flagged for review`, 'info', 'fa-bookmark');
+    }
+    renderCurrentQuestion();
+    saveExamSession();
+    return;
+  }
+
+  // Next Question with ArrowRight
+  if (e.key === 'ArrowRight') {
+    if (currentQIndex < activeExamQuestions.length - 1) {
+      e.preventDefault();
+      saveActiveInputAnswer();
+      currentQIndex++;
+      soundFx.navigate();
+      renderCurrentQuestion();
+      saveExamSession();
+    }
+    return;
+  }
+
+  // Previous Question with ArrowLeft
+  if (e.key === 'ArrowLeft') {
+    if (currentQIndex > 0) {
+      e.preventDefault();
+      saveActiveInputAnswer();
+      currentQIndex--;
+      soundFx.navigate();
+      renderCurrentQuestion();
+      saveExamSession();
+    }
+    return;
+  }
+});
+
 async function confirmAndLeaveExam(targetUrl) {
   if (!isExamInProgress()) {
     bypassUnloadGuard = true;
@@ -727,6 +955,121 @@ const comprehensiveExamBank = [
     acceptedAnswers: ["has"],
     explanation: "Third-person singular subjects (he, she, it) use 'has' in the present simple."
   },
+  {
+    id: "a1_11",
+    type: "mcq",
+    level: "A1 Beginner",
+    category: "Present Continuous",
+    prompt: "Look outside! It ________ heavily right now.",
+    subtext: "Choose the correct present continuous form.",
+    options: [
+      { text: "is raining", correct: true },
+      { text: "are raining", correct: false },
+      { text: "rains", correct: false },
+      { text: "rained", correct: false }
+    ],
+    explanation: "Use 'is raining' for an action happening at the moment of speaking with third-person singular 'it'."
+  },
+  {
+    id: "a1_12",
+    type: "fill",
+    level: "A1 Beginner",
+    category: "Prepositions of Time",
+    prompt: "Complete the sentence with the correct preposition of time:",
+    subtext: "Type 'at', 'in', or 'on'.",
+    sentenceBefore: "The English lecture starts",
+    sentenceAfter: "nine o'clock tomorrow morning.",
+    blankHint: "Type 'at', 'in', or 'on'",
+    acceptedAnswers: ["at"],
+    explanation: "Use 'at' with clock times ('at nine o'clock')."
+  },
+  {
+    id: "a1_13",
+    type: "mcq",
+    level: "A1 Beginner",
+    category: "Demonstrative Pronouns",
+    prompt: "________ shoes near the door belong to my brother.",
+    subtext: "Select the plural demonstrative pronoun for objects nearby.",
+    options: [
+      { text: "These", correct: true },
+      { text: "This", correct: false },
+      { text: "That", correct: false },
+      { text: "Those", correct: false }
+    ],
+    explanation: "'These' is used for plural nouns located nearby ('These shoes')."
+  },
+  {
+    id: "a1_14",
+    type: "audio",
+    audioFormat: "dictation",
+    level: "A1 Beginner",
+    category: "Audio Dictation",
+    audioText: "My brother works in a modern hospital downtown.",
+    prompt: "Listen carefully to the audio clip and transcribe the sentence:",
+    subtext: "Press play to hear the spoken English sentence.",
+    blankHint: "Type the exact spoken sentence...",
+    acceptedAnswers: [
+      "My brother works in a modern hospital downtown",
+      "My brother works in a modern hospital downtown."
+    ],
+    explanation: "The recording confirms: 'My brother works in a modern hospital downtown.'"
+  },
+  {
+    id: "a1_15",
+    type: "mcq",
+    level: "A1 Beginner",
+    category: "Object Pronouns",
+    prompt: "Where is Maria? I need to speak to ________ before the meeting.",
+    subtext: "Select the correct third-person feminine object pronoun.",
+    options: [
+      { text: "her", correct: true },
+      { text: "she", correct: false },
+      { text: "hers", correct: false },
+      { text: "him", correct: false }
+    ],
+    explanation: "'Her' is the objective personal pronoun referring back to Maria."
+  },
+  {
+    id: "a1_16",
+    type: "fill",
+    level: "A1 Beginner",
+    category: "Past Simple of To Be",
+    prompt: "Complete the sentence with the past simple of 'to be':",
+    subtext: "Type 'was' or 'were'.",
+    sentenceBefore: "We",
+    sentenceAfter: "very excited about the school trip yesterday.",
+    blankHint: "Type 'was' or 'were'",
+    acceptedAnswers: ["were"],
+    explanation: "Plural subject 'We' takes 'were' in the past simple."
+  },
+  {
+    id: "a1_17",
+    type: "mcq",
+    level: "A1 Beginner",
+    category: "Modal Verb: Can",
+    prompt: "My grandfather is seventy years old, but he ________ swim very well.",
+    subtext: "Select the modal verb expressing ability.",
+    options: [
+      { text: "can", correct: true },
+      { text: "must", correct: false },
+      { text: "should", correct: false },
+      { text: "will", correct: false }
+    ],
+    explanation: "'Can' expresses physical or acquired ability."
+  },
+  {
+    id: "a1_18",
+    type: "fill",
+    level: "A1 Beginner",
+    category: "Irregular Plural Nouns",
+    prompt: "Complete the sentence with the plural form of 'man':",
+    subtext: "Type the irregular plural noun.",
+    sentenceBefore: "Three",
+    sentenceAfter: "waited patiently at the reception counter.",
+    blankHint: "Plural form of man",
+    acceptedAnswers: ["men"],
+    explanation: "The irregular plural form of 'man' is 'men'."
+  },
   // --- LEVEL A2 (Elementary) ---
   {
     id: "a2_01",
@@ -869,6 +1212,121 @@ const comprehensiveExamBank = [
     blankHint: "Past participle of 'see'",
     acceptedAnswers: ["seen"],
     explanation: "The present perfect uses 'have' + past participle; the participle of 'see' is 'seen'."
+  },
+  {
+    id: "a2_11",
+    type: "mcq",
+    level: "A2 Elementary",
+    category: "Past Continuous vs Past Simple",
+    prompt: "While I ________ to music, somebody knocked on the front door.",
+    subtext: "Select the past continuous action in progress.",
+    options: [
+      { text: "was listening", correct: true },
+      { text: "listened", correct: false },
+      { text: "am listening", correct: false },
+      { text: "listen", correct: false }
+    ],
+    explanation: "Past continuous ('was listening') describes a longer background action interrupted by a shorter completed action ('knocked')."
+  },
+  {
+    id: "a2_12",
+    type: "fill",
+    level: "A2 Elementary",
+    category: "Future Intentions: Going To",
+    prompt: "Complete the sentence with the correct form of 'be going to' for 'they':",
+    subtext: "Type 'are going to' or 'is going to'.",
+    sentenceBefore: "They",
+    sentenceAfter: "travel to Spain during the upcoming summer holiday.",
+    blankHint: "Type 'are going to' or 'is going to'",
+    acceptedAnswers: ["are going to"],
+    explanation: "Plural subject 'They' takes 'are going to' for planned future intentions."
+  },
+  {
+    id: "a2_13",
+    type: "mcq",
+    level: "A2 Elementary",
+    category: "Conjunctions of Cause",
+    prompt: "We couldn't play tennis outside ________ the heavy rain made the court slippery.",
+    subtext: "Choose the conjunction expressing cause or reason.",
+    options: [
+      { text: "because", correct: true },
+      { text: "so", correct: false },
+      { text: "although", correct: false },
+      { text: "but", correct: false }
+    ],
+    explanation: "'Because' introduces the reason why they could not play tennis."
+  },
+  {
+    id: "a2_14",
+    type: "audio",
+    audioFormat: "dictation",
+    level: "A2 Elementary",
+    category: "Audio Dictation",
+    audioText: "Please turn off all lights before leaving the classroom.",
+    prompt: "Listen carefully to the audio clip and transcribe the sentence:",
+    subtext: "Press play to hear the sentence.",
+    blankHint: "Type the exact spoken sentence...",
+    acceptedAnswers: [
+      "Please turn off all lights before leaving the classroom",
+      "Please turn off all lights before leaving the classroom."
+    ],
+    explanation: "The audio confirms: 'Please turn off all lights before leaving the classroom.'"
+  },
+  {
+    id: "a2_15",
+    type: "fill",
+    level: "A2 Elementary",
+    category: "Irregular Past Simple",
+    prompt: "Complete the sentence with the past simple of 'write':",
+    subtext: "Type the past simple verb.",
+    sentenceBefore: "William Shakespeare",
+    sentenceAfter: "numerous famous plays and sonnets in English.",
+    blankHint: "Past simple of 'write'",
+    acceptedAnswers: ["wrote"],
+    explanation: "The irregular past simple of 'write' is 'wrote'."
+  },
+  {
+    id: "a2_16",
+    type: "mcq",
+    level: "A2 Elementary",
+    category: "Adverbs of Frequency",
+    prompt: "She ________ forgets her house keys on the kitchen table.",
+    subtext: "Select the word order placing the frequency adverb correctly.",
+    options: [
+      { text: "often", correct: true },
+      { text: "often is", correct: false },
+      { text: "is often", correct: false },
+      { text: "does often", correct: false }
+    ],
+    explanation: "Adverbs of frequency ('often') precede regular main verbs ('often forgets')."
+  },
+  {
+    id: "a2_17",
+    type: "mcq",
+    level: "A2 Elementary",
+    category: "Quantifiers for Countable Nouns",
+    prompt: "There are only ________ ripe apples left in the fruit basket.",
+    subtext: "Choose the quantifier for plural countable nouns.",
+    options: [
+      { text: "a few", correct: true },
+      { text: "a little", correct: false },
+      { text: "much", correct: false },
+      { text: "any", correct: false }
+    ],
+    explanation: "'A few' quantifies plural countable nouns like 'apples'."
+  },
+  {
+    id: "a2_18",
+    type: "fill",
+    level: "A2 Elementary",
+    category: "Superlative Adjectives",
+    prompt: "Complete the sentence with the superlative form of 'tall':",
+    subtext: "Type the superlative adjective.",
+    sentenceBefore: "Mount Everest is considered the",
+    sentenceAfter: "mountain peak on planet Earth.",
+    blankHint: "Superlative form of 'tall'",
+    acceptedAnswers: ["tallest", "highest"],
+    explanation: "Single-syllable adjectives take '-est' in the superlative ('the tallest' or 'the highest')."
   },
   // --- LEVEL B1 (Intermediate) ---
   {
@@ -1016,6 +1474,123 @@ const comprehensiveExamBank = [
     blankHint: "Correct form of 'smoke'",
     acceptedAnswers: ["smoking"],
     explanation: "Verbs ending in a preposition or particle, such as 'give up', are followed by a gerund ('smoking')."
+  },
+  {
+    id: "b1_11",
+    type: "mcq",
+    level: "B1 Intermediate",
+    category: "First Conditional",
+    prompt: "If it ________ tomorrow, we will move the ceremony indoors.",
+    subtext: "Choose the correct present tense form for the conditional clause.",
+    options: [
+      { text: "rains", correct: true },
+      { text: "will rain", correct: false },
+      { text: "rained", correct: false },
+      { text: "would rain", correct: false }
+    ],
+    explanation: "First conditional uses 'if + present simple' ('rains') in the condition clause and 'will + base verb' in the main clause."
+  },
+  {
+    id: "b1_12",
+    type: "fill",
+    level: "B1 Intermediate",
+    category: "Present Perfect with Just",
+    prompt: "Complete the sentence with the past participle of 'arrive':",
+    subtext: "Type the past participle.",
+    sentenceBefore: "The courier has just",
+    sentenceAfter: "with the urgent legal documents.",
+    blankHint: "Past participle of arrive",
+    acceptedAnswers: ["arrived"],
+    explanation: "The present perfect takes 'has/have + past participle' ('has just arrived')."
+  },
+  {
+    id: "b1_13",
+    type: "mcq",
+    level: "B1 Intermediate",
+    category: "Modal Verbs of Obligation",
+    prompt: "You ________ show your passport before boarding the international flight.",
+    subtext: "Choose the modal verb expressing strong necessity/obligation.",
+    options: [
+      { text: "must", correct: true },
+      { text: "might", correct: false },
+      { text: "could", correct: false },
+      { text: "would", correct: false }
+    ],
+    explanation: "'Must' conveys mandatory requirement or strict obligation."
+  },
+  {
+    id: "b1_14",
+    type: "audio",
+    audioFormat: "dictation",
+    level: "B1 Intermediate",
+    category: "Audio Dictation",
+    audioText: "Customer service is available twenty-four hours a day.",
+    prompt: "Listen to the customer helpline statement and transcribe what you hear:",
+    subtext: "Press play to hear the audio.",
+    blankHint: "Type what you hear...",
+    acceptedAnswers: [
+      "Customer service is available twenty-four hours a day",
+      "Customer service is available twenty-four hours a day.",
+      "Customer service is available 24 hours a day",
+      "Customer service is available 24 hours a day."
+    ],
+    explanation: "The recording speaks: 'Customer service is available twenty-four hours a day.'"
+  },
+  {
+    id: "b1_15",
+    type: "mcq",
+    level: "B1 Intermediate",
+    category: "Past Habits",
+    prompt: "Before moving to London, he ________ live in a quiet seaside village.",
+    subtext: "Select the phrase that expresses a discontinued past situation.",
+    options: [
+      { text: "used to", correct: true },
+      { text: "was used to", correct: false },
+      { text: "use to", correct: false },
+      { text: "is used to", correct: false }
+    ],
+    explanation: "'Used to + infinitive' refers to past states or repeated habits that are no longer true."
+  },
+  {
+    id: "b1_16",
+    type: "fill",
+    level: "B1 Intermediate",
+    category: "Comparative Structures",
+    prompt: "Complete the equality comparison with the adjective 'valuable':",
+    subtext: "Type the base adjective.",
+    sentenceBefore: "In fast-paced project management, time is just as",
+    sentenceAfter: "as capital resources.",
+    blankHint: "Adjective form (valuable)",
+    acceptedAnswers: ["valuable"],
+    explanation: "'As + adjective + as' expresses equality ('as valuable as')."
+  },
+  {
+    id: "b1_17",
+    type: "mcq",
+    level: "B1 Intermediate",
+    category: "Present Simple Passive",
+    prompt: "English ________ by millions of people across the world as an international lingua franca.",
+    subtext: "Choose the correct passive verb form.",
+    options: [
+      { text: "is spoken", correct: true },
+      { text: "speaks", correct: false },
+      { text: "is speaking", correct: false },
+      { text: "spoken", correct: false }
+    ],
+    explanation: "The present simple passive is formed with 'is/are + past participle' ('is spoken')."
+  },
+  {
+    id: "b1_18",
+    type: "fill",
+    level: "B1 Intermediate",
+    category: "Dependent Prepositions",
+    prompt: "Complete the sentence with the correct preposition:",
+    subtext: "Type the preposition that collocates with 'interested'.",
+    sentenceBefore: "Are you interested",
+    sentenceAfter: "learning how to code web applications?",
+    blankHint: "Preposition (in / at / on / for)",
+    acceptedAnswers: ["in"],
+    explanation: "'Interested' takes the dependent preposition 'in'."
   },
   // --- LEVEL B2 (Upper-Intermediate) ---
   {
@@ -1191,6 +1766,93 @@ const comprehensiveExamBank = [
     acceptedAnswers: ["unless", "Unless"],
     explanation: "'Unless' functions as 'if not' in conditional clauses."
   },
+  {
+    id: "b2_13",
+    type: "mcq",
+    level: "B2 Upper-Intermediate",
+    category: "Third Conditional",
+    prompt: "If we had left ten minutes earlier, we ________ the express train to Brussels.",
+    subtext: "Choose the correct hypothetical result form.",
+    options: [
+      { text: "would have caught", correct: true },
+      { text: "would catch", correct: false },
+      { text: "caught", correct: false },
+      { text: "will catch", correct: false }
+    ],
+    explanation: "Third conditional requires 'if + had + past participle' and 'would have + past participle' in the main clause."
+  },
+  {
+    id: "b2_14",
+    type: "fill",
+    level: "B2 Upper-Intermediate",
+    category: "Phrasal Verbs (Postpone)",
+    prompt: "Complete the phrasal verb meaning 'to postpone' with the correct particle:",
+    subtext: "Type the particle following 'put'.",
+    sentenceBefore: "The committee decided to put",
+    sentenceAfter: "the vote until all executive members returned.",
+    blankHint: "Particle (off / away / out / down)",
+    acceptedAnswers: ["off"],
+    explanation: "'Put off' is an idiomatic phrasal verb meaning to delay or postpone."
+  },
+  {
+    id: "b2_15",
+    type: "mcq",
+    level: "B2 Upper-Intermediate",
+    category: "Concessive Prepositions",
+    prompt: "________ being severely understaffed, the surgical clinic handled every critical emergency case.",
+    subtext: "Choose the preposition taking a gerund phrase.",
+    options: [
+      { text: "Despite", correct: true },
+      { text: "Although", correct: false },
+      { text: "Even though", correct: false },
+      { text: "Whereas", correct: false }
+    ],
+    explanation: "'Despite' is a preposition followed by a noun phrase or gerund ('Despite being...'), whereas 'Although' introduces a full clause."
+  },
+  {
+    id: "b2_16",
+    type: "audio",
+    audioFormat: "dictation",
+    level: "B2 Upper-Intermediate",
+    category: "Audio Dictation",
+    audioText: "The quarterly revenue forecast exceeded all market expectations.",
+    prompt: "Listen to the financial announcement and transcribe what you hear:",
+    subtext: "Press play to listen to the audio recording.",
+    blankHint: "Type what you hear...",
+    acceptedAnswers: [
+      "The quarterly revenue forecast exceeded all market expectations",
+      "The quarterly revenue forecast exceeded all market expectations."
+    ],
+    explanation: "The recording speaks: 'The quarterly revenue forecast exceeded all market expectations.'"
+  },
+  {
+    id: "b2_17",
+    type: "mcq",
+    level: "B2 Upper-Intermediate",
+    category: "Advisory Idioms (Had Better)",
+    prompt: "You look feverish and exhausted; you had better ________ a doctor immediately.",
+    subtext: "Select the correct verb complement for 'had better'.",
+    options: [
+      { text: "consult", correct: true },
+      { text: "to consult", correct: false },
+      { text: "consulting", correct: false },
+      { text: "consulted", correct: false }
+    ],
+    explanation: "'Had better' is an idiomatic modal structure followed directly by a bare infinitive without 'to' ('consult')."
+  },
+  {
+    id: "b2_18",
+    type: "fill",
+    level: "B2 Upper-Intermediate",
+    category: "Advanced Word Formation",
+    prompt: "Convert the adjective 'reluctant' into its corresponding noun:",
+    subtext: "Type the noun form.",
+    sentenceBefore: "He expressed strong",
+    sentenceAfter: "to accept the overseas relocation offer.",
+    blankHint: "Noun form of reluctant",
+    acceptedAnswers: ["reluctance", "Reluctance"],
+    explanation: "The noun form derived from 'reluctant' is 'reluctance'."
+  },
 
   // --- LEVEL C1 (Advanced) ---
   {
@@ -1338,6 +2000,121 @@ const comprehensiveExamBank = [
     ],
     explanation: "Mixed conditional connects a past unreal condition ('had taken') with a present result ('would possess today')."
   },
+  {
+    id: "c1_11",
+    type: "mcq",
+    level: "C1 Advanced",
+    category: "Negative Inversion",
+    prompt: "Seldom ________ such sheer dedication among junior medical residents.",
+    subtext: "Select the grammatically accurate inverted form.",
+    options: [
+      { text: "have I witnessed", correct: true },
+      { text: "I have witnessed", correct: false },
+      { text: "I witnessed", correct: false },
+      { text: "did I witnessed", correct: false }
+    ],
+    explanation: "Fronting restrictive adverbs ('seldom', 'rarely') triggers subject-auxiliary inversion ('Seldom have I witnessed')."
+  },
+  {
+    id: "c1_12",
+    type: "fill",
+    level: "C1 Advanced",
+    category: "Concessive Inversion",
+    prompt: "Complete the concessive inversion with 'as' or 'though':",
+    subtext: "Type 'as' or 'though'.",
+    sentenceBefore: "Strange",
+    sentenceAfter: "it may seem, the experimental propulsion system outperformed traditional designs.",
+    blankHint: "Type 'as' or 'though'",
+    acceptedAnswers: ["as", "though"],
+    explanation: "'Adjective + as/though + subject + verb' is an advanced concessive pattern ('Strange as it may seem')."
+  },
+  {
+    id: "c1_13",
+    type: "mcq",
+    level: "C1 Advanced",
+    category: "Cleft Sentences",
+    prompt: "It was not until midnight ________ the final referendum ballot tallies were declared.",
+    subtext: "Choose the grammatical connector for this cleft construction.",
+    options: [
+      { text: "that", correct: true },
+      { text: "when", correct: false },
+      { text: "which", correct: false },
+      { text: "where", correct: false }
+    ],
+    explanation: "The cleft sentence formula 'It was not until [time] that [clause]' grammatically requires 'that'."
+  },
+  {
+    id: "c1_14",
+    type: "audio",
+    audioFormat: "dictation",
+    level: "C1 Advanced",
+    category: "Audio Dictation",
+    audioText: "Stringent regulatory compliance standards must be observed across all global branches.",
+    prompt: "Listen to the executive directive and transcribe what you hear:",
+    subtext: "Press play to listen to the audio recording.",
+    blankHint: "Type what you hear...",
+    acceptedAnswers: [
+      "Stringent regulatory compliance standards must be observed across all global branches",
+      "Stringent regulatory compliance standards must be observed across all global branches."
+    ],
+    explanation: "The recording speaks: 'Stringent regulatory compliance standards must be observed across all global branches.'"
+  },
+  {
+    id: "c1_15",
+    type: "fill",
+    level: "C1 Advanced",
+    category: "Mandative Subjunctive",
+    prompt: "Complete the sentence with the base subjunctive form of 'remain':",
+    subtext: "Type the base verb form.",
+    sentenceBefore: "The court ordered that all proprietary evidence",
+    sentenceAfter: "strictly confidential throughout the trial.",
+    blankHint: "Base subjunctive of remain",
+    acceptedAnswers: ["remain"],
+    explanation: "In formal registers, verbs of order or demand govern mandative subjunctive base verbs without '-s' ('remain')."
+  },
+  {
+    id: "c1_16",
+    type: "mcq",
+    level: "C1 Advanced",
+    category: "Double Comparatives",
+    prompt: "The more complex the underlying microservice architecture becomes, ________ the potential security vulnerabilities.",
+    subtext: "Choose the correlative comparative phrase.",
+    options: [
+      { text: "the greater", correct: true },
+      { text: "greater", correct: false },
+      { text: "the greatest", correct: false },
+      { text: "the more great", correct: false }
+    ],
+    explanation: "Correlative comparative structures require 'the + comparative..., the + comparative...' ('the more complex..., the greater...')."
+  },
+  {
+    id: "c1_17",
+    type: "mcq",
+    level: "C1 Advanced",
+    category: "Academic Collocations",
+    prompt: "The economist drew a sharp ________ between short-term market volatility and structural decline.",
+    subtext: "Select the noun that collocates with 'drew a sharp...'.",
+    options: [
+      { text: "distinction", correct: true },
+      { text: "separation", correct: false },
+      { text: "discrepancy", correct: false },
+      { text: "divergence", correct: false }
+    ],
+    explanation: "'Draw a sharp distinction between' is an established academic collocation."
+  },
+  {
+    id: "c1_18",
+    type: "fill",
+    level: "C1 Advanced",
+    category: "Advanced Academic Vocabulary",
+    prompt: "Fill in the blank with the formal noun meaning 'superiority in weight or quantity' (starts with P):",
+    subtext: "Type the academic noun.",
+    sentenceBefore: "The",
+    sentenceAfter: "of empirical evidence corroborates the climate disruption hypothesis.",
+    blankHint: "Noun (preponderance)",
+    acceptedAnswers: ["preponderance", "Preponderance"],
+    explanation: "'Preponderance of evidence' is an established formal legal and academic collocation meaning greater weight of evidence."
+  },
 
   // --- LEVEL C2 (Proficient) ---
   {
@@ -1484,6 +2261,121 @@ const comprehensiveExamBank = [
     blankHint: "Conjunction meaning for fear that",
     acceptedAnswers: ["lest", "Lest"],
     explanation: "'Lest' is a formal/literary conjunction meaning 'with the intention of preventing something from happening' or 'for fear that'."
+  },
+  {
+    id: "c2_11",
+    type: "mcq",
+    level: "C2 Proficient",
+    category: "Inverted Unreal Conditionals",
+    prompt: "Were it not for your timely intervention, the entire syndicate ________ in ruin.",
+    subtext: "Select the hypothetical consequence form.",
+    options: [
+      { text: "would lie", correct: true },
+      { text: "will lie", correct: false },
+      { text: "would have lain", correct: false },
+      { text: "lies", correct: false }
+    ],
+    explanation: "'Were it not for + noun' acts as a present/ongoing unreal condition, taking 'would + base verb' ('would lie')."
+  },
+  {
+    id: "c2_12",
+    type: "fill",
+    level: "C2 Proficient",
+    category: "Idiomatic Collocations",
+    prompt: "Complete the formal idiom meaning an inevitable outcome: 'a ________ conclusion':",
+    subtext: "Type the adjective.",
+    sentenceBefore: "The incumbent prime minister's re-election was widely regarded as a",
+    sentenceAfter: "conclusion well before polls closed.",
+    blankHint: "Adjective (foregone)",
+    acceptedAnswers: ["foregone", "Foregone"],
+    explanation: "'A foregone conclusion' is an established idiom denoting an inevitable, preordained result."
+  },
+  {
+    id: "c2_13",
+    type: "mcq",
+    level: "C2 Proficient",
+    category: "Literary Connectors",
+    prompt: "The reform package represents meaningful, ________ belated, progress toward institutional parity.",
+    subtext: "Choose the conjunction meaning 'though / although'.",
+    options: [
+      { text: "albeit", correct: true },
+      { text: "besides", correct: false },
+      { text: "nonetheless", correct: false },
+      { text: "whereas", correct: false }
+    ],
+    explanation: "'Albeit' introduces a concessive modifier ('albeit belated') meaning 'even though it is'."
+  },
+  {
+    id: "c2_14",
+    type: "audio",
+    audioFormat: "dictation",
+    level: "C2 Proficient",
+    category: "Audio Dictation",
+    audioText: "His treatise provides an incisive critique of neoclassical economic orthodoxies.",
+    prompt: "Listen to the scholarly review and transcribe the exact sentence:",
+    subtext: "Press play to listen to the audio recording.",
+    blankHint: "Transcribe what you hear...",
+    acceptedAnswers: [
+      "His treatise provides an incisive critique of neoclassical economic orthodoxies",
+      "His treatise provides an incisive critique of neoclassical economic orthodoxies."
+    ],
+    explanation: "The recording speaks: 'His treatise provides an incisive critique of neoclassical economic orthodoxies.'"
+  },
+  {
+    id: "c2_15",
+    type: "fill",
+    level: "C2 Proficient",
+    category: "Latin Legal Loan Phrases",
+    prompt: "Complete the Latin legal term 'prima ________' (meaning based on first impression / self-evident):",
+    subtext: "Type the Latin term.",
+    sentenceBefore: "The preliminary investigative audit established a prima",
+    sentenceAfter: "case of corporate embezzlement.",
+    blankHint: "Latin word (facie)",
+    acceptedAnswers: ["facie", "Facie"],
+    explanation: "'Prima facie' is an international legal loan term meaning accepted as correct until proven otherwise."
+  },
+  {
+    id: "c2_16",
+    type: "mcq",
+    level: "C2 Proficient",
+    category: "High-Register Lexicon",
+    prompt: "The laureate reflected mournfully on the ________ nature of fame, noting that public adoration dissolves almost overnight.",
+    subtext: "Choose the adjective meaning lasting for a very short time.",
+    options: [
+      { text: "ephemeral", correct: true },
+      { text: "enduring", correct: false },
+      { text: "perennial", correct: false },
+      { text: "intermittent", correct: false }
+    ],
+    explanation: "'Ephemeral' signifies fleeting, transient, or lasting for only a short period."
+  },
+  {
+    id: "c2_17",
+    type: "fill",
+    level: "C2 Proficient",
+    category: "Formal Collocations",
+    prompt: "Complete the formal collocation 'to cast ________ on' (meaning to make disparaging remarks about someone's integrity):",
+    subtext: "Type the plural noun.",
+    sentenceBefore: "The defense counselor declined to cast",
+    sentenceAfter: "on the integrity of the presiding magistrate.",
+    blankHint: "Plural noun (aspersions)",
+    acceptedAnswers: ["aspersions"],
+    explanation: "'Cast aspersions on' is an advanced formal collocation meaning to slander or impugn someone's reputation."
+  },
+  {
+    id: "c2_18",
+    type: "mcq",
+    level: "C2 Proficient",
+    category: "Correlative Inversion",
+    prompt: "No sooner had the keynote speaker concluded her remarks ________ an aggressive volley of questions erupted from the gallery.",
+    subtext: "Choose the correlative connector pairing with 'No sooner'.",
+    options: [
+      { text: "than", correct: true },
+      { text: "when", correct: false },
+      { text: "scarcely", correct: false },
+      { text: "then", correct: false }
+    ],
+    explanation: "'No sooner had [subject] [past participle]... than...' is the strict grammatical pair; 'when' pairs with 'Hardly' or 'Scarcely'."
   }
 ];
 
@@ -1765,6 +2657,7 @@ function renderNavigatorPills() {
     pill.addEventListener('click', () => {
       saveActiveInputAnswer();
       currentQIndex = idx;
+      soundFx.navigate();
       renderCurrentQuestion();
       saveExamSession();
     });
@@ -1881,6 +2774,7 @@ function renderCurrentQuestion() {
         answersArea.querySelectorAll('.mcq-option-card').forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         userAnswers[currentQIndex] = opt.text;
+        soundFx.select();
         updateAnswerStatusDisplay();
         renderNavigatorPills();
         saveExamSession();
@@ -2067,6 +2961,7 @@ function renderCurrentQuestion() {
           optionsWrap.querySelectorAll('.mcq-option-card').forEach(c => c.classList.remove('selected'));
           card.classList.add('selected');
           userAnswers[currentQIndex] = opt.text;
+          soundFx.select();
           updateAnswerStatusDisplay();
           renderNavigatorPills();
           saveExamSession();
@@ -2126,6 +3021,7 @@ if (prevQuestionBtn) {
     saveActiveInputAnswer();
     if (currentQIndex > 0) {
       currentQIndex--;
+      soundFx.navigate();
       renderCurrentQuestion();
       saveExamSession();
     }
@@ -2137,6 +3033,7 @@ if (nextQuestionBtn) {
     saveActiveInputAnswer();
     if (currentQIndex < activeExamQuestions.length - 1) {
       currentQIndex++;
+      soundFx.navigate();
       renderCurrentQuestion();
       saveExamSession();
     }
@@ -2146,6 +3043,7 @@ if (nextQuestionBtn) {
 // Flag Question Listener
 if (flagQuestionBtn) {
   flagQuestionBtn.addEventListener('click', () => {
+    soundFx.flag();
     if (flaggedQuestions.has(currentQIndex)) {
       flaggedQuestions.delete(currentQIndex);
     } else {
@@ -2279,12 +3177,14 @@ function beginExamination() {
   examStarted = true;
   examCompleted = false;
   tabSwitchStrikes = 0;
+  enterFullscreenMode();
   timeRemaining = TOTAL_DURATION_SECONDS;
   currentQIndex = 0;
   examStartTime = Date.now();
   initWorkspace();
   startCountdownTimer();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  soundFx.select();
   showExamToast(`Good luck, ${candidateName.split(' ')[0]}! Your 30-minute examination has started.`, 'info', 'fa-pen-clip');
 }
 
@@ -2359,6 +3259,7 @@ function submitExamination() {
   clearInterval(timerInterval);
   stopAllAudioPlayback();
   saveActiveInputAnswer();
+  soundFx.celebrate();
 
   if (examWorkspace) examWorkspace.style.display = 'none';
   if (examReportCard) examReportCard.style.display = 'flex';
