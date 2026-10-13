@@ -198,12 +198,12 @@
                 <label class="rule-check">
                   <input type="checkbox" class="rule-checkbox" />
                   <span class="check-box"><i class="fa-solid fa-check"></i></span>
-                  <span class="check-text"><strong>Restricted actions.</strong> Copy, paste, right-click and shortcuts are disabled.</span>
+                  <span class="check-text"><strong>Anti-cheat restrictions.</strong> Copy, paste, right-click, screenshots, and shortcuts are strictly disabled.</span>
                 </label>
                 <label class="rule-check">
                   <input type="checkbox" class="rule-checkbox" />
                   <span class="check-box"><i class="fa-solid fa-check"></i></span>
-                  <span class="check-text"><strong>One sitting.</strong> I will complete the test without leaving or closing this page.</span>
+                  <span class="check-text"><strong>Strict tab discipline.</strong> Leaving or switching tabs triggers security strikes. 3 strikes will terminate and submit your test.</span>
                 </label>
               </div>
 
@@ -255,10 +255,16 @@
 
             <!-- Question Prompt Box -->
             <div class="question-prompt-area">
+              <div class="question-instruction-tag" id="q-instruction-tag">
+                <i class="fa-solid fa-circle-question" id="q-instruction-icon"></i>
+                <span id="q-instruction-text">Multiple Choice — Select the correct answer</span>
+              </div>
               <h2 class="question-headline" id="q-prompt-text">
                 Loading examination question...
               </h2>
-              <p class="question-subtext" id="q-subtext">Select the best answer from the options below.</p>
+              <div class="question-subtext-wrap" id="q-subtext-wrap">
+                <p class="question-subtext" id="q-subtext">Select the best answer from the options below.</p>
+              </div>
             </div>
 
             <!-- Dynamic Answer Formats (Rendered by JS) -->
@@ -454,6 +460,23 @@
 
     <!-- Global Toast Container -->
     <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <!-- Proctoring Security Curtain (Shields exam content on tab switch / window blur / screen capture) -->
+    <div class="exam-security-curtain" id="exam-security-curtain" aria-hidden="true" style="display: none;">
+      <div class="security-curtain-card">
+        <div class="security-curtain-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="security-curtain-title" id="security-curtain-title">Examination Suspended</h3>
+        <p class="security-curtain-desc" id="security-curtain-desc">
+          Exam content is obscured while the window is inactive or screen capture is detected. Please return to this tab immediately.
+        </p>
+        <div class="security-curtain-badge">
+          <i class="fa-solid fa-lock"></i>
+          <span>Proctoring Security Shield Active</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Chic Confirmation Modal -->
     <div class="exam-modal-overlay" id="exam-confirm-modal" aria-hidden="true" style="display: none;">

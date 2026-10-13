@@ -48,9 +48,12 @@ function escapeHtml(str) {
 }
 
 // ==========================================
-// 2. ANTI-CHEATING PROTECTION ENGINE
-// (Restricts Copy, Cut, Paste, Right Click & Shortcuts)
+// 2. ANTI-CHEATING STATE & INPUT PROTECTION
 // ==========================================
+let examStarted = false;
+let examCompleted = false;
+let tabSwitchStrikes = 0;
+
 document.addEventListener('copy', (e) => {
   e.preventDefault();
   showExamToast('Copying text is disabled to maintain test integrity.', 'warning', 'fa-shield-halved');
@@ -68,18 +71,6 @@ document.addEventListener('cut', (e) => {
 document.addEventListener('contextmenu', (e) => {
   e.preventDefault();
   showExamToast('Right-click context menu is restricted during the test.', 'warning', 'fa-shield-halved');
-});
-
-document.addEventListener('keydown', (e) => {
-  if (
-    (e.ctrlKey && ['c', 'v', 'x', 'u', 's', 'p'].includes(e.key.toLowerCase())) ||
-    e.key === 'F12'
-  ) {
-    if (e.key.toLowerCase() !== 'p') { // allow print in report mode
-      e.preventDefault();
-      showExamToast('Keyboard shortcut disabled by examination protocol.', 'warning', 'fa-shield-halved');
-    }
-  }
 });
 
 // ==========================================
@@ -134,7 +125,8 @@ function showConfirmModal({
   confirmText = 'Confirm',
   cancelText = 'Cancel',
   icon = 'fa-circle-question',
-  type = 'primary' // 'primary', 'warning', 'danger'
+  type = 'primary', // 'primary', 'warning', 'danger'
+  singleAction = false
 }) {
   return new Promise((resolve) => {
     if (!confirmModal) {
@@ -149,7 +141,12 @@ function showConfirmModal({
       modalConfirmBtn.className = `btn btn-primary modal-btn-confirm ${type}`;
     }
     if (modalCancelBtn) {
-      modalCancelBtn.innerHTML = `<span>${cancelText}</span>`;
+      if (singleAction) {
+        modalCancelBtn.style.display = 'none';
+      } else {
+        modalCancelBtn.style.display = '';
+        modalCancelBtn.innerHTML = `<span>${cancelText}</span>`;
+      }
     }
     if (modalIconWrap) {
       modalIconWrap.className = `exam-modal-icon-wrap ${type}`;
@@ -167,18 +164,19 @@ function showConfirmModal({
     };
 
     const handleCancel = () => {
+      if (singleAction) return;
       cleanup();
       resolve(false);
     };
 
     const handleOverlayClick = (e) => {
-      if (e.target === confirmModal) {
+      if (e.target === confirmModal && !singleAction) {
         handleCancel();
       }
     };
 
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !singleAction) {
         handleCancel();
       }
     };
@@ -186,6 +184,7 @@ function showConfirmModal({
     function cleanup() {
       confirmModal.style.display = 'none';
       confirmModal.setAttribute('aria-hidden', 'true');
+      if (modalCancelBtn) modalCancelBtn.style.display = '';
       modalConfirmBtn.removeEventListener('click', handleConfirm);
       modalCancelBtn.removeEventListener('click', handleCancel);
       confirmModal.removeEventListener('click', handleOverlayClick);
@@ -205,6 +204,206 @@ let bypassUnloadGuard = false;
 function isExamInProgress() {
   return typeof examStarted !== 'undefined' && examStarted && !examCompleted;
 }
+
+// ==========================================
+// 4B. PROCTORING & ANTI-CHEATING ENGINE
+// (Screenshot Blocking, Window Blur, Tab Switch Strike System)
+// ==========================================
+const examSecurityCurtain = document.getElementById('exam-security-curtain');
+const securityCurtainTitle = document.getElementById('security-curtain-title');
+const securityCurtainDesc = document.getElementById('security-curtain-desc');
+
+let isCurtainShieldActive = false;
+let isProctorModalActive = false;
+let tabSwitchDetected = false;
+let tabAwayTimeout = null;
+
+function showSecurityCurtain(title, desc) {
+  if (securityCurtainTitle && title) securityCurtainTitle.textContent = title;
+  if (securityCurtainDesc && desc) securityCurtainDesc.textContent = desc;
+  if (examSecurityCurtain) {
+    examSecurityCurtain.style.display = 'flex';
+    examSecurityCurtain.setAttribute('aria-hidden', 'false');
+  }
+  const ws = document.getElementById('exam-workspace');
+  if (ws) ws.classList.add('exam-obscured');
+}
+
+function hideSecurityCurtain() {
+  if (examSecurityCurtain) {
+    examSecurityCurtain.style.display = 'none';
+    examSecurityCurtain.setAttribute('aria-hidden', 'true');
+  }
+  const ws = document.getElementById('exam-workspace');
+  if (ws) ws.classList.remove('exam-obscured');
+}
+
+function triggerScreenshotShield() {
+  if (!isExamInProgress()) return;
+
+  // Clear system clipboard immediately
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText('Examination Security Protocol: Screenshots are disabled.').catch(() => {});
+  }
+
+  showSecurityCurtain(
+    'Screen Capture Blocked',
+    'Screen captures, snips, and shortcuts are prohibited during the examination. This security event has been logged.'
+  );
+
+  showExamToast('Screen capture is disabled by exam security protocol.', 'warning', 'fa-shield-halved');
+
+  // Keep screen shielded for 1.4 seconds
+  isCurtainShieldActive = true;
+  setTimeout(() => {
+    isCurtainShieldActive = false;
+    if (!document.hidden && !tabSwitchDetected) {
+      hideSecurityCurtain();
+    }
+  }, 1400);
+}
+
+// Intercept Screen capture & shortcut combinations
+window.addEventListener('keyup', (e) => {
+  if (e.key === 'PrintScreen' || e.code === 'PrintScreen') {
+    triggerScreenshotShield();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  const key = e.key.toLowerCase();
+
+  // PrintScreen key
+  if (e.key === 'PrintScreen' || e.code === 'PrintScreen') {
+    e.preventDefault();
+    triggerScreenshotShield();
+    return;
+  }
+
+  // Windows Snipping tool (Win+Shift+S) or Mac capture (Cmd+Shift+3/4/5)
+  if (
+    (e.shiftKey && (e.metaKey || e.ctrlKey) && ['s', '3', '4', '5'].includes(key)) ||
+    (e.altKey && (e.key === 'PrintScreen' || e.code === 'PrintScreen'))
+  ) {
+    e.preventDefault();
+    triggerScreenshotShield();
+    return;
+  }
+
+  // Ctrl/Cmd + shortcuts
+  if (
+    (e.ctrlKey || e.metaKey) &&
+    ['c', 'v', 'x', 'u', 's', 'p'].includes(key)
+  ) {
+    if (key === 'p' && !isExamInProgress()) {
+      // Allow print on final report / certificate
+      return;
+    }
+    e.preventDefault();
+    if (key === 'p' || key === 's') {
+      triggerScreenshotShield();
+    } else {
+      showExamToast('Keyboard shortcut disabled by examination protocol.', 'warning', 'fa-shield-halved');
+    }
+    return;
+  }
+
+  // F12 developer tools
+  if (e.key === 'F12') {
+    e.preventDefault();
+    showExamToast('Developer tools are disabled during examination.', 'warning', 'fa-shield-halved');
+  }
+});
+
+// Strike resolution when candidate returns to exam tab
+async function handleTabSwitchReturn() {
+  if (!isExamInProgress() || !tabSwitchDetected) return;
+  tabSwitchDetected = false;
+
+  hideSecurityCurtain();
+  tabSwitchStrikes++;
+  saveExamSession();
+
+  isProctorModalActive = true;
+
+  if (tabSwitchStrikes === 1) {
+    await showConfirmModal({
+      title: 'Security Warning: Tab Switching (Strike 1 of 3)',
+      message: 'Leaving the examination window or switching tabs is strictly prohibited by proctoring regulations. This violation has been officially logged. Two more strikes will terminate your test.',
+      confirmText: 'I Understand — Resume Test',
+      icon: 'fa-triangle-exclamation',
+      type: 'warning',
+      singleAction: true
+    });
+  } else if (tabSwitchStrikes === 2) {
+    await showConfirmModal({
+      title: 'FINAL WARNING: Tab Switching (Strike 2 of 3)',
+      message: 'You have left the examination environment a second time. This is your FINAL WARNING. If you leave or switch tabs one more time, your test will be immediately terminated and submitted automatically.',
+      confirmText: 'Acknowledge & Continue',
+      icon: 'fa-triangle-exclamation',
+      type: 'danger',
+      singleAction: true
+    });
+  } else if (tabSwitchStrikes >= 3) {
+    await showConfirmModal({
+      title: 'Examination Terminated (Strike 3 of 3)',
+      message: 'Maximum proctoring violations reached. Your examination has been terminated due to repeated unauthorized window departures. Your answers are being submitted automatically.',
+      confirmText: 'Submit Now',
+      icon: 'fa-ban',
+      type: 'danger',
+      singleAction: true
+    });
+    submitExamination();
+  }
+
+  isProctorModalActive = false;
+}
+
+// When document visibility changes (tab switch, window minimize)
+document.addEventListener('visibilitychange', () => {
+  if (!isExamInProgress()) return;
+
+  if (document.hidden) {
+    tabSwitchDetected = true;
+    stopAllAudioPlayback();
+    showSecurityCurtain(
+      'Examination Suspended',
+      'Exam content is obscured because you navigated away from this tab. Return immediately to avoid examination cancellation.'
+    );
+  } else {
+    // Returned to tab
+    if (tabSwitchDetected && !isProctorModalActive) {
+      handleTabSwitchReturn();
+    } else if (!isCurtainShieldActive) {
+      hideSecurityCurtain();
+    }
+  }
+});
+
+// When window loses focus (clicking another window, dual monitor)
+window.addEventListener('blur', () => {
+  if (!isExamInProgress() || isProctorModalActive) return;
+  tabAwayTimeout = setTimeout(() => {
+    if (isExamInProgress() && !document.hasFocus() && !isProctorModalActive) {
+      tabSwitchDetected = true;
+      stopAllAudioPlayback();
+      showSecurityCurtain(
+        'Window Focus Lost',
+        'Exam content is protected while this window does not have active focus. Click back into the window to resume.'
+      );
+    }
+  }, 220);
+});
+
+window.addEventListener('focus', () => {
+  if (tabAwayTimeout) clearTimeout(tabAwayTimeout);
+  if (!isExamInProgress()) return;
+  if (tabSwitchDetected && !isProctorModalActive) {
+    handleTabSwitchReturn();
+  } else if (!isCurtainShieldActive) {
+    hideSecurityCurtain();
+  }
+});
 
 async function confirmAndLeaveExam(targetUrl) {
   if (!isExamInProgress()) {
@@ -1311,10 +1510,11 @@ let flaggedQuestions = new Set();
 let currentQIndex = 0;
 let timeRemaining = TOTAL_DURATION_SECONDS;
 let timerInterval = null;
-let examStarted = false;
 let examStartTime = null;
 
-// Balanced question selection ensuring all 6 CEFR bands & 3 formats
+// Balanced question selection ensuring strict ascending CEFR difficulty progression:
+// Q1-5: A1 Beginner | Q6-10: A2 Elementary | Q11-15: B1 Intermediate |
+// Q16-20: B2 Upper-Intermediate | Q21-25: C1 Advanced | Q26-30: C2 Proficient
 function selectExamBatch() {
   const levels = ["A1 Beginner", "A2 Elementary", "B1 Intermediate", "B2 Upper-Intermediate", "C1 Advanced", "C2 Proficient"];
   let selected = [];
@@ -1325,14 +1525,16 @@ function selectExamBatch() {
     byLevel[lvl] = comprehensiveExamBank.filter(q => q.level === lvl);
   });
 
-  // Pull balanced items per level (5 items per level = 30 items)
+  // Pull 5 balanced items per level in strict ascending difficulty tier
   levels.forEach(lvl => {
     const pool = shuffleExamList(byLevel[lvl] || []);
     // prefer items not in lastExemptQuestionIds
     const fresh = pool.filter(q => !lastExemptQuestionIds.includes(q.id));
     const fallback = pool.filter(q => lastExemptQuestionIds.includes(q.id));
     const combined = [...fresh, ...fallback];
-    selected.push(...combined.slice(0, 5));
+    // Randomize selection within this level tier
+    const levelSlice = shuffleExamList(combined.slice(0, 5));
+    selected.push(...levelSlice);
   });
 
   // If still under 30, top up from remainder
@@ -1341,8 +1543,8 @@ function selectExamBatch() {
     selected.push(...shuffleExamList(remaining).slice(0, EXAM_QUESTION_COUNT - selected.length));
   }
 
-  // Shuffle selected questions so difficulty ramps naturally or is well-mixed
-  activeExamQuestions = shuffleExamList(selected).slice(0, EXAM_QUESTION_COUNT).map(q => {
+  // Preserve the strict ascending tier order (A1 -> C2) while randomizing MCQ option choices
+  activeExamQuestions = selected.slice(0, EXAM_QUESTION_COUNT).map(q => {
     if (q.type === 'mcq' || (q.type === 'audio' && q.audioFormat === 'mcq')) {
       return { ...q, options: shuffleExamList(q.options) };
     }
@@ -1361,7 +1563,6 @@ function selectExamBatch() {
 // (Prevents accidental loss on page refresh with Chic Modal restore)
 // ==========================================
 const SESSION_STORAGE_KEY = 'novaspeak_exam_session';
-let examCompleted = false;
 
 let candidateName = '';
 
@@ -1375,6 +1576,7 @@ function saveExamSession() {
     timeRemaining: timeRemaining,
     audioPlayCount: audioPlayCount,
     candidateName: candidateName,
+    tabSwitchStrikes: tabSwitchStrikes,
     timestamp: Date.now()
   };
   try {
@@ -1396,9 +1598,11 @@ function restoreSessionData(session) {
   timeRemaining = session.timeRemaining || TOTAL_DURATION_SECONDS;
   audioPlayCount = session.audioPlayCount || {};
   candidateName = session.candidateName || '';
+  tabSwitchStrikes = session.tabSwitchStrikes || 0;
   examStarted = true;
   examCompleted = false;
   document.body.classList.remove('exam-idle');
+  document.body.classList.add('exam-in-progress');
 
   if (examSplashCard) examSplashCard.style.display = 'none';
   if (examWorkspace) examWorkspace.style.display = 'block';
@@ -1523,6 +1727,9 @@ const navPillsList = document.getElementById('nav-pills-list');
 const qCounterBadge = document.getElementById('q-counter-badge');
 const qLevelBadge = document.getElementById('q-level-badge');
 const qTypeBadge = document.getElementById('q-type-badge');
+const qInstructionTag = document.getElementById('q-instruction-tag');
+const qInstructionIcon = document.getElementById('q-instruction-icon');
+const qInstructionText = document.getElementById('q-instruction-text');
 const qPromptText = document.getElementById('q-prompt-text');
 const qSubtext = document.getElementById('q-subtext');
 const flagQuestionBtn = document.getElementById('flag-question-btn');
@@ -1595,12 +1802,53 @@ function renderCurrentQuestion() {
   if (q.type === 'audio') typeLabel = q.audioFormat === 'dictation' ? 'Audio Dictation' : 'Listening Comprehension';
   if (qTypeBadge) qTypeBadge.textContent = typeLabel;
 
-  if (qPromptText) qPromptText.textContent = q.prompt;
-  // Typed-answer questions never show hints: neutral instruction only
-  let subtextText = q.subtext || '';
-  if (q.type === 'fill') subtextText = 'Type the missing word in the field below.';
-  if (q.type === 'audio' && q.audioFormat === 'dictation') subtextText = 'Press play, then type exactly what you hear.';
-  if (qSubtext) qSubtext.textContent = subtextText;
+  // Formulate clear, unambiguous task directives & prompts
+  let directiveText = 'Select the single correct answer:';
+  let directiveIcon = 'fa-circle-check';
+  let promptHtml = escapeHtml(q.prompt);
+  let subtextHtml = '';
+
+  if (q.type === 'mcq') {
+    if (q.prompt && q.prompt.includes('________')) {
+      directiveText = 'Sentence Completion — Choose the best option to fill in the blank:';
+      directiveIcon = 'fa-pen-to-square';
+      promptHtml = escapeHtml(q.prompt).replace(/________+/g, '<span class="blank-pill">______</span>');
+      subtextHtml = q.subtext ? `<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> ${escapeHtml(q.subtext)}</span>` : '<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> Select the grammatically correct word or phrase to complete the sentence.</span>';
+    } else if (q.prompt && (q.prompt.toLowerCase().includes('choose the correct sentence') || q.prompt.toLowerCase().includes('which sentence'))) {
+      directiveText = 'Grammar Identification — Select the single accurate sentence:';
+      directiveIcon = 'fa-list-check';
+      promptHtml = escapeHtml(q.prompt);
+      subtextHtml = q.subtext ? `<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> ${escapeHtml(q.subtext)}</span>` : '<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> Review the options carefully for subject-verb agreement, tense and word order.</span>';
+    } else {
+      directiveText = 'Multiple Choice — Select the single correct answer:';
+      directiveIcon = 'fa-circle-check';
+      promptHtml = escapeHtml(q.prompt);
+      subtextHtml = q.subtext ? `<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> ${escapeHtml(q.subtext)}</span>` : '<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> Choose the best answer from the options below.</span>';
+    }
+  } else if (q.type === 'fill') {
+    directiveText = 'Sentence Completion — Type the exact missing word into the blank:';
+    directiveIcon = 'fa-keyboard';
+    promptHtml = escapeHtml(q.prompt);
+    subtextHtml = q.subtext ? `<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> Guideline: ${escapeHtml(q.subtext)}</span>` : '<span class="question-guideline-box"><i class="fa-solid fa-circle-info"></i> Type only the missing word in the answer box below.</span>';
+  } else if (q.type === 'audio') {
+    if (q.audioFormat === 'dictation') {
+      directiveText = 'Audio Dictation — Listen to the recording and transcribe:';
+      directiveIcon = 'fa-headphones';
+      promptHtml = 'Listen carefully to the audio recording and transcribe the sentence:';
+      subtextHtml = '<span class="question-guideline-box"><i class="fa-solid fa-volume-high"></i> Press play (up to 3 listens). Type the complete sentence in the box below. Capitalization and punctuation are optional.</span>';
+    } else {
+      // Audio Listening MCQ: The subtext is the actual question!
+      directiveText = 'Listening Comprehension — Listen to the audio and answer:';
+      directiveIcon = 'fa-headphones';
+      promptHtml = escapeHtml(q.subtext || q.prompt);
+      subtextHtml = '<span class="question-guideline-box"><i class="fa-solid fa-volume-high"></i> Listen to the spoken audio clip above, then select the single correct option.</span>';
+    }
+  }
+
+  if (qInstructionIcon) qInstructionIcon.className = `fa-solid ${directiveIcon}`;
+  if (qInstructionText) qInstructionText.textContent = directiveText;
+  if (qPromptText) qPromptText.innerHTML = promptHtml;
+  if (qSubtext) qSubtext.innerHTML = subtextHtml;
 
   // Flag status
   if (flagQuestionBtn) {
@@ -1802,7 +2050,8 @@ function renderCurrentQuestion() {
     } else if (q.audioFormat === 'mcq') {
       const optionsWrap = document.createElement('div');
       optionsWrap.className = 'options-container';
-      optionsWrap.style.marginTop = '14px';
+      optionsWrap.style.marginTop = '16px';
+      optionsWrap.innerHTML = '<div style="font-weight: 700; font-size: 0.92rem; color: var(--black-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-list-ul text-primary"></i> Select the correct answer:</div>';
 
       const letters = ['A', 'B', 'C', 'D'];
       q.options.forEach((opt, optIdx) => {
@@ -2024,10 +2273,12 @@ updateRegistrationState();
 function beginExamination() {
   clearExamSession();
   document.body.classList.remove('exam-idle');
+  document.body.classList.add('exam-in-progress');
   examSplashCard.style.display = 'none';
   examWorkspace.style.display = 'block';
   examStarted = true;
   examCompleted = false;
+  tabSwitchStrikes = 0;
   timeRemaining = TOTAL_DURATION_SECONDS;
   currentQIndex = 0;
   examStartTime = Date.now();
@@ -2102,6 +2353,8 @@ if (submitExamBtn) {
 // ==========================================
 function submitExamination() {
   examCompleted = true;
+  document.body.classList.remove('exam-in-progress');
+  hideSecurityCurtain();
   clearExamSession();
   clearInterval(timerInterval);
   stopAllAudioPlayback();
