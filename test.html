@@ -73,45 +73,6 @@
     <!-- Main Examination Workspace -->
     <main class="exam-main-container">
       <div class="container">
-        
-        <!-- Saved Certificate Quick-Access Banner (Displayed if saved certificates exist in localStorage) -->
-        <aside class="saved-certs-banner" id="saved-certs-banner" style="display: none;" aria-label="Saved Certificate Notice">
-          <div class="saved-certs-inner">
-            <div class="saved-certs-info">
-              <div class="saved-certs-badge" id="saved-banner-level-badge">
-                <i class="fa-solid fa-award"></i>
-                <span id="saved-banner-level-code">B2</span>
-              </div>
-              <div class="saved-certs-details">
-                <div class="saved-certs-title-row">
-                  <h2 class="saved-certs-heading">Saved Certificate Available</h2>
-                </div>
-                <p class="saved-certs-text">
-                  Candidate: <strong id="saved-banner-name">Candidate</strong> &bull;
-                  Level: <strong id="saved-banner-level-title">B2 Upper-Intermediate</strong> &bull;
-                  Issued: <span id="saved-banner-date">Date</span>
-                </p>
-              </div>
-            </div>
-            <div class="saved-certs-actions">
-              <button type="button" class="btn btn-primary btn-sm" id="view-saved-cert-btn">
-                <i class="fa-solid fa-certificate"></i>
-                <span>View &amp; Download</span>
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" id="share-saved-banner-btn" title="Copy link to open on another browser or phone">
-                <i class="fa-solid fa-share-nodes"></i>
-                <span>Share Link</span>
-              </button>
-              <button type="button" class="btn btn-secondary btn-sm" id="open-history-modal-btn" style="display: none;">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <span id="history-btn-label">History</span>
-              </button>
-              <button type="button" class="saved-banner-dismiss-btn" id="dismiss-saved-banner-btn" title="Dismiss notice" aria-label="Dismiss banner">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-          </div>
-        </aside>
 
         <!-- Pre-Test Registration Splash (Visible at Start) -->
         <div class="exam-splash-card" id="exam-splash-card">
@@ -320,6 +281,10 @@
               <span>Back to Registration</span>
             </button>
             <div class="cert-toolbar-actions">
+              <button class="btn btn-secondary cert-history-btn" id="report-saved-certs-btn" type="button" style="display: none;" title="View all certificates saved on this device">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span id="report-saved-certs-label">Saved Certificates</span>
+              </button>
               <button class="btn btn-secondary cert-share-btn" id="share-certificate-btn" type="button">
                 <i class="fa-solid fa-share-nodes"></i>
                 <span>Share / Copy Link</span>
@@ -443,6 +408,10 @@
             <button class="btn btn-secondary" id="report-footer-back-reg-btn" type="button">
               <i class="fa-solid fa-arrow-left"></i>
               <span>Take Another Test</span>
+            </button>
+            <button class="btn btn-secondary" id="report-footer-history-btn" type="button" style="display: none;">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <span>Saved Certificates</span>
             </button>
             <button class="btn btn-primary" id="retake-exam-fresh-btn">
               <i class="fa-solid fa-rotate-right"></i>

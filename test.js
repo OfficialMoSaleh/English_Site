@@ -3454,6 +3454,7 @@ function submitExamination() {
 
   // Automatically save to local storage for permanent retrieval
   saveCertificateToStorage(lastCertificateData);
+  updateCertificatePageHistoryButton();
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
   showExamToast(`Examination complete! Placed at ${cefrCode} (${percentage}%) - Certificate saved locally.`, 'success', 'fa-award');
@@ -3921,7 +3922,7 @@ function deleteSavedCertificate(certId) {
         localStorage.removeItem(SAVED_LATEST_CERT_KEY);
       }
     }
-    renderSavedCertificatesBanner();
+    updateCertificatePageHistoryButton();
     renderCertsHistoryList();
     showExamToast('Certificate record removed from storage.', 'info', 'fa-trash-can');
   } catch (e) {}
@@ -3931,49 +3932,31 @@ function clearAllSavedCertificates() {
   try {
     localStorage.removeItem(SAVED_LATEST_CERT_KEY);
     localStorage.removeItem(SAVED_CERTS_LIST_KEY);
-    renderSavedCertificatesBanner();
+    updateCertificatePageHistoryButton();
     closeCertsHistoryModal();
     showExamToast('All saved certificates cleared from storage.', 'info', 'fa-check');
   } catch (e) {}
 }
 
-// Banner rendering
-let savedBannerDismissed = false;
-
-function renderSavedCertificatesBanner() {
-  const banner = document.getElementById('saved-certs-banner');
-  if (!banner) return;
-
-  const isExamInProgress = typeof examStarted !== 'undefined' && examStarted;
-  const latest = getLatestSavedCertificate();
-  if (!latest || savedBannerDismissed || isExamInProgress) {
-    banner.style.display = 'none';
-    return;
-  }
-
-  const nameEl = document.getElementById('saved-banner-name');
-  const codeEl = document.getElementById('saved-banner-level-code');
-  const levelTitleEl = document.getElementById('saved-banner-level-title');
-  const dateEl = document.getElementById('saved-banner-date');
-  const historyBtn = document.getElementById('open-history-modal-btn');
-  const historyLabel = document.getElementById('history-btn-label');
-
-  if (nameEl) nameEl.textContent = latest.name || 'Candidate';
-  if (codeEl) codeEl.textContent = latest.code || 'B2';
-  if (levelTitleEl) levelTitleEl.textContent = `${latest.code} ${latest.label || ''}`;
-  if (dateEl) dateEl.textContent = latest.date || 'Recent';
-
+// Update History buttons on Certificate / Results Page only (No banners or popups during test)
+function updateCertificatePageHistoryButton() {
   const allCerts = getAllSavedCertificates();
-  if (historyBtn) {
-    if (allCerts.length > 1) {
-      historyBtn.style.display = 'inline-flex';
-      if (historyLabel) historyLabel.textContent = `History (${allCerts.length})`;
-    } else {
-      historyBtn.style.display = 'none';
-    }
-  }
+  const toolbarBtn = document.getElementById('report-saved-certs-btn');
+  const footerBtn = document.getElementById('report-footer-history-btn');
+  const labelEl = document.getElementById('report-saved-certs-label');
 
-  banner.style.display = 'block';
+  if (allCerts && allCerts.length > 0) {
+    if (toolbarBtn) {
+      toolbarBtn.style.display = 'inline-flex';
+      if (labelEl) labelEl.textContent = allCerts.length > 1 ? `Saved Certificates (${allCerts.length})` : 'Saved Certificates';
+    }
+    if (footerBtn) {
+      footerBtn.style.display = 'inline-flex';
+    }
+  } else {
+    if (toolbarBtn) toolbarBtn.style.display = 'none';
+    if (footerBtn) footerBtn.style.display = 'none';
+  }
 }
 
 function displaySavedCertificateReport(certData) {
@@ -4062,6 +4045,7 @@ function displaySavedCertificateReport(certData) {
   }
 
   document.title = `${certData.name} - CEFR ${certData.code} Certificate`;
+  updateCertificatePageHistoryButton();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (typeof showExamToast === 'function') {
     showExamToast(`Loaded saved certificate for ${certData.name} (${certData.code}). Ready to download.`, 'success', 'fa-award');
@@ -4076,7 +4060,6 @@ function returnToRegistrationScreen() {
   if (workspace) workspace.style.display = 'none';
   if (splashCard) splashCard.style.display = '';
   document.title = 'CEFR English Proficiency Examination';
-  renderSavedCertificatesBanner();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -4354,18 +4337,14 @@ if (shareCertificateBtn) {
   });
 }
 
-const dismissSavedBannerBtn = document.getElementById('dismiss-saved-banner-btn');
-if (dismissSavedBannerBtn) {
-  dismissSavedBannerBtn.addEventListener('click', () => {
-    savedBannerDismissed = true;
-    const banner = document.getElementById('saved-certs-banner');
-    if (banner) banner.style.display = 'none';
-  });
+const reportSavedCertsBtn = document.getElementById('report-saved-certs-btn');
+if (reportSavedCertsBtn) {
+  reportSavedCertsBtn.addEventListener('click', openCertsHistoryModal);
 }
 
-const openHistoryModalBtn = document.getElementById('open-history-modal-btn');
-if (openHistoryModalBtn) {
-  openHistoryModalBtn.addEventListener('click', openCertsHistoryModal);
+const reportFooterHistoryBtn = document.getElementById('report-footer-history-btn');
+if (reportFooterHistoryBtn) {
+  reportFooterHistoryBtn.addEventListener('click', openCertsHistoryModal);
 }
 
 const closeHistoryModalBtn = document.getElementById('close-history-modal-btn');
@@ -4406,5 +4385,5 @@ if (reportFooterBackRegBtn) {
   reportFooterBackRegBtn.addEventListener('click', returnToRegistrationScreen);
 }
 
-// Initial banner check on load
-renderSavedCertificatesBanner();
+// URL token restore check (e.g. ?cert=... cross-device import directly into certificate view)
+checkAndRestoreCertificateFromUrl();
