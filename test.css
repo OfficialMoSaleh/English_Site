@@ -800,6 +800,23 @@ body.exam-idle .exam-progress-container { visibility: hidden; }
   background: var(--warning-color);
 }
 
+.q-nav-pill.speaking-pill::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--main-color);
+  box-shadow: 0 0 4px var(--main-color-glow);
+}
+
+.q-nav-pill.speaking-pill.current::before {
+  background: #ffffff;
+  box-shadow: none;
+}
+
 .nav-legend {
   display: flex;
   justify-content: center;

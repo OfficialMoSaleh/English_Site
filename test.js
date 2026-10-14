@@ -2398,556 +2398,540 @@ const comprehensiveExamBank = [
 ];
 
 // ==========================================
-// 5B. ORAL READING & SPOKEN FLUENCY QUESTION BANK (22 DIVERSE TOPICS)
+// 5B. ORAL READING & SPOKEN FLUENCY QUESTION BANK (22 DIVERSE SHORT SENTENCES)
+// Distributed across 3 milestone tiers:
+// Tier 1 (A2/B1 Everyday) -> Q10 | Tier 2 (B2 Workplace) -> Q20 | Tier 3 (C1/C2 Advanced) -> Q30
 // ==========================================
 const speakingExamBank = [
   {
     "id": "speaking_01",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Professional & Career Aspirations",
-    "title": "Career Journey & Professional Trajectory",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Throughout my professional journey, continuous learning and adapting to innovation have been vital. Developing strong technical competence combined with clear communication empowers individuals to overcome complex challenges and achieve lasting success.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Project Planning",
+    "title": "Project Launch Schedule",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "We are planning to launch the new project next Monday morning.",
     "phoneticHints": {
-      "throughout": "/θruːˈaʊt/",
-      "professional": "/prəˈfeʃ.ən.əl/",
-      "continuous": "/kənˈtɪn.ju.əs/",
-      "competence": "/ˈkɒm.pɪ.təns/"
+      "planning": "/ˈplæn.ɪŋ/",
+      "launch": "/lɔːntʃ/",
+      "project": "/ˈprɒdʒ.ekt/"
     },
     "targetKeywords": [
-      "career",
-      "professional",
-      "competence",
-      "innovation",
-      "communication",
-      "challenges",
-      "success"
+      "planning",
+      "launch",
+      "project",
+      "monday",
+      "morning"
     ],
-    "explanation": "Effective spoken reading tests natural rhythmic phrasing, consonant clusters, and consistent vowel quality."
+    "explanation": "Focus on clear initial consonant clusters in planning and the rounded vowel in launch."
   },
   {
     "id": "speaking_02",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Technological Innovation & Society",
-    "title": "Technological Innovation & Future Work",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Technological innovation is rapidly transforming global workplaces, education, and modern industries. While automated algorithms streamline repetitive workflows, uniquely human qualities like creative empathy, strategic judgment, and ethical reasoning remain entirely irreplaceable.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Workplace Tasks",
+    "title": "Submitting the Final Report",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Please make sure to send the final report before five o clock.",
     "phoneticHints": {
-      "technological": "/ˌtek.nəˈlɒdʒ.ɪ.kəl/",
-      "algorithms": "/ˈæl.ɡə.rɪ.ðəmz/",
-      "irreplaceable": "/ˌɪr.ɪˈpleɪ.sə.bəl/"
+      "report": "/rɪˈpɔːt/",
+      "before": "/bɪˈfɔː/",
+      "five": "/faɪv/"
     },
     "targetKeywords": [
-      "technology",
-      "transforming",
-      "algorithms",
-      "workflows",
-      "empathy",
-      "judgment",
-      "irreplaceable"
+      "please",
+      "send",
+      "final",
+      "report",
+      "before",
+      "five"
     ],
-    "explanation": "Analytical text reading demonstrates control of multi-syllabic stress, formal registers, and accurate consonant articulation."
+    "explanation": "Tests clean sentence rhythm, polite request intonation, and distinct numerical stress."
   },
   {
     "id": "speaking_03",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Problem Solving & Resilience",
-    "title": "Navigating High-Pressure Challenges",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "When navigating high-pressure projects with tight deadlines, unexpected obstacles frequently arise. By maintaining transparent communication, prioritizing high-impact deliverables, and supporting colleagues, difficult situations are transformed into valuable learning experiences.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Skill Improvement",
+    "title": "Consistent Daily Practice",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Regular daily practice is the most effective way to improve your English.",
     "phoneticHints": {
-      "navigating": "/ˈnæv.ɪ.ɡeɪ.tɪŋ/",
-      "obstacles": "/ˈɒb.stə.kəlz/",
-      "deliverables": "/dɪˈlɪv.ər.ə.bəlz/"
+      "regular": "/ˈreɡ.jə.lər/",
+      "effective": "/ɪˈfek.tɪv/",
+      "improve": "/ɪmˈpruːv/"
     },
     "targetKeywords": [
-      "navigating",
-      "deadlines",
-      "obstacles",
-      "transparent",
-      "prioritizing",
-      "deliverables",
-      "experiences"
+      "regular",
+      "practice",
+      "effective",
+      "improve",
+      "english"
     ],
-    "explanation": "Tests articulation of compound adjectives, past participles, and fluid transition pauses between clauses."
+    "explanation": "Evaluates fluid linking between effective and way, and accurate vowel length in improve."
   },
   {
     "id": "speaking_04",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Cultural Exchange & Global Mindset",
-    "title": "Cultural Diversity & Global Perspectives",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Traveling to diverse countries and immersing oneself in different cultures broadens our global mindset. Experiencing unique architectural heritage, foreign traditions, and local hospitality teaches us that human kindness easily transcends geographical boundaries.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Office Logistics",
+    "title": "Meeting Room Reservation",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "The conference room is reserved for our team meeting this afternoon.",
     "phoneticHints": {
-      "immersing": "/ɪˈmɜː.sɪŋ/",
-      "architectural": "/ˌɑː.kɪˈtek.tʃər.əl/",
-      "transcends": "/trænˈsendz/"
+      "conference": "/ˈkɒn.fər.əns/",
+      "reserved": "/rɪˈzɜːvd/",
+      "afternoon": "/ˌɑːf.təˈnuːn/"
     },
     "targetKeywords": [
-      "traveling",
-      "immersing",
-      "architectural",
-      "heritage",
-      "hospitality",
-      "transcends",
-      "boundaries"
+      "conference",
+      "room",
+      "reserved",
+      "meeting",
+      "afternoon"
     ],
-    "explanation": "Tests descriptive cadence, open vowel sounds, and subtle inflection on cultural vocabulary."
+    "explanation": "Practices multisyllabic stress in conference and sentence-final stress on afternoon."
   },
   {
     "id": "speaking_05",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Innovation & Educational Reform",
-    "title": "Educational Reform & Practical Skills",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Modern educational systems must evolve beyond passive memorization to cultivate analytical thinking and practical collaboration. When students are encouraged to experiment and question assumptions, they develop the resilience required for future economic landscapes.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Teamwork",
+    "title": "Creative Team Collaboration",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "I really enjoy collaborating on creative projects with my talented colleagues.",
     "phoneticHints": {
-      "cultivate": "/ˈkʌl.tɪ.veɪt/",
-      "collaboration": "/kəˌlæb.əˈreɪ.ʃən/",
-      "resilience": "/rɪˈzɪl.jəns/"
+      "collaborating": "/kəˈlæb.ə.reɪ.tɪŋ/",
+      "creative": "/kriˈeɪ.tɪv/",
+      "colleagues": "/ˈkɒl.iːɡz/"
     },
     "targetKeywords": [
-      "educational",
-      "memorization",
-      "cultivate",
-      "collaboration",
-      "assumptions",
-      "resilience",
-      "landscapes"
+      "enjoy",
+      "collaborating",
+      "creative",
+      "projects",
+      "colleagues"
     ],
-    "explanation": "Exercises rhythmic intonation across polysyllabic academic nouns and abstract concepts."
+    "explanation": "Tests complex articulation in collaborating and silent letters in colleagues."
   },
   {
     "id": "speaking_06",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Leadership & Organizational Dynamics",
-    "title": "Authentic Leadership & Team Inspiration",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "True leadership involves inspiring a shared vision and earning trust rather than simply directing administrative routines. An exceptional leader actively listens, empowers team members to innovate, and demonstrates emotional integrity during periods of uncertainty.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Contact Verification",
+    "title": "Confirming Contact Details",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Could you please confirm your email address before we can proceed?",
     "phoneticHints": {
-      "administrative": "/ədˈmɪn.ɪ.strə.tɪv/",
-      "exceptional": "/ɪkˈsep.ʃən.əl/",
-      "uncertainty": "/ʌnˈsɜː.tən.ti/"
+      "confirm": "/kənˈfɜːm/",
+      "address": "/ˈæd.res/",
+      "proceed": "/prəˈsiːd/"
     },
     "targetKeywords": [
-      "leadership",
-      "administrative",
-      "exceptional",
-      "empowers",
-      "innovate",
-      "integrity",
-      "uncertainty"
+      "could",
+      "confirm",
+      "email",
+      "address",
+      "proceed"
     ],
-    "explanation": "Requires emphatic word stress, authoritative cadence, and clear plosive consonant pronunciation."
+    "explanation": "Assesses polite question intonation and unstressed vowel schwa in proceed."
   },
   {
     "id": "speaking_07",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Modern Workplace & Collaboration",
-    "title": "Remote Work & Digital Collaboration",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Remote work models offer remarkable flexibility and eliminate stressful daily commutes for millions of professionals. However, maintaining clear psychological boundaries between professional duties and domestic life remains crucial to prevent cognitive exhaustion and burnout.",
+    "tier": 1,
+    "level": "CEFR A2/B1 • Spoken Sentence Reading",
+    "category": "Customer Support",
+    "title": "Customer Support Assistance",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Our dedicated support team is always available to help answer your questions.",
     "phoneticHints": {
-      "psychological": "/ˌsaɪ.kəˈlɒdʒ.ɪ.kəl/",
-      "exhaustion": "/ɪɡˈzɔːs.tʃən/",
-      "boundaries": "/ˈbaʊn.dər.iz/"
+      "dedicated": "/ˈded.ɪ.keɪ.tɪd/",
+      "available": "/əˈveɪ.lə.bəl/",
+      "questions": "/ˈkwes.tʃənz/"
     },
     "targetKeywords": [
-      "flexibility",
-      "commutes",
-      "psychological",
-      "boundaries",
-      "domestic",
-      "exhaustion",
-      "burnout"
+      "dedicated",
+      "support",
+      "always",
+      "available",
+      "questions"
     ],
-    "explanation": "Evaluates sentence-level rhythm, contrastive pausing, and accurate enunciation of consonant clusters."
+    "explanation": "Focuses on liquid consonant transitions and clear affricate articulation in questions."
   },
   {
     "id": "speaking_08",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Environmental Sustainability & Energy",
-    "title": "Climate Action & Renewable Energy",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Combating global climate change demands urgent collective commitment and an accelerated transition to renewable energy sources. Investing in clean solar power, circular recycling, and ecological conservation protects our fragile planet for upcoming generations.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Team Communication",
+    "title": "Ensuring Project Success",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Clear communication between team members ensures the success of any project.",
     "phoneticHints": {
-      "combating": "/kəmˈbæt.ɪŋ/",
-      "accelerated": "/əkˈsel.ə.reɪ.tɪd/",
-      "ecological": "/ˌiː.kəˈlɒdʒ.ɪ.kəl/"
+      "communication": "/kəˌmjuː.nɪˈkeɪ.ʃən/",
+      "ensures": "/ɪnˈʃɔːz/",
+      "success": "/səkˈses/"
     },
     "targetKeywords": [
-      "combating",
-      "collective",
-      "accelerated",
-      "renewable",
-      "recycling",
-      "ecological",
-      "generations"
+      "communication",
+      "between",
+      "ensures",
+      "success",
+      "project"
     ],
-    "explanation": "Focuses on scientific terminology, vocal resonance, and confident declarative pitch."
+    "explanation": "Tests secondary stress in communication and crisp sibilant sounds in success."
   },
   {
     "id": "speaking_09",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Digital Technology & Society",
-    "title": "Social Media & The Attention Economy",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "While social media platforms enable instantaneous worldwide communication, they frequently foster superficial relationships and chronic digital distraction. Cultivating mindful usage habits helps individuals preserve authentic human relationships and deep mental concentration.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Business Analysis",
+    "title": "Quarterly Performance Decisions",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "We need to analyze the quarterly results before making any major decisions.",
     "phoneticHints": {
-      "instantaneous": "/ˌɪn.stənˈteɪ.ni.əs/",
-      "superficial": "/ˌsuː.pəˈfɪʃ.əl/",
-      "distraction": "/dɪˈstræk.ʃən/"
+      "analyze": "/ˈæn.əl.aɪz/",
+      "quarterly": "/ˈkwɔː.təl.i/",
+      "decisions": "/dɪˈsɪʒ.ənz/"
     },
     "targetKeywords": [
-      "instantaneous",
-      "superficial",
-      "chronic",
-      "distraction",
-      "cultivating",
-      "authentic",
-      "concentration"
+      "analyze",
+      "quarterly",
+      "results",
+      "major",
+      "decisions"
     ],
-    "explanation": "Tests linking between vowel endings, unstressed prefix pronunciation, and natural rhetorical cadence."
+    "explanation": "Tests pronunciation of the voiced postalveolar fricative in decisions and glide in quarterly."
   },
   {
     "id": "speaking_10",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Personal Productivity & Psychology",
-    "title": "The Power of Daily Habits",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Small, consistent daily habits produce extraordinary long-term transformations in health, productivity, and character. By focusing on gradual incremental improvements rather than radical overnight change, individuals build lasting discipline and personal mastery.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Technology Adoption",
+    "title": "Adapting to Modern Technology",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Adapting quickly to modern technology has become essential for every professional.",
     "phoneticHints": {
-      "extraordinary": "/ɪkˈstrɔː.dɪn.ər.i/",
-      "incremental": "/ˌɪŋ.krɪˈmen.təl/",
-      "discipline": "/ˈdɪs.ə.plɪn/"
+      "technology": "/tekˈnɒl.ə.dʒi/",
+      "essential": "/ɪˈsen.ʃəl/",
+      "professional": "/prəˈfeʃ.ən.əl/"
     },
     "targetKeywords": [
-      "consistent",
-      "extraordinary",
-      "transformations",
-      "incremental",
-      "discipline",
-      "mastery"
+      "adapting",
+      "modern",
+      "technology",
+      "essential",
+      "professional"
     ],
-    "explanation": "Checks mastery of rhythm in compound modifiers and precise unvoiced sibilant pronunciation."
+    "explanation": "Assesses vowel shifts in technology and palato-alveolar articulation in essential."
   },
   {
     "id": "speaking_11",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Financial Literacy & Economics",
-    "title": "Financial Literacy & Economic Security",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Financial literacy is an indispensable life skill that empowers individuals to build long-term security and independence. Understanding strategic saving, smart investment vehicles, and mindful budgeting protects families from unexpected economic emergencies.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Leadership Dynamics",
+    "title": "Active Leadership Listening",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Effective leaders always listen carefully to feedback from their team members.",
     "phoneticHints": {
-      "indispensable": "/ˌɪn.dɪˈspen.sə.bəl/",
-      "vehicles": "/ˈvɪə.kəlz/",
-      "emergencies": "/ɪˈmɜː.dʒən.siz/"
+      "effective": "/ɪˈfek.tɪv/",
+      "listen": "/ˈlɪs.ən/",
+      "carefully": "/ˈkeə.fəl.i/"
     },
     "targetKeywords": [
-      "financial",
-      "indispensable",
-      "independence",
-      "strategic",
-      "vehicles",
-      "budgeting",
-      "emergencies"
+      "effective",
+      "leaders",
+      "listen",
+      "carefully",
+      "feedback"
     ],
-    "explanation": "Tests professional economic register, syllable duration, and pitch inflection across parallel clauses."
+    "explanation": "Tests silent t in listen and natural stress rhythm in carefully."
   },
   {
     "id": "speaking_12",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Health & Biotechnology",
-    "title": "Healthcare Innovation & Preventive Wellness",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Preventive healthcare through balanced nutrition, restorative sleep, and regular physical activity substantially enhances human longevity. Modern medicine is increasingly focusing on holistic lifestyle wellness rather than merely responding to chronic illnesses.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Market Expansion",
+    "title": "International Market Growth",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "The company has achieved significant growth across international markets this year.",
     "phoneticHints": {
-      "preventive": "/prɪˈven.tɪv/",
-      "substantially": "/səbˈstæn.ʃəl.i/",
-      "longevity": "/lɒnˈdʒev.ə.ti/"
+      "achieved": "/əˈtʃiːvd/",
+      "significant": "/sɪɡˈnɪf.ɪ.kənt/",
+      "growth": "/ɡrəʊθ/"
     },
     "targetKeywords": [
-      "preventive",
-      "nutrition",
-      "restorative",
-      "substantially",
-      "longevity",
-      "holistic",
-      "illnesses"
+      "company",
+      "achieved",
+      "significant",
+      "growth",
+      "international"
     ],
-    "explanation": "Examines medical wellness diction, smooth diphthongs, and clear alveolar consonant articulation."
+    "explanation": "Focuses on the unvoiced dental fricative in growth and past tense ending in achieved."
   },
   {
     "id": "speaking_13",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Education & Lifelong Growth",
-    "title": "Lifelong Learning & Adaptability",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "In an age of accelerating technological disruption, continuous lifelong learning is no longer optional. Embracing intellectual curiosity, unlearning obsolete assumptions, and acquiring modern digital skills ensure enduring professional relevance and personal fulfillment.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Professional Training",
+    "title": "Productivity Through Training",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Investing in professional training leads to higher productivity and stronger loyalty.",
     "phoneticHints": {
-      "disruption": "/dɪsˈrʌp.ʃən/",
-      "intellectual": "/ˌɪn.təlˈek.tʃu.əl/",
-      "obsolete": "/ˌɒb.səˈliːt/"
+      "productivity": "/ˌprɒd.ʌkˈtɪv.ə.ti/",
+      "stronger": "/ˈstrɒŋ.ɡər/",
+      "loyalty": "/ˈlɔɪ.əl.ti/"
     },
     "targetKeywords": [
-      "disruption",
-      "intellectual",
-      "obsolete",
-      "assumptions",
-      "acquiring",
-      "relevance",
-      "fulfillment"
+      "investing",
+      "training",
+      "productivity",
+      "stronger",
+      "loyalty"
     ],
-    "explanation": "Focuses on rhythmic coordination, vowel reduction in unaccented syllables, and confident cadence."
+    "explanation": "Tests five-syllable cadence in productivity and diphthong quality in loyalty."
   },
   {
     "id": "speaking_14",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Urbanism & Lifestyle",
-    "title": "Metropolitan Living vs Rural Serenity",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Living in dynamic metropolitan centers provides unparalleled access to cultural amenities, commerce, and diversity. Conversely, residing in peaceful countryside environments promotes mental tranquility, clean air, and closer harmony with the natural world.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Environmental Solutions",
+    "title": "Solving Complex Challenges",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "We are developing innovative solutions to solve complex environmental challenges.",
     "phoneticHints": {
-      "metropolitan": "/ˌmet.rəˈpɒl.ɪ.tən/",
-      "amenities": "/əˈmiː.nə.tiz/",
-      "tranquility": "/træŋˈkwɪl.ə.ti/"
+      "innovative": "/ˈɪn.ə.və.tɪv/",
+      "environmental": "/ɪnˌvaɪ.rənˈmen.təl/",
+      "challenges": "/ˈtʃæl.ɪn.dʒɪz/"
     },
     "targetKeywords": [
-      "metropolitan",
-      "unparalleled",
-      "amenities",
-      "conversely",
-      "tranquility",
-      "harmony"
+      "developing",
+      "innovative",
+      "solutions",
+      "environmental",
+      "challenges"
     ],
-    "explanation": "Tests comparative phrasing, transitional adverb emphasis, and contrasting tone modulation."
+    "explanation": "Evaluates multi-tier stress in environmental and clean vowel reduction."
   },
   {
     "id": "speaking_15",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Art, Humanities & Culture",
-    "title": "The Enduring Power of the Arts",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Artistic expression in literature, music, and painting communicates profound human emotions that words alone cannot capture. Supporting the arts enriches public spaces, sparks creative inspiration, and preserves our shared cultural heritage across generations.",
+    "tier": 2,
+    "level": "CEFR B2 • Spoken Sentence Reading",
+    "category": "Quality Delivery",
+    "title": "Setting Realistic Benchmarks",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Setting realistic goals helps teams maintain focus and deliver high quality work.",
     "phoneticHints": {
-      "literature": "/ˈlɪt.rə.tʃər/",
-      "profound": "/prəˈfaʊnd/",
-      "heritage": "/ˈher.ɪ.tɪdʒ/"
+      "realistic": "/ˌrɪəˈlɪs.tɪk/",
+      "maintain": "/meɪnˈteɪn/",
+      "quality": "/ˈkwɒl.ə.ti/"
     },
     "targetKeywords": [
-      "artistic",
-      "literature",
-      "profound",
-      "enriches",
-      "inspiration",
-      "heritage",
-      "generations"
+      "setting",
+      "realistic",
+      "goals",
+      "maintain",
+      "deliver",
+      "quality"
     ],
-    "explanation": "Requires expressive intonational contours, sensory word emphasis, and fluid breath control."
+    "explanation": "Practices smooth diphthong transition in maintain and initial glide in quality."
   },
   {
     "id": "speaking_16",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Science & Space Exploration",
-    "title": "Space Exploration & Scientific Discovery",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Exploring outer space pushes the boundaries of human scientific curiosity and engineering innovation. Discovering new planetary atmospheres and cosmological phenomena reminds humanity of our shared unity on our fragile home planet Earth.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "Strategic Thinking",
+    "title": "Driving Sustainable Innovation",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Strategic thinking combined with technical competence drives sustainable long-term innovation.",
     "phoneticHints": {
-      "boundaries": "/ˈbaʊn.dər.iz/",
-      "atmospheres": "/ˈæt.məs.fɪəz/",
-      "cosmological": "/ˌkɒz.məˈlɒdʒ.ɪ.kəl/"
+      "strategic": "/strəˈtiː.dʒɪk/",
+      "competence": "/ˈkɒm.pɪ.təns/",
+      "sustainable": "/səˈsteɪ.nə.bəl/"
     },
     "targetKeywords": [
-      "boundaries",
-      "curiosity",
-      "engineering",
-      "atmospheres",
-      "cosmological",
-      "phenomena",
-      "fragile"
+      "strategic",
+      "technical",
+      "competence",
+      "sustainable",
+      "innovation"
     ],
-    "explanation": "Evaluates scientific articulation, multisyllabic stress placement, and clarity of Greek/Latin derived roots."
+    "explanation": "Tests complex initial consonant cluster str and rhythmic cadence in sustainable."
   },
   {
     "id": "speaking_17",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Ethics, Science & Responsibility",
-    "title": "Ethics in Biotechnology & Science",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Groundbreaking advances in genetic engineering hold immense promise for eliminating hereditary diseases. Nonetheless, robust international ethical guidelines are essential to prevent genetic inequality and ensure that scientific power serves humanity responsibly.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "Global Collaboration",
+    "title": "Creative Problem Solving",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Cross-cultural collaboration fosters creative problem-solving in fast-paced modern environments.",
     "phoneticHints": {
-      "groundbreaking": "/ˈɡraʊndˌbreɪ.kɪŋ/",
-      "hereditary": "/hɪˈred.ɪ.tər.i/",
-      "responsibly": "/rɪˈspɒn.sə.bli/"
+      "collaboration": "/kəˌlæb.əˈreɪ.ʃən/",
+      "fosters": "/ˈfɒs.təz/",
+      "environments": "/ɪnˈvaɪ.rən.mənts/"
     },
     "targetKeywords": [
-      "groundbreaking",
-      "advances",
-      "hereditary",
-      "guidelines",
-      "inequality",
-      "humanity",
-      "responsibly"
+      "cross-cultural",
+      "collaboration",
+      "creative",
+      "problem-solving",
+      "environments"
     ],
-    "explanation": "Tests moral and ethical discourse, contrastive adverbial pausing, and crisp consonant endings."
+    "explanation": "Assesses hyphenated rhythm, open vowel in fosters, and consonant clusters in environments."
   },
   {
     "id": "speaking_18",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Psychological Well-Being & Resilience",
-    "title": "Mental Resilience & Stress Management",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Developing psychological resilience enables individuals to recover gracefully from unexpected adversity and professional setbacks. Cultivating mindful awareness, regular restorative rest, and open emotional support provides a stable inner anchor during challenging times.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "Executive Vision",
+    "title": "Articulating Complex Visions",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Effective leaders articulate complex visions with remarkable clarity and quiet confidence.",
     "phoneticHints": {
-      "resilience": "/rɪˈzɪl.jəns/",
-      "gracefully": "/ˈɡreɪs.fəl.i/",
-      "adversity": "/ədˈvɜː.sə.ti/"
+      "articulate": "/ɑːˈtɪk.jə.leɪt/",
+      "remarkable": "/rɪˈmɑː.kə.bəl/",
+      "confidence": "/ˈkɒn.fɪ.dəns/"
     },
     "targetKeywords": [
-      "psychological",
-      "resilience",
-      "gracefully",
-      "adversity",
-      "mindful",
-      "restorative",
-      "anchor"
+      "articulate",
+      "complex",
+      "visions",
+      "remarkable",
+      "confidence"
     ],
-    "explanation": "Examines supportive and empathetic vocal tone, smooth liaison, and calm pace."
+    "explanation": "Evaluates verb inflection in articulate and controlled post-vocalic r sound."
   },
   {
     "id": "speaking_19",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Linguistics & Cross-Cultural Thinking",
-    "title": "Language, Thought & Multilingualism",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Acquiring fluency in a second language fundamentally enhances cognitive flexibility, memory retention, and cultural empathy. Speaking English fluently connects diverse minds across the globe and opens limitless educational and economic opportunities.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "Ethical Leadership",
+    "title": "Balancing Innovation with Ethics",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Balancing rapid technological innovation with ethical responsibility is critically important.",
     "phoneticHints": {
-      "fundamentally": "/ˌfʌn.dəˈmen.təl.i/",
-      "flexibility": "/ˌflek.səˈbɪl.ə.ti/",
-      "empathy": "/ˈem.pə.θi/"
+      "technological": "/ˌtek.nəˈlɒdʒ.ɪ.kəl/",
+      "ethical": "/ˈeθ.ɪ.kəl/",
+      "responsibility": "/rɪˌspɒn.sɪˈbɪl.ə.ti/"
     },
     "targetKeywords": [
-      "fluency",
-      "fundamentally",
-      "cognitive",
-      "flexibility",
-      "retention",
-      "empathy",
-      "limitless"
+      "balancing",
+      "technological",
+      "innovation",
+      "ethical",
+      "responsibility"
     ],
-    "explanation": "Focuses on linguistic discourse, distinct articulation of vowel distinctions, and fluid communicative tempo."
+    "explanation": "Tests rhythmic articulation of responsibility and unvoiced dental fricative in ethical."
   },
   {
     "id": "speaking_20",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Future Cities & Smart Infrastructure",
-    "title": "Smart Cities of 2050",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Future smart cities will integrate autonomous electric transport, vertical green architecture, and artificial intelligence to optimize energy distribution. Designing urban spaces centered around pedestrian wellbeing ensures sustainable, livable communities for all residents.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "Economic Adaptability",
+    "title": "Thriving Amid Global Shifts",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Continuous professional development empowers individuals to thrive amid global economic shifts.",
     "phoneticHints": {
-      "autonomous": "/ɔːˈtɒn.ə.məs/",
-      "architecture": "/ˈɑː.kɪ.tek.tʃər/",
-      "pedestrian": "/pəˈdes.tri.ən/"
+      "continuous": "/kənˈtɪn.ju.əs/",
+      "empowers": "/ɪmˈpaʊ.əz/",
+      "thrive": "/θraɪv/"
     },
     "targetKeywords": [
-      "autonomous",
-      "architecture",
-      "optimize",
-      "pedestrian",
-      "wellbeing",
-      "sustainable",
-      "residents"
+      "continuous",
+      "development",
+      "empowers",
+      "thrive",
+      "economic"
     ],
-    "explanation": "Evaluates futuristic descriptive vocabulary, technical noun compounds, and steady pace."
+    "explanation": "Assesses triphthong glide in empowers and unvoiced fricative in thrive."
   },
   {
     "id": "speaking_21",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Economics, Consumption & Culture",
-    "title": "Mindful Consumerism & Circular Economy",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "Shifting away from disposable consumerism toward circular sharing models significantly reduces industrial waste and pollution. Mindful purchasing prioritizes high quality, durability, and ecological responsibility over short-lived material accumulation.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "Strategic Research",
+    "title": "Rigorous Analytical Research",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Rigorous analytical research provides a solid foundation for sound strategic decisions.",
     "phoneticHints": {
-      "disposable": "/dɪˈspəʊ.zə.bəl/",
-      "prioritizes": "/praɪˈɒr.ɪ.taɪ.zɪz/",
-      "accumulation": "/əˌkjuː.mjəˈleɪ.ʃən/"
+      "rigorous": "/ˈrɪɡ.ər.əs/",
+      "analytical": "/ˌæn.əlˈɪt.ɪ.kəl/",
+      "foundation": "/faʊnˈdeɪ.ʃən/"
     },
     "targetKeywords": [
-      "disposable",
-      "consumerism",
-      "circular",
-      "durability",
-      "ecological",
-      "accumulation"
+      "rigorous",
+      "analytical",
+      "research",
+      "foundation",
+      "strategic"
     ],
-    "explanation": "Checks command of socio-economic critique vocabulary, rhythm, and clear sibilant sounds."
+    "explanation": "Tests accurate vowel centralization in rigorous and diphthong quality in foundation."
   },
   {
     "id": "speaking_22",
     "type": "speaking",
-    "level": "Spoken CEFR Assessment",
-    "category": "Media, Reading & Human Attention",
-    "title": "Digital Reading vs Physical Books",
-    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
-    "targetPassage": "While portable e-readers and audiobooks offer unparalleled convenience for modern readers, physical books provide a deeply sensory and immersive reading experience. Cultivating regular reading habits remains the ultimate cornerstone of critical thinking.",
+    "tier": 3,
+    "level": "CEFR C1/C2 • Spoken Sentence Reading",
+    "category": "High-Stakes Negotiation",
+    "title": "Nuanced Strategic Negotiations",
+    "prompt": "Read the following sentence aloud into your microphone at your natural conversational pace. Your spoken response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read the sentence clearly • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Mastering nuanced vocabulary enables professionals to negotiate high-stakes agreements successfully.",
     "phoneticHints": {
-      "unparalleled": "/ʌnˈpær.ə.leld/",
-      "convenience": "/kənˈviː.ni.əns/",
-      "cornerstone": "/ˈkɔː.nə.stəʊn/"
+      "nuanced": "/ˈnjuː.ɑːnst/",
+      "vocabulary": "/vəˈkæb.jə.lər.i/",
+      "negotiate": "/nəˈɡəʊ.ʃi.eɪt/"
     },
     "targetKeywords": [
-      "portable",
-      "audiobooks",
-      "unparalleled",
-      "convenience",
-      "sensory",
-      "immersive",
-      "cornerstone"
+      "nuanced",
+      "vocabulary",
+      "enables",
+      "negotiate",
+      "agreements"
     ],
-    "explanation": "Tests comparative discourse, precise glide vowels, and natural sentence-final falling intonation."
+    "explanation": "Evaluates subtle French loanword pronunciation in nuanced and sibilant palatalization in negotiate."
   }
 ];
 
@@ -2977,42 +2961,55 @@ let timerInterval = null;
 let examStartTime = null;
 
 // Balanced question selection ensuring strict ascending CEFR difficulty progression:
-// Q1-5: A1 Beginner | Q6-10: A2 Elementary | Q11-15: B1 Intermediate |
-// Q16-20: B2 Upper-Intermediate | Q21-25: C1 Advanced | Q26-29: C2 Proficient | Q30: Oral Reading & Spoken Pronunciation Assessment
+// Block 1 (Q1-10): A1 (4) + A2 (5) + Q10 (Tier 1 Spoken Sentence Reading)
+// Block 2 (Q11-20): B1 (5) + B2 (4) + Q20 (Tier 2 Spoken Sentence Reading)
+// Block 3 (Q21-30): C1 (5) + C2 (4) + Q30 (Tier 3 Spoken Sentence Reading)
+// Exactly 30 questions with 3 distributed spoken pronunciation checkpoints!
 function selectExamBatch() {
-  const levels = ["A1 Beginner", "A2 Elementary", "B1 Intermediate", "B2 Upper-Intermediate", "C1 Advanced"];
-  let selected = [];
-
   // Group bank by level
   const byLevel = {};
   ["A1 Beginner", "A2 Elementary", "B1 Intermediate", "B2 Upper-Intermediate", "C1 Advanced", "C2 Proficient"].forEach(lvl => {
     byLevel[lvl] = comprehensiveExamBank.filter(q => q.level === lvl);
   });
 
-  // Pull 5 balanced items per level (A1 -> C1) = 25 items
-  levels.forEach(lvl => {
+  const getSlice = (lvl, count) => {
     const pool = shuffleExamList(byLevel[lvl] || []);
     const fresh = pool.filter(q => !lastExemptQuestionIds.includes(q.id));
     const fallback = pool.filter(q => lastExemptQuestionIds.includes(q.id));
-    const combined = [...fresh, ...fallback];
-    const levelSlice = shuffleExamList(combined.slice(0, 5));
-    selected.push(...levelSlice);
-  });
+    return shuffleExamList([...fresh, ...fallback].slice(0, count));
+  };
 
-  // Pull 4 items from C2 Proficient (Q26 to Q29)
-  const c2Pool = shuffleExamList(byLevel["C2 Proficient"] || []);
-  const c2Fresh = c2Pool.filter(q => !lastExemptQuestionIds.includes(q.id));
-  const c2Fallback = c2Pool.filter(q => lastExemptQuestionIds.includes(q.id));
-  const c2Slice = shuffleExamList([...c2Fresh, ...c2Fallback].slice(0, 4));
-  selected.push(...c2Slice);
+  const getSpeakingItem = (tier) => {
+    const tierPool = shuffleExamList(speakingExamBank.filter(q => q.tier === tier));
+    const fresh = tierPool.filter(q => !lastExemptQuestionIds.includes(q.id));
+    const item = fresh[0] || tierPool[0];
+    return { ...item };
+  };
 
-  // Question 30: Oral Reading & Spoken Fluency Assessment from speakingExamBank!
-  const speakingPool = shuffleExamList([...speakingExamBank]);
-  const freshSpeaking = speakingPool.filter(q => !lastExemptQuestionIds.includes(q.id));
-  const finalSpeakingQ = freshSpeaking[0] || speakingPool[0];
-  selected.push({ ...finalSpeakingQ });
+  // Block 1 (Q1 to Q10): 4 A1 + 5 A2 + Q10 (Tier 1 Spoken Sentence) = 10 items
+  const block1 = [
+    ...getSlice("A1 Beginner", 4),
+    ...getSlice("A2 Elementary", 5),
+    getSpeakingItem(1)
+  ];
 
-  // Preserve the strict ascending tier order (A1 -> C2 -> Speaking) while randomizing MCQ option choices
+  // Block 2 (Q11 to Q20): 5 B1 + 4 B2 + Q20 (Tier 2 Spoken Sentence) = 10 items
+  const block2 = [
+    ...getSlice("B1 Intermediate", 5),
+    ...getSlice("B2 Upper-Intermediate", 4),
+    getSpeakingItem(2)
+  ];
+
+  // Block 3 (Q21 to Q30): 5 C1 + 4 C2 + Q30 (Tier 3 Spoken Sentence) = 10 items
+  const block3 = [
+    ...getSlice("C1 Advanced", 5),
+    ...getSlice("C2 Proficient", 4),
+    getSpeakingItem(3)
+  ];
+
+  const selected = [...block1, ...block2, ...block3];
+
+  // Preserve the strict ascending tier order while randomizing MCQ option choices
   activeExamQuestions = selected.slice(0, EXAM_QUESTION_COUNT).map(q => {
     if (q.type === 'mcq' || (q.type === 'audio' && q.audioFormat === 'mcq')) {
       return { ...q, options: shuffleExamList(q.options) };
@@ -3233,6 +3230,11 @@ function renderNavigatorPills() {
     pill.className = 'q-nav-pill';
     pill.textContent = idx + 1;
 
+    if (q.type === 'speaking') {
+      pill.classList.add('speaking-pill');
+      pill.title = `Question ${idx + 1}: Spoken Sentence Reading (Checkpoint Tier ${q.tier || 1})`;
+    }
+
     const hasAnswer = userAnswers[idx] !== undefined && userAnswers[idx] !== '';
     if (hasAnswer) pill.classList.add('answered');
     if (idx === currentQIndex) pill.classList.add('current');
@@ -3322,7 +3324,7 @@ function renderCurrentQuestion() {
       subtextHtml = '<span class="question-guideline-box"><i class="fa-solid fa-volume-high"></i> Listen to the spoken audio clip above, then select the single correct option.</span>';
     }
   } else if (q.type === 'speaking') {
-    directiveText = 'Spoken Read-Aloud Assessment — Read the passage clearly into your microphone:';
+    directiveText = 'Spoken Read-Aloud Assessment — Read the sentence clearly into your microphone:';
     directiveIcon = 'fa-microphone-lines';
     promptHtml = escapeHtml(q.title || 'Read-Aloud Spoken Pronunciation');
     subtextHtml = '<span class="question-guideline-box"><i class="fa-solid fa-volume-high"></i> Listen to native pronunciation or click Start Reading Aloud to test your accuracy live.</span>';
@@ -3599,7 +3601,7 @@ function renderOralResponseConfirmationCard(q, qIndex, data, mainContainer, pare
   const wordsCaptured = (data.correctCount !== undefined && data.imperfectCount !== undefined)
     ? (data.correctCount + data.imperfectCount)
     : (data.wordsMap ? data.wordsMap.filter(w => w.status !== 'missed').length : targetWords.length);
-  const dur = data.duration || 22;
+  const dur = data.duration || 5;
 
   const confCard = document.createElement('div');
   confCard.className = 'oral-response-confirmed-card';
@@ -3608,15 +3610,15 @@ function renderOralResponseConfirmationCard(q, qIndex, data, mainContainer, pare
     <div class="oral-conf-header">
       <div class="oral-conf-icon"><i class="fa-solid fa-circle-check"></i></div>
       <div class="oral-conf-text">
-        <h4>Spoken Response Successfully Recorded</h4>
-        <p>Your oral reading recording has been securely saved and queued for final evaluation.</p>
+        <h4>Spoken Sentence Successfully Recorded</h4>
+        <p>Your spoken reading recording has been securely saved and queued for final evaluation.</p>
       </div>
     </div>
 
     <div class="oral-conf-meta-grid">
       <div class="oral-meta-pill">
         <i class="fa-solid fa-book-bookmark"></i>
-        <span>Passage: <strong>${escapeHtml(q.title || 'Oral Reading')}</strong></span>
+        <span>Sentence: <strong>${escapeHtml(q.title || 'Spoken Sentence')}</strong></span>
       </div>
       <div class="oral-meta-pill">
         <i class="fa-solid fa-stopwatch"></i>
@@ -3634,7 +3636,7 @@ function renderOralResponseConfirmationCard(q, qIndex, data, mainContainer, pare
 
     <div class="oral-conf-notice">
       <i class="fa-solid fa-circle-info"></i>
-      <span>In accordance with standardized examination protocols, your oral pronunciation accuracy score, reading tempo, and comprehensive phonetic error diagnostics will be presented in your final examination report upon test completion.</span>
+      <span>In accordance with standardized examination protocols, your spoken pronunciation accuracy score, reading tempo, and comprehensive phonetic error diagnostics will be presented in your final examination report upon test completion.</span>
     </div>
 
     <div class="oral-retake-container">
@@ -3644,12 +3646,12 @@ function renderOralResponseConfirmationCard(q, qIndex, data, mainContainer, pare
             <i class="fa-solid fa-rotate-left"></i>
             <div>
               <strong>1 Re-recording Attempt Available</strong>
-              <p>You may re-record your reading once if needed. Re-recording will permanently replace your current audio.</p>
+              <p>You may re-record your sentence reading once if needed. Re-recording will permanently replace your current audio.</p>
             </div>
           </div>
           <button type="button" class="btn btn-secondary btn-sm" id="btn-retake-speaking">
             <i class="fa-solid fa-rotate-left"></i>
-            <span>Re-record Passage (1 Retake Remaining)</span>
+            <span>Re-record Sentence (1 Retake Remaining)</span>
           </button>
         </div>
       ` : `
@@ -3711,9 +3713,10 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     }
   }
 
-  // Find index in bank
-  const topicIdx = speakingExamBank.findIndex(item => item.id === q.id);
-  const displayTopicNum = topicIdx >= 0 ? topicIdx + 1 : 1;
+  // Find index in bank within this question's tier
+  const tierPool = speakingExamBank.filter(item => item.tier === (q.tier || 1));
+  const sentenceTierIdx = tierPool.findIndex(item => item.id === q.id);
+  const displaySentenceNum = sentenceTierIdx >= 0 ? sentenceTierIdx + 1 : 1;
   const passageText = q.targetPassage || q.prompt;
   const targetWords = passageText.trim().split(/\s+/);
 
@@ -3734,23 +3737,23 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     </button>
   `;
 
-  // 2. Topic Header & Blueprint Box (With Shuffle/Change Passage button)
+  // 2. Topic Header & Blueprint Box (With Shuffle/Change Sentence button within current Tier)
   const topicBox = document.createElement('div');
   topicBox.className = 'speaking-topic-box';
 
   topicBox.innerHTML = `
     <div class="speaking-topic-actions">
       <span class="topic-domain-tag"><i class="fa-solid fa-layer-group"></i> ${escapeHtml(q.category || 'Spoken Discourse')}</span>
-      <span style="font-size: 0.8rem; font-weight: 700; color: var(--gray-color);"><i class="fa-solid fa-list-ol"></i> Passage ${displayTopicNum} of ${speakingExamBank.length}</span>
-      <button type="button" class="btn-shuffle-topic" id="btn-shuffle-topic" title="Switch to another reading passage">
+      <span style="font-size: 0.8rem; font-weight: 700; color: var(--gray-color);"><i class="fa-solid fa-list-ol"></i> Sentence ${displaySentenceNum} of ${tierPool.length} (Tier ${q.tier || 1})</span>
+      <button type="button" class="btn-shuffle-topic" id="btn-shuffle-topic" title="Switch to another sentence in this level">
         <i class="fa-solid fa-shuffle"></i>
-        <span>Change / Shuffle Passage</span>
+        <span>Change / Shuffle Sentence</span>
       </button>
     </div>
     <div class="speaking-topic-title">${escapeHtml(q.title || 'Read-Aloud Spoken Pronunciation')}</div>
     <div class="read-aloud-instruction" style="margin-top: 8px;">
       <i class="fa-solid fa-microphone-lines text-primary"></i>
-      <span>Read the following passage aloud into your microphone at your natural speaking pace:</span>
+      <span>Read the following sentence aloud into your microphone at your natural speaking pace:</span>
     </div>
   `;
 
@@ -3763,26 +3766,26 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     if (shuffleBtn) {
       shuffleBtn.disabled = true;
       shuffleBtn.style.opacity = '0.5';
-      shuffleBtn.title = 'Cannot change passage after recording';
+      shuffleBtn.title = 'Cannot change sentence after recording';
     }
     renderOralResponseConfirmationCard(q, qIndex, existingData, container, parentContainer);
     parentContainer.appendChild(container);
     return;
   }
 
-  // Shuffle Topic listener
+  // Shuffle Topic listener (within same tier)
   const shuffleBtn = topicBox.querySelector('#btn-shuffle-topic');
   if (shuffleBtn) {
     shuffleBtn.addEventListener('click', () => {
       stopAllAudioPlayback();
-      const currIdx = speakingExamBank.findIndex(item => item.id === q.id);
-      const nextIdx = (currIdx + 1) % speakingExamBank.length;
-      const nextTopic = speakingExamBank[nextIdx];
+      const currIdx = tierPool.findIndex(item => item.id === q.id);
+      const nextIdx = (currIdx + 1) % tierPool.length;
+      const nextSentence = tierPool[nextIdx];
       const currentRetakes = q.retakesUsed || 0;
-      activeExamQuestions[qIndex] = { ...nextTopic, retakesUsed: currentRetakes };
+      activeExamQuestions[qIndex] = { ...nextSentence, retakesUsed: currentRetakes };
       saveExamSession();
       renderCurrentQuestion();
-      showExamToast(`Switched to Passage ${nextIdx + 1}: ${nextTopic.title}`, 'info', 'fa-shuffle');
+      showExamToast(`Switched to Sentence ${nextIdx + 1}: ${nextSentence.title}`, 'info', 'fa-shuffle');
     });
   }
 
@@ -3825,7 +3828,7 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     ${isRetake ? `
       <div class="retake-banner-active">
         <i class="fa-solid fa-triangle-exclamation"></i>
-        <span><strong>Re-recording Mode (Final Attempt 2 of 2):</strong> Read the passage clearly. This recording will replace your previous audio and be permanently saved as your final submission.</span>
+        <span><strong>Re-recording Mode (Final Attempt 2 of 2):</strong> Read the sentence clearly. This recording will replace your previous audio and be permanently saved as your final submission.</span>
       </div>
     ` : ''}
 
@@ -3852,18 +3855,18 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
       <canvas id="speaking-equalizer-canvas" width="400" height="48"></canvas>
     </div>
 
-    <!-- Timer Panel -->
+    <!-- Timer Panel (20 seconds for short sentence reading) -->
     <div class="speaking-timer-panel">
       <div class="speaking-timer-status">
         <span>Reading Duration</span>
-        <span class="speaking-timer-digits" id="speaking-timer-digits">00:00 / 00:45</span>
+        <span class="speaking-timer-digits" id="speaking-timer-digits">00:00 / 00:20</span>
       </div>
       <div class="speaking-timer-bar-track">
-        <div class="speaking-target-marker" style="left: 45%;" title="Target pace: 20-35 seconds"></div>
+        <div class="speaking-target-marker" style="left: 30%;" title="Target pace: 4-8 seconds"></div>
         <div class="speaking-timer-bar-fill" id="speaking-timer-fill"></div>
       </div>
       <div class="speaking-state-hint" id="speaking-state-hint">
-        <i class="fa-solid fa-circle-info"></i> Press the button below to start reading the passage aloud
+        <i class="fa-solid fa-circle-info"></i> Press the button below to start reading the sentence aloud
       </div>
     </div>
 
@@ -4053,11 +4056,11 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentConta
 
     if (liveWordsVal) liveWordsVal.textContent = `${readCount} / ${targetWords.length}`;
 
-    if (readCount >= Math.floor(targetWords.length * 0.75)) {
+    if (readCount >= Math.floor(targetWords.length * 0.6)) {
       actionBtn.className = 'btn-conclude-speaking ready';
       actionBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Complete Spoken Response</span>';
       stateHintEl.className = 'speaking-state-hint ready';
-      stateHintEl.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> Majority of passage read (${readCount}/${targetWords.length} words)! Click to complete response.`;
+      stateHintEl.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> Sentence read (${readCount}/${targetWords.length} words)! Click to complete response.`;
     }
   }
 
@@ -4114,17 +4117,17 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentConta
 
     timerInterval = setInterval(() => {
       elapsedSec++;
-      timerDigitsEl.textContent = `${formatTime(elapsedSec)} / 00:45`;
-      timerFillEl.style.width = `${Math.min(100, (elapsedSec / 45) * 100)}%`;
+      timerDigitsEl.textContent = `${formatTime(elapsedSec)} / 00:20`;
+      timerFillEl.style.width = `${Math.min(100, (elapsedSec / 20) * 100)}%`;
       if (liveElapsedVal) liveElapsedVal.textContent = formatTime(elapsedSec);
 
       const readCount = wordStatuses.filter(s => s === 'correct' || s === 'imperfect').length;
-      if (readCount >= Math.floor(targetWords.length * 0.7) || elapsedSec >= 18) {
+      if (readCount >= Math.floor(targetWords.length * 0.6) || elapsedSec >= 4) {
         actionBtn.className = 'btn-conclude-speaking ready';
         actionBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Complete Spoken Response</span>';
       }
 
-      if (elapsedSec >= 45) {
+      if (elapsedSec >= 20) {
         finishAndEvaluate();
       }
     }, 1000);
@@ -4155,9 +4158,9 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentConta
       const missedCount = wordStatuses.filter(s => s === 'missed').length;
       const readCount = correctCount + imperfectCount;
 
-      const accuracyScore = Math.min(100, Math.max(68, Math.round(((correctCount + imperfectCount * 0.75) / targetWords.length) * 100)));
-      const finalDur = Math.max(elapsedSec, 14);
-      const wpm = Math.min(175, Math.max(85, Math.round((readCount / finalDur) * 60)));
+      const accuracyScore = Math.min(100, Math.max(70, Math.round(((correctCount + imperfectCount * 0.75) / targetWords.length) * 100)));
+      const finalDur = Math.max(elapsedSec, 4);
+      const wpm = Math.min(185, Math.max(90, Math.round((readCount / finalDur) * 60)));
 
       let spokenGrade = 'B2 Independent Pronunciation';
       if (accuracyScore >= 92 && wpm >= 110) {
@@ -4176,7 +4179,7 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentConta
 
       const imperfectDetails = wordsMap.filter(w => w.status === 'imperfect' || w.status === 'missed');
 
-      const feedback = `High phonetic clarity with natural conversational rhythm. You accurately pronounced ${correctCount} of ${targetWords.length} words (${accuracyScore}% accuracy). Speaking cadence (${wpm} WPM) falls directly in the native target reading range (110–150 WPM). Linking sounds and intonational phrasing were maintained with commendable confidence.`;
+      const feedback = `Natural conversational rhythm and clear phonetic articulation. You accurately pronounced ${correctCount} of ${targetWords.length} words (${accuracyScore}% accuracy). Sentence reading duration (${finalDur}s at ~${wpm} WPM) demonstrates fluid pacing and confident speech production.`;
 
       const retakesUsed = (typeof q.retakesUsed === 'number') ? q.retakesUsed : 0;
 
@@ -4239,7 +4242,7 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentConta
     let currentSimIdx = 0;
     const simInterval = setInterval(() => {
       if (currentSimIdx < targetWords.length) {
-        const isImperfect = currentSimIdx === 4 || currentSimIdx === 11;
+        const isImperfect = currentSimIdx === 3;
         wordStatuses[currentSimIdx] = isImperfect ? 'imperfect' : 'correct';
         matchedHeard[currentSimIdx] = isImperfect ? cleanExamWord(targetWords[currentSimIdx]).slice(0, -2) : cleanExamWord(targetWords[currentSimIdx]);
 
@@ -4252,10 +4255,10 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentConta
         currentSimIdx++;
       } else {
         clearInterval(simInterval);
-        elapsedSec = 22;
+        elapsedSec = 5;
         finishAndEvaluate();
       }
-    }, 45);
+    }, 30);
   });
 }
 
@@ -4637,6 +4640,7 @@ function submitExamination() {
   let vocabCorrect = 0, vocabTotal = 0;
   let fillCorrect = 0, fillTotal = 0;
   let audioCorrect = 0, audioTotal = 0;
+  let speakingCorrect = 0, speakingTotal = 0, speakingAccuracySum = 0;
 
   const reviewList = document.getElementById('review-items-list');
   if (reviewList) reviewList.innerHTML = '';
@@ -4666,8 +4670,8 @@ function submitExamination() {
       }
       const dur = spokenData && spokenData.duration ? spokenData.duration : 0;
       const acc = spokenData && spokenData.accuracyScore ? spokenData.accuracyScore : (spokenData && spokenData.accentScore ? spokenData.accentScore : 0);
-      isCorrect = acc >= 70 || dur >= 15 || (userAns && String(userAns).length > 25);
-      correctText = 'Spoken Read-Aloud Benchmark: Pronunciation Accuracy >= 70%';
+      isCorrect = acc >= 70 || dur >= 3 || (userAns && String(userAns).length > 15);
+      correctText = 'Spoken Sentence Reading Benchmark: Pronunciation Accuracy >= 70%';
     }
 
     if (isCorrect) rawScore++;
@@ -4677,6 +4681,18 @@ function submitExamination() {
     if (q.type === 'audio') {
       audioTotal++;
       if (isCorrect) audioCorrect++;
+    }
+    if (q.type === 'speaking') {
+      speakingTotal++;
+      let spokenData = null;
+      try {
+        spokenData = typeof userAns === 'string' ? JSON.parse(userAns) : userAns;
+      } catch (e) {
+        spokenData = { transcript: userAns || '' };
+      }
+      const acc = spokenData && spokenData.accuracyScore ? spokenData.accuracyScore : (isCorrect ? 90 : 0);
+      speakingAccuracySum += acc;
+      if (isCorrect) speakingCorrect++;
     }
     if (q.type === 'fill') {
       fillTotal++;
@@ -4703,8 +4719,8 @@ function submitExamination() {
         }
         const accuracyScore = spokenData && spokenData.accuracyScore ? spokenData.accuracyScore : (spokenData && spokenData.accentScore ? spokenData.accentScore : (isCorrect ? 95 : 45));
         const wpm = spokenData && spokenData.wpm ? spokenData.wpm : 132;
-        const dur = spokenData && spokenData.duration ? spokenData.duration : (isCorrect ? 22 : 0);
-        const feedback = spokenData && spokenData.feedback ? spokenData.feedback : 'Oral reading and spoken pronunciation assessment completed.';
+        const dur = spokenData && spokenData.duration ? spokenData.duration : (isCorrect ? 5 : 0);
+        const feedback = spokenData && spokenData.feedback ? spokenData.feedback : 'Spoken sentence pronunciation assessment completed.';
         const wordsMap = spokenData && spokenData.wordsMap ? spokenData.wordsMap : [];
         const chipsHtml = wordsMap.length > 0
           ? wordsMap.map(w => `<span class="read-word ${w.status || 'correct'}" title="Status: ${w.status || 'correct'}">${escapeHtml(w.word)}</span>`).join(' ')
@@ -4743,7 +4759,7 @@ function submitExamination() {
               ${isCorrect ? 'Certified & Evaluated' : 'Incomplete Recording'}
             </span>
           </div>
-          <div class="review-prompt"><strong>Passage:</strong> ${escapeHtml(q.title || 'Spoken Read-Aloud Passage')}</div>
+          <div class="review-prompt"><strong>Sentence:</strong> ${escapeHtml(q.title || 'Spoken Read-Aloud Sentence')}</div>
           <div class="speaking-review-metrics">
             <div class="speaking-metric-pill"><i class="fa-solid fa-gauge-high"></i> Pronunciation Accuracy: <strong>${accuracyScore}%</strong></div>
             <div class="speaking-metric-pill"><i class="fa-solid fa-stopwatch"></i> Duration: <strong>${dur}s</strong></div>
@@ -4868,7 +4884,7 @@ function submitExamination() {
   const grammarPct = grammarTotal > 0 ? Math.round((grammarCorrect / grammarTotal) * 100) : percentage;
   const vocabPct = vocabTotal > 0 ? Math.round((vocabCorrect / vocabTotal) * 100) : percentage;
   const fillPct = fillTotal > 0 ? Math.round((fillCorrect / fillTotal) * 100) : percentage;
-  const audioPct = audioTotal > 0 ? Math.round((audioCorrect / audioTotal) * 100) : percentage;
+  const spokenFinalPct = speakingTotal > 0 ? Math.round(speakingAccuracySum / speakingTotal) : percentage;
 
   document.getElementById('comp-grammar-pct').textContent = `${grammarPct}%`;
   document.getElementById('comp-grammar-fill').style.width = `${grammarPct}%`;
@@ -4879,8 +4895,8 @@ function submitExamination() {
   document.getElementById('comp-fill-pct').textContent = `${fillPct}%`;
   document.getElementById('comp-fill-fill').style.width = `${fillPct}%`;
 
-  document.getElementById('comp-coherence-pct').textContent = `${audioPct}%`;
-  document.getElementById('comp-coherence-fill').style.width = `${audioPct}%`;
+  document.getElementById('comp-coherence-pct').textContent = `${spokenFinalPct}%`;
+  document.getElementById('comp-coherence-fill').style.width = `${spokenFinalPct}%`;
 
   lastCertificateData = {
     name: certName,
