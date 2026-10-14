@@ -2445,3 +2445,523 @@ body.dark-theme .saved-banner-dismiss-btn:hover {
     min-width: 140px;
   }
 }
+
+/* ==================================================
+   AI SPOKEN FLUENCY & ACCENT ASSESSMENT CONSOLE
+   ================================================== */
+.speaking-assessment-card {
+  background: var(--bg-card);
+  border: 1.5px solid rgba(91, 81, 222, 0.22);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.speaking-examiner-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(91, 81, 222, 0.08), rgba(6, 182, 212, 0.08));
+  border: 1px solid rgba(91, 81, 222, 0.18);
+  border-radius: var(--radius-md);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.speaking-examiner-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.examiner-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--main-color), #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 14px rgba(91, 81, 222, 0.35);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.examiner-avatar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid var(--bg-card);
+}
+
+.examiner-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.examiner-name {
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.examiner-role {
+  font-size: 0.8rem;
+  color: var(--gray-color);
+}
+
+.speaking-topic-box {
+  background: rgba(15, 23, 42, 0.03);
+  border-left: 4px solid var(--main-color);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px;
+}
+
+body.dark-theme .speaking-topic-box {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.speaking-topic-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--black-color);
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.speaking-guidelines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.speaking-guidelines-list li {
+  font-size: 0.88rem;
+  color: var(--gray-color);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.speaking-guidelines-list li i {
+  color: var(--main-color);
+  margin-top: 3px;
+  font-size: 0.82rem;
+}
+
+/* Speaking Recording Console */
+.speaking-console {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 20px;
+  background: rgba(91, 81, 222, 0.03);
+  border: 1px dashed rgba(91, 81, 222, 0.25);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+}
+
+.speaking-mic-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speaking-mic-btn {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--main-color), #4f46e5);
+  color: #fff;
+  font-size: 1.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 26px rgba(91, 81, 222, 0.38);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.speaking-mic-btn:hover:not(:disabled) {
+  transform: scale(1.06);
+  box-shadow: 0 12px 32px rgba(91, 81, 222, 0.48);
+}
+
+.speaking-mic-btn.speaking {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  animation: micPulseGlow 1.4s infinite;
+}
+
+@keyframes micPulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(239, 68, 68, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    transform: scale(1);
+  }
+}
+
+/* Audio Equalizer Canvas */
+.speaking-canvas-wrap {
+  width: 100%;
+  max-width: 440px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#speaking-equalizer-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* Dual Timer & Progress */
+.speaking-timer-panel {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.speaking-timer-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--black-color);
+}
+
+.speaking-timer-digits {
+  font-family: 'Outfit', monospace;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--main-color);
+}
+
+.speaking-timer-digits.target-met {
+  color: #10b981;
+}
+
+.speaking-timer-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(15, 23, 42, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+body.dark-theme .speaking-timer-bar-track {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.speaking-timer-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--main-color), #06b6d4);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.speaking-timer-bar-fill.target-met {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.speaking-target-marker {
+  position: absolute;
+  left: 66.66%; /* 40 seconds of 60 seconds */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(239, 68, 68, 0.7);
+  z-index: 2;
+}
+
+.speaking-target-marker::after {
+  content: '40s Min';
+  position: absolute;
+  top: -18px;
+  left: -20px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gray-color);
+}
+
+.speaking-state-hint {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.speaking-state-hint.active {
+  color: #ef4444;
+}
+
+.speaking-state-hint.ready {
+  color: #10b981;
+}
+
+/* Transcript Box */
+.speaking-transcript-card {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  text-align: left;
+}
+
+.transcript-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-color);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.transcript-word-count {
+  font-size: 0.8rem;
+  background: rgba(91, 81, 222, 0.1);
+  color: var(--main-color);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.speaking-transcript-text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--black-color);
+  min-height: 54px;
+  max-height: 140px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.speaking-transcript-text.empty {
+  color: var(--gray-color);
+  font-style: italic;
+}
+
+/* Action Buttons */
+.speaking-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.btn-conclude-speaking {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-conclude-speaking:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.45);
+}
+
+.btn-conclude-speaking:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--gray-color);
+  box-shadow: none;
+  transform: none;
+}
+
+/* AI Spoken Assessment Result Scorecard */
+.ai-spoken-scorecard {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(91, 81, 222, 0.06), rgba(16, 185, 129, 0.06));
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.scorecard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scorecard-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scorecard-title i {
+  color: #10b981;
+}
+
+.scorecard-badge {
+  background: #10b981;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.scorecard-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.scorecard-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scorecard-metric-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--main-color);
+}
+
+.scorecard-metric-label {
+  font-size: 0.78rem;
+  color: var(--gray-color);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.scorecard-feedback-box {
+  background: var(--bg-card);
+  border-left: 3px solid #10b981;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--black-color);
+}
+
+.scorecard-feedback-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Review Item Speaking Card Details */
+.speaking-review-metrics {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.speaking-metric-pill {
+  background: rgba(91, 81, 222, 0.08);
+  border: 1px solid rgba(91, 81, 222, 0.2);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  font-size: 0.84rem;
+  color: var(--black-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.speaking-metric-pill i {
+  color: var(--main-color);
+}
+
+.speaking-review-transcript {
+  background: rgba(15, 23, 42, 0.03);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+body.dark-theme .speaking-review-transcript {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.speaking-review-transcript p {
+  margin: 6px 0 0;
+  font-style: italic;
+  color: var(--black-color);
+}
