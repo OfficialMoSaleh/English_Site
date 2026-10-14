@@ -2398,7 +2398,7 @@ const comprehensiveExamBank = [
 ];
 
 // ==========================================
-// 5B. AI SPOKEN FLUENCY & ACCENT QUESTION BANK (22 DIVERSE TOPICS)
+// 5B. ORAL READING & SPOKEN FLUENCY QUESTION BANK (22 DIVERSE TOPICS)
 // ==========================================
 const speakingExamBank = [
   {
@@ -2407,8 +2407,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Professional & Career Aspirations",
     "title": "Career Journey & Professional Trajectory",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Throughout my professional journey, continuous learning and adapting to innovation have been vital. Developing strong technical competence combined with clear communication empowers individuals to overcome complex challenges and achieve lasting success.",
     "phoneticHints": {
       "throughout": "/θruːˈaʊt/",
@@ -2431,18 +2431,18 @@ const speakingExamBank = [
     "id": "speaking_02",
     "type": "speaking",
     "level": "Spoken CEFR Assessment",
-    "category": "Artificial Intelligence & Society",
-    "title": "Artificial Intelligence & Future Work",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
-    "targetPassage": "Artificial intelligence is rapidly transforming global workplaces, education, and modern industries. While automated algorithms streamline repetitive workflows, uniquely human qualities like creative empathy, strategic judgment, and ethical reasoning remain entirely irreplaceable.",
+    "category": "Technological Innovation & Society",
+    "title": "Technological Innovation & Future Work",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
+    "targetPassage": "Technological innovation is rapidly transforming global workplaces, education, and modern industries. While automated algorithms streamline repetitive workflows, uniquely human qualities like creative empathy, strategic judgment, and ethical reasoning remain entirely irreplaceable.",
     "phoneticHints": {
-      "artificial": "/ˌɑː.tɪˈfɪʃ.əl/",
+      "technological": "/ˌtek.nəˈlɒdʒ.ɪ.kəl/",
       "algorithms": "/ˈæl.ɡə.rɪ.ðəmz/",
       "irreplaceable": "/ˌɪr.ɪˈpleɪ.sə.bəl/"
     },
     "targetKeywords": [
-      "intelligence",
+      "technology",
       "transforming",
       "algorithms",
       "workflows",
@@ -2458,8 +2458,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Problem Solving & Resilience",
     "title": "Navigating High-Pressure Challenges",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "When navigating high-pressure projects with tight deadlines, unexpected obstacles frequently arise. By maintaining transparent communication, prioritizing high-impact deliverables, and supporting colleagues, difficult situations are transformed into valuable learning experiences.",
     "phoneticHints": {
       "navigating": "/ˈnæv.ɪ.ɡeɪ.tɪŋ/",
@@ -2483,8 +2483,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Cultural Exchange & Global Mindset",
     "title": "Cultural Diversity & Global Perspectives",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Traveling to diverse countries and immersing oneself in different cultures broadens our global mindset. Experiencing unique architectural heritage, foreign traditions, and local hospitality teaches us that human kindness easily transcends geographical boundaries.",
     "phoneticHints": {
       "immersing": "/ɪˈmɜː.sɪŋ/",
@@ -2508,8 +2508,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Innovation & Educational Reform",
     "title": "Educational Reform & Practical Skills",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Modern educational systems must evolve beyond passive memorization to cultivate analytical thinking and practical collaboration. When students are encouraged to experiment and question assumptions, they develop the resilience required for future economic landscapes.",
     "phoneticHints": {
       "cultivate": "/ˈkʌl.tɪ.veɪt/",
@@ -2533,8 +2533,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Leadership & Organizational Dynamics",
     "title": "Authentic Leadership & Team Inspiration",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "True leadership involves inspiring a shared vision and earning trust rather than simply directing administrative routines. An exceptional leader actively listens, empowers team members to innovate, and demonstrates emotional integrity during periods of uncertainty.",
     "phoneticHints": {
       "administrative": "/ədˈmɪn.ɪ.strə.tɪv/",
@@ -2558,8 +2558,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Modern Workplace & Collaboration",
     "title": "Remote Work & Digital Collaboration",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Remote work models offer remarkable flexibility and eliminate stressful daily commutes for millions of professionals. However, maintaining clear psychological boundaries between professional duties and domestic life remains crucial to prevent cognitive exhaustion and burnout.",
     "phoneticHints": {
       "psychological": "/ˌsaɪ.kəˈlɒdʒ.ɪ.kəl/",
@@ -2583,8 +2583,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Environmental Sustainability & Energy",
     "title": "Climate Action & Renewable Energy",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Combating global climate change demands urgent collective commitment and an accelerated transition to renewable energy sources. Investing in clean solar power, circular recycling, and ecological conservation protects our fragile planet for upcoming generations.",
     "phoneticHints": {
       "combating": "/kəmˈbæt.ɪŋ/",
@@ -2608,8 +2608,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Digital Technology & Society",
     "title": "Social Media & The Attention Economy",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "While social media platforms enable instantaneous worldwide communication, they frequently foster superficial relationships and chronic digital distraction. Cultivating mindful usage habits helps individuals preserve authentic human relationships and deep mental concentration.",
     "phoneticHints": {
       "instantaneous": "/ˌɪn.stənˈteɪ.ni.əs/",
@@ -2633,8 +2633,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Personal Productivity & Psychology",
     "title": "The Power of Daily Habits",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Small, consistent daily habits produce extraordinary long-term transformations in health, productivity, and character. By focusing on gradual incremental improvements rather than radical overnight change, individuals build lasting discipline and personal mastery.",
     "phoneticHints": {
       "extraordinary": "/ɪkˈstrɔː.dɪn.ər.i/",
@@ -2657,8 +2657,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Financial Literacy & Economics",
     "title": "Financial Literacy & Economic Security",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Financial literacy is an indispensable life skill that empowers individuals to build long-term security and independence. Understanding strategic saving, smart investment vehicles, and mindful budgeting protects families from unexpected economic emergencies.",
     "phoneticHints": {
       "indispensable": "/ˌɪn.dɪˈspen.sə.bəl/",
@@ -2682,8 +2682,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Health & Biotechnology",
     "title": "Healthcare Innovation & Preventive Wellness",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Preventive healthcare through balanced nutrition, restorative sleep, and regular physical activity substantially enhances human longevity. Modern medicine is increasingly focusing on holistic lifestyle wellness rather than merely responding to chronic illnesses.",
     "phoneticHints": {
       "preventive": "/prɪˈven.tɪv/",
@@ -2707,8 +2707,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Education & Lifelong Growth",
     "title": "Lifelong Learning & Adaptability",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "In an age of accelerating technological disruption, continuous lifelong learning is no longer optional. Embracing intellectual curiosity, unlearning obsolete assumptions, and acquiring modern digital skills ensure enduring professional relevance and personal fulfillment.",
     "phoneticHints": {
       "disruption": "/dɪsˈrʌp.ʃən/",
@@ -2732,8 +2732,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Urbanism & Lifestyle",
     "title": "Metropolitan Living vs Rural Serenity",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Living in dynamic metropolitan centers provides unparalleled access to cultural amenities, commerce, and diversity. Conversely, residing in peaceful countryside environments promotes mental tranquility, clean air, and closer harmony with the natural world.",
     "phoneticHints": {
       "metropolitan": "/ˌmet.rəˈpɒl.ɪ.tən/",
@@ -2756,8 +2756,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Art, Humanities & Culture",
     "title": "The Enduring Power of the Arts",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Artistic expression in literature, music, and painting communicates profound human emotions that words alone cannot capture. Supporting the arts enriches public spaces, sparks creative inspiration, and preserves our shared cultural heritage across generations.",
     "phoneticHints": {
       "literature": "/ˈlɪt.rə.tʃər/",
@@ -2781,8 +2781,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Science & Space Exploration",
     "title": "Space Exploration & Scientific Discovery",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Exploring outer space pushes the boundaries of human scientific curiosity and engineering innovation. Discovering new planetary atmospheres and cosmological phenomena reminds humanity of our shared unity on our fragile home planet Earth.",
     "phoneticHints": {
       "boundaries": "/ˈbaʊn.dər.iz/",
@@ -2806,8 +2806,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Ethics, Science & Responsibility",
     "title": "Ethics in Biotechnology & Science",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Groundbreaking advances in genetic engineering hold immense promise for eliminating hereditary diseases. Nonetheless, robust international ethical guidelines are essential to prevent genetic inequality and ensure that scientific power serves humanity responsibly.",
     "phoneticHints": {
       "groundbreaking": "/ˈɡraʊndˌbreɪ.kɪŋ/",
@@ -2831,8 +2831,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Psychological Well-Being & Resilience",
     "title": "Mental Resilience & Stress Management",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Developing psychological resilience enables individuals to recover gracefully from unexpected adversity and professional setbacks. Cultivating mindful awareness, regular restorative rest, and open emotional support provides a stable inner anchor during challenging times.",
     "phoneticHints": {
       "resilience": "/rɪˈzɪl.jəns/",
@@ -2856,8 +2856,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Linguistics & Cross-Cultural Thinking",
     "title": "Language, Thought & Multilingualism",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Acquiring fluency in a second language fundamentally enhances cognitive flexibility, memory retention, and cultural empathy. Speaking English fluently connects diverse minds across the globe and opens limitless educational and economic opportunities.",
     "phoneticHints": {
       "fundamentally": "/ˌfʌn.dəˈmen.təl.i/",
@@ -2881,8 +2881,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Future Cities & Smart Infrastructure",
     "title": "Smart Cities of 2050",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Future smart cities will integrate autonomous electric transport, vertical green architecture, and artificial intelligence to optimize energy distribution. Designing urban spaces centered around pedestrian wellbeing ensures sustainable, livable communities for all residents.",
     "phoneticHints": {
       "autonomous": "/ɔːˈtɒn.ə.məs/",
@@ -2906,8 +2906,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Economics, Consumption & Culture",
     "title": "Mindful Consumerism & Circular Economy",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "Shifting away from disposable consumerism toward circular sharing models significantly reduces industrial waste and pollution. Mindful purchasing prioritizes high quality, durability, and ecological responsibility over short-lived material accumulation.",
     "phoneticHints": {
       "disposable": "/dɪˈspəʊ.zə.bəl/",
@@ -2930,8 +2930,8 @@ const speakingExamBank = [
     "level": "Spoken CEFR Assessment",
     "category": "Media, Reading & Human Attention",
     "title": "Digital Reading vs Physical Books",
-    "prompt": "Read the following English passage aloud clearly into your microphone. Your live speech will be transcribed and compared word-by-word in real time to diagnose pronunciation, word accuracy, and accent fluency.",
-    "subtext": "1. Click Start Reading Aloud • 2. Read clearly at natural conversational speed • 3. Observe live word highlights and pronunciation diagnostics.",
+    "prompt": "Read the following English passage aloud clearly into your microphone at your natural conversational pace. Your oral response will be recorded and assessed upon completing your examination.",
+    "subtext": "1. Click Start Reading Aloud • 2. Read clearly into your microphone • 3. Submit your response when finished (1 retake permitted).",
     "targetPassage": "While portable e-readers and audiobooks offer unparalleled convenience for modern readers, physical books provide a deeply sensory and immersive reading experience. Cultivating regular reading habits remains the ultimate cornerstone of critical thinking.",
     "phoneticHints": {
       "unparalleled": "/ʌnˈpær.ə.leld/",
@@ -2978,7 +2978,7 @@ let examStartTime = null;
 
 // Balanced question selection ensuring strict ascending CEFR difficulty progression:
 // Q1-5: A1 Beginner | Q6-10: A2 Elementary | Q11-15: B1 Intermediate |
-// Q16-20: B2 Upper-Intermediate | Q21-25: C1 Advanced | Q26-29: C2 Proficient | Q30: AI Spoken Fluency & Accent Assessment (40-60s)
+// Q16-20: B2 Upper-Intermediate | Q21-25: C1 Advanced | Q26-29: C2 Proficient | Q30: Oral Reading & Spoken Pronunciation Assessment
 function selectExamBatch() {
   const levels = ["A1 Beginner", "A2 Elementary", "B1 Intermediate", "B2 Upper-Intermediate", "C1 Advanced"];
   let selected = [];
@@ -3006,7 +3006,7 @@ function selectExamBatch() {
   const c2Slice = shuffleExamList([...c2Fresh, ...c2Fallback].slice(0, 4));
   selected.push(...c2Slice);
 
-  // Question 30: ALWAYS AI Speaking & Accent Assessment from speakingExamBank!
+  // Question 30: Oral Reading & Spoken Fluency Assessment from speakingExamBank!
   const speakingPool = shuffleExamList([...speakingExamBank]);
   const freshSpeaking = speakingPool.filter(q => !lastExemptQuestionIds.includes(q.id));
   const finalSpeakingQ = freshSpeaking[0] || speakingPool[0];
@@ -3574,7 +3574,7 @@ function renderCurrentQuestion() {
 }
 
 // ==========================================
-// 7B. AI SPOKEN FLUENCY & ACCENT ENGINE (READ-ALOUD PRONUNCIATION & ERROR TRACKER)
+// 7B. ORAL READING & SPOKEN FLUENCY ENGINE (STANDARDIZED ASSESSMENT)
 // ==========================================
 function cleanExamWord(w) {
   return (w || '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -3590,6 +3590,111 @@ function computeLevenshteinDist(a, b) {
     }
   }
   return m[b.length][a.length];
+}
+
+function renderOralResponseConfirmationCard(q, qIndex, data, mainContainer, parentContainer) {
+  const retakesUsed = (typeof data.retakesUsed === 'number') ? data.retakesUsed : (q.retakesUsed || 0);
+  const isRetakeLocked = retakesUsed >= 1;
+  const targetWords = (q.targetPassage || q.prompt || '').trim().split(/\s+/);
+  const wordsCaptured = (data.correctCount !== undefined && data.imperfectCount !== undefined)
+    ? (data.correctCount + data.imperfectCount)
+    : (data.wordsMap ? data.wordsMap.filter(w => w.status !== 'missed').length : targetWords.length);
+  const dur = data.duration || 22;
+
+  const confCard = document.createElement('div');
+  confCard.className = 'oral-response-confirmed-card';
+
+  confCard.innerHTML = `
+    <div class="oral-conf-header">
+      <div class="oral-conf-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <div class="oral-conf-text">
+        <h4>Spoken Response Successfully Recorded</h4>
+        <p>Your oral reading recording has been securely saved and queued for final evaluation.</p>
+      </div>
+    </div>
+
+    <div class="oral-conf-meta-grid">
+      <div class="oral-meta-pill">
+        <i class="fa-solid fa-book-bookmark"></i>
+        <span>Passage: <strong>${escapeHtml(q.title || 'Oral Reading')}</strong></span>
+      </div>
+      <div class="oral-meta-pill">
+        <i class="fa-solid fa-stopwatch"></i>
+        <span>Duration: <strong>${dur}s</strong></span>
+      </div>
+      <div class="oral-meta-pill">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Words Captured: <strong>${wordsCaptured} / ${targetWords.length}</strong></span>
+      </div>
+      <div class="oral-meta-pill">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Status: <strong>Saved for Final Report</strong></span>
+      </div>
+    </div>
+
+    <div class="oral-conf-notice">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>In accordance with standardized examination protocols, your oral pronunciation accuracy score, reading tempo, and comprehensive phonetic error diagnostics will be presented in your final examination report upon test completion.</span>
+    </div>
+
+    <div class="oral-retake-container">
+      ${!isRetakeLocked ? `
+        <div class="oral-retake-box available">
+          <div class="oral-retake-info">
+            <i class="fa-solid fa-rotate-left"></i>
+            <div>
+              <strong>1 Re-recording Attempt Available</strong>
+              <p>You may re-record your reading once if needed. Re-recording will permanently replace your current audio.</p>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="btn-retake-speaking">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>Re-record Passage (1 Retake Remaining)</span>
+          </button>
+        </div>
+      ` : `
+        <div class="oral-retake-box locked">
+          <div class="oral-retake-info">
+            <i class="fa-solid fa-lock"></i>
+            <div>
+              <strong>Re-recording Limit Reached (1/1 Retake Used)</strong>
+              <p>Your second recording has been permanently registered as your final submission. No further retakes are permitted.</p>
+            </div>
+          </div>
+        </div>
+      `}
+    </div>
+  `;
+
+  if (!isRetakeLocked) {
+    const retakeBtn = confCard.querySelector('#btn-retake-speaking');
+    if (retakeBtn) {
+      retakeBtn.addEventListener('click', async () => {
+        const confirmed = await showConfirmModal({
+          title: 'Confirm Re-recording Attempt',
+          message: 'You have exactly 1 re-recording attempt remaining. Re-recording will replace your current submission. Are you sure you want to re-record?',
+          confirmText: 'Yes, Re-record (Final Attempt)',
+          cancelText: 'Keep Current Recording',
+          icon: 'fa-rotate-left',
+          danger: false
+        });
+        if (!confirmed) return;
+
+        // Mark retakesUsed = 1 on question object and active list
+        q.retakesUsed = 1;
+        activeExamQuestions[qIndex].retakesUsed = 1;
+        delete userAnswers[qIndex];
+        saveExamSession();
+        updateAnswerStatusDisplay();
+        renderNavigatorPills();
+
+        renderCurrentQuestion();
+        showExamToast('Re-recording mode active (Final Attempt 2 of 2)', 'info', 'fa-triangle-exclamation');
+      });
+    }
+  }
+
+  mainContainer.appendChild(confCard);
 }
 
 function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
@@ -3617,10 +3722,10 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
   examinerBar.className = 'speaking-examiner-bar';
   examinerBar.innerHTML = `
     <div class="speaking-examiner-info">
-      <div class="examiner-avatar"><i class="fa-solid fa-robot"></i></div>
+      <div class="examiner-avatar"><i class="fa-solid fa-user-tie"></i></div>
       <div class="examiner-text">
-        <span class="examiner-name">Dr. Evelyn Vance <i class="fa-solid fa-circle-check text-primary" title="AI Certified Assessor"></i></span>
-        <span class="examiner-role">AI Spoken Pronunciation & Accent Proctor</span>
+        <span class="examiner-name">Dr. Evelyn Vance <i class="fa-solid fa-circle-check text-primary" title="Senior Certified Oral Assessor"></i></span>
+        <span class="examiner-role">Senior Oral Examination Proctor & Assessor</span>
       </div>
     </div>
     <button type="button" class="read-aloud-model-btn" id="model-audio-trigger-btn">
@@ -3645,21 +3750,22 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     <div class="speaking-topic-title">${escapeHtml(q.title || 'Read-Aloud Spoken Pronunciation')}</div>
     <div class="read-aloud-instruction" style="margin-top: 8px;">
       <i class="fa-solid fa-microphone-lines text-primary"></i>
-      <span>Read the following passage aloud into your microphone. Words will highlight live to track pronunciation accuracy:</span>
+      <span>Read the following passage aloud into your microphone at your natural speaking pace:</span>
     </div>
   `;
 
   container.appendChild(examinerBar);
   container.appendChild(topicBox);
 
-  // If answer already exists, show the completed AI Scorecard
-  if (existingData && (existingData.accuracyScore || existingData.accentScore)) {
-    const scorecard = createAiSpeakingScorecard(existingData, () => {
-      delete userAnswers[qIndex];
-      saveExamSession();
-      renderCurrentQuestion();
-    });
-    container.appendChild(scorecard);
+  // If answer already exists, show the official recorded confirmation card (NO scoring during exam)
+  if (existingData && (existingData.isReadAloud || existingData.accuracyScore)) {
+    const shuffleBtn = topicBox.querySelector('#btn-shuffle-topic');
+    if (shuffleBtn) {
+      shuffleBtn.disabled = true;
+      shuffleBtn.style.opacity = '0.5';
+      shuffleBtn.title = 'Cannot change passage after recording';
+    }
+    renderOralResponseConfirmationCard(q, qIndex, existingData, container, parentContainer);
     parentContainer.appendChild(container);
     return;
   }
@@ -3672,7 +3778,8 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
       const currIdx = speakingExamBank.findIndex(item => item.id === q.id);
       const nextIdx = (currIdx + 1) % speakingExamBank.length;
       const nextTopic = speakingExamBank[nextIdx];
-      activeExamQuestions[qIndex] = { ...nextTopic };
+      const currentRetakes = q.retakesUsed || 0;
+      activeExamQuestions[qIndex] = { ...nextTopic, retakesUsed: currentRetakes };
       saveExamSession();
       renderCurrentQuestion();
       showExamToast(`Switched to Passage ${nextIdx + 1}: ${nextTopic.title}`, 'info', 'fa-shuffle');
@@ -3712,30 +3819,32 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     return `<span class="read-word pending" id="rword-${idx}" data-idx="${idx}" data-word="${escapeHtml(cleaned)}">${escapeHtml(w)}</span>`;
   }).join(' ');
 
+  const isRetake = (q.retakesUsed >= 1);
+
   consoleCard.innerHTML = `
-    <!-- Interactive Target Passage (Words light up in real time) -->
+    ${isRetake ? `
+      <div class="retake-banner-active">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span><strong>Re-recording Mode (Final Attempt 2 of 2):</strong> Read the passage clearly. This recording will replace your previous audio and be permanently saved as your final submission.</span>
+      </div>
+    ` : ''}
+
+    <!-- Interactive Target Passage (Words highlight neutrally as read) -->
     <div class="reading-passage-container" id="reading-passage-container">
       ${wordsHtml}
     </div>
 
-    <!-- Live Speech Recognition Monitor -->
+    <!-- Speech Audio Input Monitor -->
     <div class="live-speech-monitor">
       <div class="live-speech-header">
-        <span><i class="fa-solid fa-wave-square"></i> Live Speech Recognition Feed</span>
+        <span><i class="fa-solid fa-wave-square"></i> Audio Capture Feed</span>
         <div class="live-speech-stats">
-          <span class="speech-stat-badge green"><i class="fa-solid fa-bullseye"></i> Accuracy: <strong id="live-accuracy-val">100%</strong></span>
-          <span class="speech-stat-badge"><i class="fa-solid fa-book-open"></i> Read: <strong id="live-words-val">0 / ${targetWords.length}</strong></span>
-          <span class="speech-stat-badge"><i class="fa-solid fa-gauge-high"></i> Pace: <strong id="live-tempo-val">0 WPM</strong></span>
+          <span class="speech-stat-badge" id="live-audio-status-badge"><i class="fa-solid fa-microphone"></i> Audio Ready</span>
+          <span class="speech-stat-badge"><i class="fa-solid fa-book-open"></i> Spoken: <strong id="live-words-val">0 / ${targetWords.length}</strong></span>
+          <span class="speech-stat-badge"><i class="fa-solid fa-clock"></i> Time: <strong id="live-elapsed-val">00:00</strong></span>
         </div>
       </div>
       <div class="live-speech-text empty" id="live-speech-text">Your spoken words will appear here in real time as you read...</div>
-    </div>
-
-    <!-- Pronunciation Guide Legend -->
-    <div class="pronunciation-legend">
-      <span class="legend-item"><span class="legend-dot correct"></span> Accurate Pronunciation</span>
-      <span class="legend-item"><span class="legend-dot imperfect"></span> Minor Accent / Phonetic Slip</span>
-      <span class="legend-item"><span class="legend-dot missed"></span> Skipped Word</span>
     </div>
 
     <!-- Live Audio Equalizer -->
@@ -3764,9 +3873,9 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
         <i class="fa-solid fa-microphone"></i>
         <span>Start Reading Aloud</span>
       </button>
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-simulate-speaking" title="Test evaluation instantly without microphone">
-        <i class="fa-solid fa-flask"></i>
-        <span>Mic Simulation / Demo Reading</span>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-simulate-speaking" title="Verify audio capture without microphone">
+        <i class="fa-solid fa-play"></i>
+        <span>Audio Verification / Sample Read</span>
       </button>
     </div>
   `;
@@ -3775,10 +3884,10 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
   parentContainer.appendChild(container);
 
   // Hook up read-aloud recording session
-  setupSpeakingSession(consoleCard, container, q, qIndex);
+  setupSpeakingSession(consoleCard, container, q, qIndex, parentContainer);
 }
 
-function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
+function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, parentContainer) {
   const passageContainer = consoleCard.querySelector('#reading-passage-container');
   const timerDigitsEl = consoleCard.querySelector('#speaking-timer-digits');
   const timerFillEl = consoleCard.querySelector('#speaking-timer-fill');
@@ -3787,9 +3896,9 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
   const simulateBtn = consoleCard.querySelector('#btn-simulate-speaking');
   const canvas = consoleCard.querySelector('#speaking-equalizer-canvas');
   const liveSpeechText = consoleCard.querySelector('#live-speech-text');
-  const liveAccuracyVal = consoleCard.querySelector('#live-accuracy-val');
   const liveWordsVal = consoleCard.querySelector('#live-words-val');
-  const liveTempoVal = consoleCard.querySelector('#live-tempo-val');
+  const liveElapsedVal = consoleCard.querySelector('#live-elapsed-val');
+  const liveAudioStatusBadge = consoleCard.querySelector('#live-audio-status-badge');
 
   const passageText = q.targetPassage || q.prompt;
   const targetWords = passageText.trim().split(/\s+/);
@@ -3883,7 +3992,6 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
 
     for (const sw of windowSlice) {
       if (!sw) continue;
-      // Stem / Prefix match for longer words
       if (cleanT.length >= 5 && sw.length >= 5 && (cleanT.startsWith(sw.slice(0, 5)) || sw.startsWith(cleanT.slice(0, 5)))) {
         return { status: 'imperfect', heard: sw };
       }
@@ -3920,39 +4028,36 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
         const foundIdx = spokenWords.indexOf(match.heard, Math.max(0, spokenPtr - 2));
         if (foundIdx !== -1) spokenPtr = foundIdx + 1;
       } else if (spokenWords.length > i + 3 && wordStatuses[i] === 'pending') {
-        // Speaker has advanced significantly past this word without matching
         wordStatuses[i] = 'missed';
       }
     }
 
-    // Update DOM words visually
+    // Update DOM words neutrally: NO red, amber, green during active test!
     const firstPendingIdx = wordStatuses.findIndex(s => s === 'pending');
     for (let i = 0; i < targetWords.length; i++) {
       const el = consoleCard.querySelector(`#rword-${i}`);
       if (!el) continue;
       if (i === firstPendingIdx && isRecording) {
         el.className = 'read-word current';
+      } else if (wordStatuses[i] !== 'pending') {
+        el.className = 'read-word spoken'; // Neutral spoken indicator
       } else {
-        el.className = `read-word ${wordStatuses[i]}`;
+        el.className = 'read-word pending';
       }
     }
 
-    // Compute live stats
+    // Update neutral stats
     const correctCount = wordStatuses.filter(s => s === 'correct').length;
     const imperfectCount = wordStatuses.filter(s => s === 'imperfect').length;
     const readCount = correctCount + imperfectCount;
-    const accuracy = Math.round(((correctCount + imperfectCount * 0.75) / Math.max(readCount, 1)) * 100);
-    const wpm = Math.round((readCount / Math.max(elapsedSec, 1)) * 60);
 
-    liveAccuracyVal.textContent = `${accuracy}%`;
-    liveWordsVal.textContent = `${readCount} / ${targetWords.length}`;
-    liveTempoVal.textContent = `${wpm} WPM`;
+    if (liveWordsVal) liveWordsVal.textContent = `${readCount} / ${targetWords.length}`;
 
-    if (readCount >= Math.floor(targetWords.length * 0.8)) {
+    if (readCount >= Math.floor(targetWords.length * 0.75)) {
       actionBtn.className = 'btn-conclude-speaking ready';
-      actionBtn.innerHTML = '<i class="fa-solid fa-robot"></i> <span>Finish & Analyze Pronunciation 🎯</span>';
+      actionBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Complete Spoken Response</span>';
       stateHintEl.className = 'speaking-state-hint ready';
-      stateHintEl.innerHTML = `🎯 Majority of passage read (${readCount}/${targetWords.length} words)! Click to finalize AI analysis or finish reading.`;
+      stateHintEl.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> Majority of passage read (${readCount}/${targetWords.length} words)! Click to complete response.`;
     }
   }
 
@@ -3995,8 +4100,12 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
   async function startRecording() {
     isRecording = true;
     passageContainer.classList.add('recording');
+    if (liveAudioStatusBadge) {
+      liveAudioStatusBadge.className = 'speech-stat-badge active';
+      liveAudioStatusBadge.innerHTML = '<i class="fa-solid fa-waveform-lines text-primary"></i> Recording Active';
+    }
     stateHintEl.className = 'speaking-state-hint active';
-    stateHintEl.innerHTML = '<i class="fa-solid fa-microphone text-danger"></i> <strong>Reading in progress:</strong> Read clearly at a natural speaking pace...';
+    stateHintEl.innerHTML = '<i class="fa-solid fa-microphone text-danger"></i> <strong>Reading in progress:</strong> Read clearly into your microphone at a natural pace...';
     actionBtn.className = 'btn-conclude-speaking';
     actionBtn.innerHTML = '<i class="fa-solid fa-stopwatch"></i> <span>Reading in Progress...</span>';
 
@@ -4007,11 +4116,12 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
       elapsedSec++;
       timerDigitsEl.textContent = `${formatTime(elapsedSec)} / 00:45`;
       timerFillEl.style.width = `${Math.min(100, (elapsedSec / 45) * 100)}%`;
+      if (liveElapsedVal) liveElapsedVal.textContent = formatTime(elapsedSec);
 
       const readCount = wordStatuses.filter(s => s === 'correct' || s === 'imperfect').length;
       if (readCount >= Math.floor(targetWords.length * 0.7) || elapsedSec >= 18) {
         actionBtn.className = 'btn-conclude-speaking ready';
-        actionBtn.innerHTML = '<i class="fa-solid fa-robot"></i> <span>Finish & Analyze Pronunciation 🎯</span>';
+        actionBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Complete Spoken Response</span>';
       }
 
       if (elapsedSec >= 45) {
@@ -4028,16 +4138,14 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
     // Mark remaining pending words as missed if never reached
     for (let i = 0; i < targetWords.length; i++) {
       if (wordStatuses[i] === 'pending') wordStatuses[i] = 'missed';
-      const el = consoleCard.querySelector(`#rword-${i}`);
-      if (el) el.className = `read-word ${wordStatuses[i]}`;
     }
 
-    // Show evaluating indicator
+    // Show clean, professional saving indicator (no AI hype)
     consoleCard.innerHTML = `
       <div style="padding: 36px 20px; text-align: center;">
-        <i class="fa-solid fa-brain fa-spin" style="font-size: 2.6rem; color: var(--main-color); margin-bottom: 14px;"></i>
-        <h4 style="font-weight: 800; color: var(--black-color); margin-bottom: 6px;">AI Speech & Pronunciation Engine Evaluating...</h4>
-        <p style="font-size: 0.88rem; color: var(--gray-color); max-width: 440px; margin: 0 auto;">Analyzing phonetic accuracy, word-level stress, reading cadence, and CEFR spoken benchmarks...</p>
+        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2.4rem; color: var(--main-color); margin-bottom: 14px;"></i>
+        <h4 style="font-weight: 800; color: var(--black-color); margin-bottom: 6px;">Saving Spoken Response...</h4>
+        <p style="font-size: 0.88rem; color: var(--gray-color); max-width: 440px; margin: 0 auto;">Registering spoken audio capture and timestamps for final examination evaluation...</p>
       </div>
     `;
 
@@ -4058,7 +4166,6 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
         spokenGrade = 'C1 Advanced Pronunciation';
       }
 
-      // Collect imperfect / missed words with phonetic guide
       const hints = q.phoneticHints || {};
       const wordsMap = targetWords.map((w, idx) => ({
         word: w,
@@ -4070,6 +4177,8 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
       const imperfectDetails = wordsMap.filter(w => w.status === 'imperfect' || w.status === 'missed');
 
       const feedback = `High phonetic clarity with natural conversational rhythm. You accurately pronounced ${correctCount} of ${targetWords.length} words (${accuracyScore}% accuracy). Speaking cadence (${wpm} WPM) falls directly in the native target reading range (110–150 WPM). Linking sounds and intonational phrasing were maintained with commendable confidence.`;
+
+      const retakesUsed = (typeof q.retakesUsed === 'number') ? q.retakesUsed : 0;
 
       const finalData = {
         isReadAloud: true,
@@ -4086,7 +4195,8 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
         cefrLevel: spokenGrade,
         imperfectDetails: imperfectDetails,
         transcript: accumulatedTranscript || passageText,
-        feedback: feedback
+        feedback: feedback,
+        retakesUsed: retakesUsed
       };
 
       userAnswers[qIndex] = JSON.stringify(finalData);
@@ -4096,14 +4206,13 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
       soundFx.select();
 
       consoleCard.remove();
-      const scorecard = createAiSpeakingScorecard(finalData, () => {
-        delete userAnswers[qIndex];
-        saveExamSession();
-        renderCurrentQuestion();
-      });
-      mainContainer.appendChild(scorecard);
-      showExamToast('Spoken Read-Aloud Assessment Certified!', 'success', 'fa-award');
-    }, 1100);
+      renderOralResponseConfirmationCard(q, qIndex, finalData, mainContainer, parentContainer);
+      if (retakesUsed >= 1) {
+        showExamToast('Final spoken response submitted', 'success', 'fa-lock');
+      } else {
+        showExamToast('Spoken response recorded successfully (1 retake available)', 'success', 'fa-circle-check');
+      }
+    }, 750);
   }
 
   // Button dispatch logic
@@ -4117,27 +4226,27 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
 
   // Simulation test button for instant evaluation without microphone
   simulateBtn.addEventListener('click', () => {
-    // Run an animated demo where words highlight rapidly in ~1.2 seconds
     actionBtn.disabled = true;
     simulateBtn.disabled = true;
     passageContainer.classList.add('recording');
+    if (liveAudioStatusBadge) {
+      liveAudioStatusBadge.className = 'speech-stat-badge active';
+      liveAudioStatusBadge.innerHTML = '<i class="fa-solid fa-play text-primary"></i> Verification Active';
+    }
     stateHintEl.className = 'speaking-state-hint active';
-    stateHintEl.innerHTML = '<i class="fa-solid fa-flask text-primary"></i> <strong>Simulation Mode:</strong> Reading words aloud with model pronunciation...';
+    stateHintEl.innerHTML = '<i class="fa-solid fa-play text-primary"></i> <strong>Audio Verification:</strong> Capturing spoken words...';
 
     let currentSimIdx = 0;
     const simInterval = setInterval(() => {
       if (currentSimIdx < targetWords.length) {
-        // Mostly correct, pick 1 or 2 complex words for realistic imperfect feedback
         const isImperfect = currentSimIdx === 4 || currentSimIdx === 11;
         wordStatuses[currentSimIdx] = isImperfect ? 'imperfect' : 'correct';
         matchedHeard[currentSimIdx] = isImperfect ? cleanExamWord(targetWords[currentSimIdx]).slice(0, -2) : cleanExamWord(targetWords[currentSimIdx]);
 
         const el = consoleCard.querySelector(`#rword-${currentSimIdx}`);
-        if (el) el.className = `read-word ${wordStatuses[currentSimIdx]}`;
+        if (el) el.className = 'read-word spoken'; // Neutral!
 
-        liveWordsVal.textContent = `${currentSimIdx + 1} / ${targetWords.length}`;
-        liveAccuracyVal.textContent = '96%';
-        liveTempoVal.textContent = '132 WPM';
+        if (liveWordsVal) liveWordsVal.textContent = `${currentSimIdx + 1} / ${targetWords.length}`;
         liveSpeechText.textContent = `"${targetWords.slice(0, currentSimIdx + 1).join(' ')}"`;
 
         currentSimIdx++;
@@ -4150,7 +4259,7 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
   });
 }
 
-function createAiSpeakingScorecard(data, onRetake) {
+function createOralAssessmentReportCard(data) {
   const scorecard = document.createElement('div');
   scorecard.className = 'ai-spoken-scorecard';
 
@@ -4184,9 +4293,9 @@ function createAiSpeakingScorecard(data, onRetake) {
     <div class="scorecard-header">
       <div class="scorecard-title">
         <i class="fa-solid fa-award"></i>
-        <span>AI Spoken Read-Aloud & Pronunciation Verified Scorecard</span>
+        <span>Official Oral Pronunciation & Spoken Assessment Report</span>
       </div>
-      <span class="scorecard-badge"><i class="fa-solid fa-circle-check"></i> Assessment Certified</span>
+      <span class="scorecard-badge"><i class="fa-solid fa-circle-check"></i> Examination Assessed</span>
     </div>
 
     <div class="scorecard-metrics-grid">
@@ -4227,24 +4336,13 @@ function createAiSpeakingScorecard(data, onRetake) {
 
     <div class="scorecard-feedback-box">
       <div class="scorecard-feedback-title">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-        <span>AI Linguistic Diagnostic Feedback</span>
+        <i class="fa-solid fa-comments"></i>
+        <span>Examiner Phonetic & Oral Fluency Assessment</span>
       </div>
       <p style="margin: 0; line-height: 1.6;">${escapeHtml(data.feedback || '')}</p>
     </div>
-
-    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px;">
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-retake-speaking">
-        <i class="fa-solid fa-rotate-left"></i>
-        <span>Re-read & Improve Score</span>
-      </button>
-    </div>
   `;
 
-  const retakeBtn = scorecard.querySelector('#btn-retake-speaking');
-  if (retakeBtn && onRetake) {
-    retakeBtn.addEventListener('click', onRetake);
-  }
   return scorecard;
 }
 
@@ -4606,16 +4704,40 @@ function submitExamination() {
         const accuracyScore = spokenData && spokenData.accuracyScore ? spokenData.accuracyScore : (spokenData && spokenData.accentScore ? spokenData.accentScore : (isCorrect ? 95 : 45));
         const wpm = spokenData && spokenData.wpm ? spokenData.wpm : 132;
         const dur = spokenData && spokenData.duration ? spokenData.duration : (isCorrect ? 22 : 0);
-        const feedback = spokenData && spokenData.feedback ? spokenData.feedback : 'AI Spoken Read-Aloud Pronunciation Assessment completed.';
+        const feedback = spokenData && spokenData.feedback ? spokenData.feedback : 'Oral reading and spoken pronunciation assessment completed.';
         const wordsMap = spokenData && spokenData.wordsMap ? spokenData.wordsMap : [];
         const chipsHtml = wordsMap.length > 0
-          ? wordsMap.map(w => `<span class="read-word ${w.status || 'correct'}" title="${w.status || 'correct'}">${escapeHtml(w.word)}</span>`).join(' ')
+          ? wordsMap.map(w => `<span class="read-word ${w.status || 'correct'}" title="Status: ${w.status || 'correct'}">${escapeHtml(w.word)}</span>`).join(' ')
           : `<p>"${escapeHtml(spokenData && spokenData.targetPassage ? spokenData.targetPassage : q.targetPassage || q.prompt)}"</p>`;
+
+        const imperfectList = spokenData && spokenData.imperfectDetails ? spokenData.imperfectDetails : [];
+        let imperfectSectionHtml = '';
+        if (imperfectList.length > 0) {
+          const rows = imperfectList.map(item => `
+            <div class="imperfect-word-row">
+              <span>Word: <strong>${escapeHtml(item.word)}</strong> &nbsp;(Recognized: <em>${escapeHtml(item.heard || 'Incomplete')}</em>)</span>
+              ${item.phoneticIpa ? `<span class="phonetic-tip"><i class="fa-solid fa-volume-low"></i> IPA: ${escapeHtml(item.phoneticIpa)}</span>` : ''}
+            </div>
+          `).join('');
+
+          imperfectSectionHtml = `
+            <div class="imperfect-words-summary" style="margin-top: 12px;">
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--black-color); margin-bottom: 6px;">
+                <i class="fa-solid fa-spell-check text-warning"></i> Words to Practice & Phonetic Guide:
+              </div>
+              ${rows}
+            </div>
+          `;
+        }
+
+        const retakeInfo = spokenData && spokenData.retakesUsed >= 1
+          ? '1 retake used (Attempt 2 of 2)'
+          : 'Initial attempt submitted (1 of 2)';
 
         itemCard.className = `review-item-card speaking-review-card ${isCorrect ? 'correct' : 'incorrect'}`;
         itemCard.innerHTML = `
           <div class="review-head">
-            <span class="review-q-num"><i class="fa-solid fa-microphone-lines text-primary"></i> Question ${idx + 1} (${q.level} • Spoken Read-Aloud)</span>
+            <span class="review-q-num"><i class="fa-solid fa-microphone-lines text-primary"></i> Question ${idx + 1} (${q.level} • Oral Reading & Pronunciation)</span>
             <span class="review-status-tag ${isCorrect ? 'correct' : 'incorrect'}">
               <i class="fa-solid ${isCorrect ? 'fa-check' : 'fa-xmark'}"></i>
               ${isCorrect ? 'Certified & Evaluated' : 'Incomplete Recording'}
@@ -4626,14 +4748,23 @@ function submitExamination() {
             <div class="speaking-metric-pill"><i class="fa-solid fa-gauge-high"></i> Pronunciation Accuracy: <strong>${accuracyScore}%</strong></div>
             <div class="speaking-metric-pill"><i class="fa-solid fa-stopwatch"></i> Duration: <strong>${dur}s</strong></div>
             <div class="speaking-metric-pill"><i class="fa-solid fa-bolt"></i> Reading Pace: <strong>${wpm} WPM</strong></div>
+            <div class="speaking-metric-pill"><i class="fa-solid fa-rotate-left"></i> Attempts: <strong>${retakeInfo}</strong></div>
           </div>
           <div class="speaking-review-transcript">
-            <strong><i class="fa-solid fa-list-check"></i> Word-by-Word Pronunciation Highlights:</strong>
-            <div class="word-chips-flow" style="margin-top: 8px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+              <strong><i class="fa-solid fa-list-check"></i> Word-by-Word Pronunciation Diagnostic:</strong>
+              <div class="pronunciation-legend" style="padding: 0;">
+                <span class="legend-item"><span class="legend-dot correct"></span> Accurate</span>
+                <span class="legend-item"><span class="legend-dot imperfect"></span> Minor Accent Slip</span>
+                <span class="legend-item"><span class="legend-dot missed"></span> Omitted</span>
+              </div>
+            </div>
+            <div class="word-chips-flow">
               ${chipsHtml}
             </div>
+            ${imperfectSectionHtml}
           </div>
-          <div class="review-rationale"><strong>AI Linguistic Critique:</strong> ${escapeHtml(feedback)}</div>
+          <div class="review-rationale"><strong>Examiner Phonetic & Oral Fluency Assessment:</strong> ${escapeHtml(feedback)}</div>
         `;
       } else {
         itemCard.className = `review-item-card ${isCorrect ? 'correct' : 'incorrect'}`;

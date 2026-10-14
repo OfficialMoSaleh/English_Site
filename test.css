@@ -3503,3 +3503,195 @@ body.dark-theme .imperfect-word-row strong {
   color: var(--gray-color);
   font-family: monospace;
 }
+
+/* Neutral Spoken Words During Active Test Taking (No Judgment / Grading shown during test) */
+.read-word.spoken {
+  background: rgba(91, 81, 222, 0.08);
+  border-color: rgba(91, 81, 222, 0.22);
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+body.dark-theme .read-word.spoken {
+  background: rgba(91, 81, 222, 0.18);
+  border-color: rgba(91, 81, 222, 0.35);
+  color: #a5b4fc;
+}
+
+/* Response Recorded Confirmation Card (During Test Taking) */
+.oral-response-confirmed-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeInOral 0.3s ease-out;
+}
+
+@keyframes fadeInOral {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.oral-conf-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.oral-conf-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.oral-conf-text h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--black-color);
+  margin: 0 0 4px 0;
+}
+
+.oral-conf-text p {
+  font-size: 0.88rem;
+  color: var(--gray-color);
+  margin: 0;
+}
+
+.oral-conf-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.oral-meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--black-color);
+}
+
+body.dark-theme .oral-meta-pill {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.oral-meta-pill i {
+  color: var(--main-color);
+  font-size: 1rem;
+}
+
+.oral-conf-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(91, 81, 222, 0.06);
+  border-left: 4px solid var(--main-color);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--black-color);
+}
+
+.oral-conf-notice i {
+  color: var(--main-color);
+  margin-top: 3px;
+  font-size: 1rem;
+}
+
+/* Retake Section Styling */
+.oral-retake-container {
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.oral-retake-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+}
+
+.oral-retake-box.available {
+  background: rgba(245, 158, 11, 0.06);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.oral-retake-box.locked {
+  background: rgba(100, 116, 139, 0.08);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.oral-retake-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 240px;
+}
+
+.oral-retake-info i {
+  font-size: 1.3rem;
+}
+
+.oral-retake-box.available .oral-retake-info i {
+  color: #f59e0b;
+}
+
+.oral-retake-box.locked .oral-retake-info i {
+  color: var(--gray-color);
+}
+
+.oral-retake-info strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--black-color);
+  margin-bottom: 2px;
+}
+
+.oral-retake-info p {
+  font-size: 0.8rem;
+  color: var(--gray-color);
+  margin: 0;
+}
+
+.retake-banner-active {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-md);
+  color: #b45309;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+body.dark-theme .retake-banner-active {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fcd34d;
+}
+
