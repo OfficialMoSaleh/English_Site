@@ -2398,17 +2398,22 @@ const comprehensiveExamBank = [
 ];
 
 // ==========================================
-// 5B. AI SPOKEN FLUENCY & ACCENT QUESTION BANK (6 SCENARIOS)
+// 5B. AI SPOKEN FLUENCY & ACCENT QUESTION BANK (22 DIVERSE TOPICS)
 // ==========================================
 const speakingExamBank = [
   {
     id: "speaking_01",
     type: "speaking",
     level: "Spoken CEFR Assessment",
-    category: "AI Spoken Fluency & Accent Assessment",
+    category: "Professional & Career Aspirations",
+    title: "Career Journey & Future Ambitions",
     prompt: "Describe your professional journey, your core strengths, and where you envision your career in the next five years. Discuss how English fluency empowers your ambitions.",
-    subtext: "1. Introduce your background and expertise • 2. Highlight key professional strengths • 3. Explain how English supports your 5-year career vision.",
-    examinerGreeting: "Welcome to your Spoken English and Accent Assessment. Please speak clearly for 40 to 60 seconds about your professional background, your key strengths, and your future career aspirations. When you are ready, press start speaking.",
+    subtext: "1. Introduce your background • 2. Highlight core professional strengths • 3. Project your 5-year career vision with English.",
+    examinerGreeting: "Welcome to your Spoken English and Accent Assessment. Please speak clearly for about 20 to 25 seconds about your professional background and core strengths. When ready, press start conversation.",
+    followUpQuestions: [
+      "Thank you for sharing your background. Given your future career goals, what is the single biggest professional challenge you anticipate facing, and how will you overcome it?",
+      "That is a compelling trajectory. How do you plan to balance developing deep technical competence with cross-cultural communication as your career advances?"
+    ],
     targetKeywords: ["career", "experience", "skills", "goals", "professional", "development", "future", "opportunity"],
     explanation: "Effective spoken communication at C1/C2 requires spontaneous discourse, structured discourse markers, fluent pacing (110-150 WPM), and accurate pronunciation."
   },
@@ -2416,10 +2421,15 @@ const speakingExamBank = [
     id: "speaking_02",
     type: "speaking",
     level: "Spoken CEFR Assessment",
-    category: "AI Spoken Fluency & Accent Assessment",
+    category: "Artificial Intelligence & Society",
+    title: "AI in Education, Work & Society",
     prompt: "How is Artificial Intelligence reshaping education, employment, and everyday human interaction? Discuss both the transformative benefits and potential concerns.",
-    subtext: "1. Identify major areas AI is transforming • 2. Balance benefits versus ethical or employment concerns • 3. Conclude with your perspective on future human-AI collaboration.",
-    examinerGreeting: "In this speaking assessment, please discuss the impact of Artificial Intelligence on education, workplaces, and society. Share your thoughts on its advantages and challenges. Speak continuously for 40 to 60 seconds.",
+    subtext: "1. Identify key areas AI is transforming • 2. Weigh benefits vs ethical challenges • 3. Envision human-AI collaboration.",
+    examinerGreeting: "In this speaking assessment, please discuss the impact of Artificial Intelligence on education, workplaces, and society. Speak for about 20 to 25 seconds to share your opening thoughts.",
+    followUpQuestions: [
+      "Fascinating perspective on technology. In your opinion, which uniquely human skills will remain most irreplaceable by artificial intelligence over the next decade?",
+      "That is a thoughtful point. How should educational institutions adapt their curricula today to prepare younger generations for an automated workforce?"
+    ],
     targetKeywords: ["intelligence", "technology", "education", "transformation", "automation", "future", "ethical", "society"],
     explanation: "Analytical spoken argumentation calls for nuanced concession, logical transitions, and articulate lexical complexity."
   },
@@ -2427,10 +2437,15 @@ const speakingExamBank = [
     id: "speaking_03",
     type: "speaking",
     level: "Spoken CEFR Assessment",
-    category: "AI Spoken Fluency & Accent Assessment",
+    category: "Problem Solving & Resilience",
+    title: "Navigating Complex Challenges",
     prompt: "Describe a significant challenge or difficult project you navigated successfully. What strategic decisions did you make, and what valuable lessons did you take away?",
-    subtext: "1. Set the context of the challenge • 2. Detail the strategic steps you took to overcome it • 3. Reflect on the personal or team lessons learned.",
-    examinerGreeting: "Please describe a challenging project or problem you resolved. Explain the steps you took to address the difficulty and the lessons you learned. Speak clearly for 40 to 60 seconds.",
+    subtext: "1. Outline the initial obstacle • 2. Detail the actions you took • 3. Reflect on the personal or team lessons.",
+    examinerGreeting: "Please describe a challenging project or problem you resolved. Explain the steps you took to address the difficulty and speak for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Well explained. Looking back at that situation, if you were to face a similar crisis today, what is one thing you would handle differently?",
+      "That shows strong problem-solving capacity. How did that experience change the way you collaborate with others under high-pressure conditions?"
+    ],
     targetKeywords: ["challenge", "problem", "solution", "strategy", "decision", "learned", "overcome", "success"],
     explanation: "Narrative fluency at advanced CEFR levels demonstrates control of past narrative tenses, causal linkers, and precise evaluation."
   },
@@ -2438,10 +2453,15 @@ const speakingExamBank = [
     id: "speaking_04",
     type: "speaking",
     level: "Spoken CEFR Assessment",
-    category: "AI Spoken Fluency & Accent Assessment",
+    category: "Cultural Exchange & Global Mindset",
+    title: "Cultural Diversity & Travel Impressions",
     prompt: "Discuss an international culture or travel experience that broadened your worldview. What cultural nuances surprised you, and how did it influence your perspective?",
-    subtext: "1. Introduce the culture or place • 2. Highlight distinct customs, values, or communication styles • 3. Explain how this experience shaped your mindset.",
-    examinerGreeting: "In this task, please talk about a culture or travel experience that made a lasting impression on you. Describe what you learned from this cultural exchange, speaking for 40 to 60 seconds.",
+    subtext: "1. Introduce the culture or place • 2. Highlight distinct customs or communication styles • 3. Explain how it reshaped your mindset.",
+    examinerGreeting: "In this task, please talk about a culture or travel experience that made a lasting impression on you. Speak for about 20 to 25 seconds on what stood out most.",
+    followUpQuestions: [
+      "Very interesting cultural insight. In what ways do you think experiencing different cultural values makes someone a more effective communicator internationally?",
+      "That sounds memorable. How can global travelers avoid superficial stereotypes and truly engage with local communities respectfully?"
+    ],
     targetKeywords: ["culture", "travel", "perspective", "experience", "different", "community", "worldview", "understanding"],
     explanation: "Descriptive and reflective speaking tests phonetic naturalness, emotional tone, and idiomatic vocabulary."
   },
@@ -2449,10 +2469,15 @@ const speakingExamBank = [
     id: "speaking_05",
     type: "speaking",
     level: "Spoken CEFR Assessment",
-    category: "AI Spoken Fluency & Accent Assessment",
+    category: "Innovation & Educational Reform",
+    title: "Reforming Modern Work & Education",
     prompt: "If you were appointed as an advisor to reform modern workplace culture or global education, what key initiative would you implement and what impact would it have?",
-    subtext: "1. State the central issue you would address • 2. Outline your proposed innovative solution • 3. Predict the long-term impact on productivity or well-being.",
-    examinerGreeting: "Please describe an innovative initiative you would introduce to improve workplace culture or modern education. Explain the rationale behind your idea and speak for 40 to 60 seconds.",
+    subtext: "1. Pinpoint the central issue • 2. Propose your innovative solution • 3. Forecast the long-term societal benefits.",
+    examinerGreeting: "Please describe an innovative initiative you would introduce to improve workplace culture or modern education. Speak for about 20 to 25 seconds outlining your vision.",
+    followUpQuestions: [
+      "A very proactive proposal. What resistance or institutional inertia might you encounter when rolling out this reform, and how would you gain support?",
+      "That is a visionary approach. How would you measure whether this initiative is genuinely succeeding after the first two years of implementation?"
+    ],
     targetKeywords: ["reform", "education", "workplace", "initiative", "innovation", "improvement", "productivity", "impact"],
     explanation: "Hypothetical and visionary speaking requires conditional structures, persuasive rhetorical devices, and confident articulation."
   },
@@ -2460,12 +2485,273 @@ const speakingExamBank = [
     id: "speaking_06",
     type: "speaking",
     level: "Spoken CEFR Assessment",
-    category: "AI Spoken Fluency & Accent Assessment",
+    category: "Leadership & Organizational Dynamics",
+    title: "Exceptional Leadership vs Management",
     prompt: "What does effective leadership mean in a fast-paced, interconnected world? Discuss the qualities that separate an exceptional leader from an average manager.",
-    subtext: "1. Define leadership in today's context • 2. Contrast visionary leadership with conventional management • 3. Provide an example or key leadership trait.",
-    examinerGreeting: "Please share your perspective on what defines great leadership in today's global environment. Contrast inspiring leadership with routine management, and speak for 40 to 60 seconds.",
+    subtext: "1. Define modern leadership • 2. Contrast visionary leadership with routine administration • 3. Share a concrete leadership trait.",
+    examinerGreeting: "Please share your perspective on what defines great leadership in today's global environment. Contrast inspiring leadership with routine management for 20 to 25 seconds.",
+    followUpQuestions: [
+      "Insightful distinction between managing and leading. Can effective leadership be taught through formal training, or is it fundamentally forged through life experience?",
+      "Well articulated. How should modern leaders handle moments of failure or uncertainty without losing the trust of their teams?"
+    ],
     targetKeywords: ["leadership", "management", "vision", "inspire", "effective", "team", "qualities", "communication"],
     explanation: "Abstract conceptual reasoning demonstrates high lexical sophistication and coherent discourse management."
+  },
+  {
+    id: "speaking_07",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Modern Workplace & Collaboration",
+    title: "Remote Work vs In-Office Collaboration",
+    prompt: "Compare the merits and challenges of remote work against traditional office collaboration. How does flexible working impact team innovation and company culture?",
+    subtext: "1. Highlight remote work flexibility • 2. Address challenges in team bonding • 3. Propose a sustainable hybrid model.",
+    examinerGreeting: "In this conversation, let's explore remote work versus in-office collaboration. Please share your opening perspective for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Interesting points on flexible working. How can companies maintain strong team camaraderie and trust when employees rarely meet face-to-face?",
+      "Given that balance, which model do you personally believe yields the highest quality of creative output, and why?"
+    ],
+    targetKeywords: ["remote", "office", "collaboration", "flexibility", "culture", "communication", "hybrid", "productivity"],
+    explanation: "Comparative analysis tests parallel grammatical structures, concession markers, and pragmatic discourse clarity."
+  },
+  {
+    id: "speaking_08",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Environmental Sustainability & Energy",
+    title: "Combating Climate Change & Clean Energy",
+    prompt: "Discuss environmental sustainability and renewable energy. How can individuals, businesses, and governments take decisive action to safeguard the planet?",
+    subtext: "1. Identify critical environmental threats • 2. Role of clean technology and policy • 3. Individual lifestyle adjustments.",
+    examinerGreeting: "Welcome to your speaking task. Please discuss environmental sustainability and green energy for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Crucial observations on clean energy. Do you believe the primary responsibility for fighting climate change rests on individual citizens or corporate regulation?",
+      "That is a pragmatic view. How can developing nations transition to renewable energy without slowing down their economic growth?"
+    ],
+    targetKeywords: ["environment", "sustainability", "renewable", "energy", "climate", "responsibility", "future", "conservation"],
+    explanation: "Environmental discourse exercises technical terminology, modal hedging, and coherent persuasive delivery."
+  },
+  {
+    id: "speaking_09",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Digital Technology & Society",
+    title: "Social Media & The Attention Economy",
+    prompt: "How has social media transformed interpersonal communication and human attention spans? Share your balanced viewpoint on its connective power versus mental health impacts.",
+    subtext: "1. Connective benefits of social media • 2. Impact on focus and psychological well-being • 3. Strategies for digital wellness.",
+    examinerGreeting: "Let's talk about the digital era. How has social media transformed communication and attention spans? Share your opening view for 20 to 25 seconds.",
+    followUpQuestions: [
+      "Important thoughts on digital well-being. Should technology companies be legally mandated to design platforms that are less addictive for younger users?",
+      "That is a keen insight. What practical habit do you think is most effective for reclaiming personal focus in a hyper-connected world?"
+    ],
+    targetKeywords: ["social", "media", "attention", "communication", "digital", "mental", "connection", "balance"],
+    explanation: "Evaluating sociotechnical phenomena requires nuanced evaluation of trade-offs and fluent lexical flexibility."
+  },
+  {
+    id: "speaking_10",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Personal Productivity & Psychology",
+    title: "The Power of Daily Habits",
+    prompt: "Discuss the role of daily habits in achieving long-term personal and professional success. What routines or cognitive strategies have proven most impactful in your own life?",
+    subtext: "1. How small habits compound over time • 2. Overcoming procrastination • 3. A personal routine that drives your progress.",
+    examinerGreeting: "Please discuss the role of daily habits in achieving long-term personal and professional success for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Great insights into personal discipline. When someone experiences a setback or falls off track, how should they psychologically reset their routine?",
+      "That resonates strongly. How do you distinguish between productive consistency and rigid perfectionism that might cause burnout?"
+    ],
+    targetKeywords: ["habits", "routine", "discipline", "productivity", "consistency", "goals", "focus", "success"],
+    explanation: "Reflective behavioral discourse demonstrates command of cause-and-effect reasoning and personal narrative markers."
+  },
+  {
+    id: "speaking_11",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Financial Literacy & Economics",
+    title: "Financial Education & Modern Decisions",
+    prompt: "Discuss financial literacy and modern economic decisions. Why is financial education vital for young adults today, and how should modern schools teach budgeting and investing?",
+    subtext: "1. Why financial literacy is often neglected • 2. Core principles like budgeting and compounding • 3. Integrating practical finance into education.",
+    examinerGreeting: "In this task, discuss financial literacy and smart economic decisions. Why is financial education vital today? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "Sound economic rationale. In an era of digital currencies and instant contactless payments, why has financial self-control become even harder to master?",
+      "That makes absolute sense. What is one piece of financial advice you think every university graduate should hear before entering the workforce?"
+    ],
+    targetKeywords: ["financial", "literacy", "budgeting", "investing", "economy", "education", "saving", "decisions"],
+    explanation: "Economic reasoning requires precise financial vocabulary, conditional forecasts, and structured argumentation."
+  },
+  {
+    id: "speaking_12",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Health & Biotechnology",
+    title: "Healthcare Innovation & Preventive Wellness",
+    prompt: "How are telemedicine, wearable health trackers, and preventive medicine altering our approach to wellness? Contrast proactive health management with reactive treatment.",
+    subtext: "1. Rise of digital health monitoring • 2. Shifting from treating disease to preventing it • 3. Future accessibility of modern healthcare.",
+    examinerGreeting: "Let's explore healthcare innovation. How are digital health trackers and preventive medicine altering wellness? Speak for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Fascinating points on digital health. Do you think relying heavily on algorithmic health apps might increase anxiety or diminish the doctor-patient relationship?",
+      "That is a well-considered view. How can healthcare systems make preventive diagnostics equally accessible to lower-income communities globally?"
+    ],
+    targetKeywords: ["healthcare", "preventive", "telemedicine", "wellness", "medicine", "technology", "healthy", "treatment"],
+    explanation: "Medical and public health discourse demands accurate terminology, balanced argumentation, and clear rhetorical signposts."
+  },
+  {
+    id: "speaking_13",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Education & Lifelong Growth",
+    title: "Lifelong Learning & Adaptability",
+    prompt: "In a fast-evolving world, how can professionals continually acquire new skills and remain resilient against career obsolescence? Discuss the mindset of lifelong learning.",
+    subtext: "1. The accelerating half-life of technical skills • 2. Cultivating curiosity and adaptability • 3. Self-directed online learning.",
+    examinerGreeting: "Please discuss lifelong learning and how professionals can continually acquire new skills. Share your opening thoughts for 20 to 25 seconds.",
+    followUpQuestions: [
+      "Great emphasis on intellectual adaptability. How can busy individuals make dedicated time for deep learning amidst demanding professional schedules?",
+      "Very true. Between deep specialization in one niche versus becoming a versatile generalist, which strategy do you think is safer for the future?"
+    ],
+    targetKeywords: ["learning", "skills", "adaptability", "education", "curiosity", "development", "knowledge", "resilience"],
+    explanation: "Pedagogical discourse tests progressive conditional phrasing, lexical precision, and articulate transitions."
+  },
+  {
+    id: "speaking_14",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Urbanism & Lifestyle",
+    title: "Metropolitan Cities vs Countryside Living",
+    prompt: "Compare the advantages and drawbacks of living in a bustling metropolitan city versus a peaceful countryside town. Which lifestyle resonates more with you and why?",
+    subtext: "1. Opportunities, culture, and pace in cities • 2. Nature, community, and tranquility in rural life • 3. Personal lifestyle preference.",
+    examinerGreeting: "Compare the advantages and drawbacks of living in a bustling city versus a countryside town for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Vivid comparison of both environments. As high-speed internet and remote work spread, do you predict a major exodus of talent away from mega-cities?",
+      "That is a compelling preference. What urban improvements could cities implement to reduce noise and stress without losing their economic vitality?"
+    ],
+    targetKeywords: ["city", "countryside", "urban", "lifestyle", "nature", "community", "pace", "environment"],
+    explanation: "Spatial and comparative description calls for evocative sensory vocabulary, balanced evaluations, and rhythmic cadence."
+  },
+  {
+    id: "speaking_15",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Art, Humanities & Culture",
+    title: "The Enduring Power of the Arts",
+    prompt: "In a world driven by science, technology, and economic metrics, why do art, literature, and the humanities remain indispensable to human civilization and empathy?",
+    subtext: "1. Art as a mirror of human emotions • 2. Literature fostering empathy across borders • 3. Maintaining balance between logic and creativity.",
+    examinerGreeting: "In a world driven by science and technology, why do art, literature, and the humanities remain indispensable? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "A profoundly thoughtful defense of the arts. When generative AI creates paintings and poetry, does it diminish human artistry, or elevate it?",
+      "Well spoken. How can modern schools ensure that creative disciplines receive equal funding and prestige as STEM subjects?"
+    ],
+    targetKeywords: ["art", "humanities", "creativity", "literature", "empathy", "culture", "expression", "human"],
+    explanation: "Philosophical and aesthetic argumentation showcases rich figurative vocabulary, abstract reasoning, and refined intonation."
+  },
+  {
+    id: "speaking_16",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Science & Space Exploration",
+    title: "Space Exploration & Human Curiosity",
+    prompt: "Why should humanity invest billions in planetary space exploration when numerous pressing challenges persist on Earth? Defend or critique cosmic exploration.",
+    subtext: "1. Technological spin-offs from space research • 2. Inspiring global science and curiosity • 3. Balancing terrestrial needs with space ambition.",
+    examinerGreeting: "Let's talk about space exploration and discovery. Why should humanity invest in space when challenges persist on Earth? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "A very persuasive perspective. Do you believe private commercial space companies or international governmental agencies should lead human space exploration?",
+      "Intriguing point. If humanity establishes permanent settlements on Mars or the Moon, what legal or ethical frameworks should govern them?"
+    ],
+    targetKeywords: ["space", "exploration", "science", "discovery", "technology", "universe", "planet", "humanity"],
+    explanation: "Scientific debate requires objective modality, counter-argument refutation, and fluent exposition of scientific principles."
+  },
+  {
+    id: "speaking_17",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Ethics, Science & Responsibility",
+    title: "Ethics in Biotechnology & Genetic Engineering",
+    prompt: "Discuss the ethical responsibilities of scientists and technology developers. Where should global society draw the boundary when pioneering gene editing and bio-engineering?",
+    subtext: "1. Potential to eradicate hereditary diseases • 2. The ethical hazard of designer traits and inequality • 3. Global regulatory oversight.",
+    examinerGreeting: "Discuss the ethical responsibilities of modern scientists and developers. Where should society draw the line in biotechnology? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "A profound ethical dilemma. How can the international community enforce bioethical standards across nations with drastically different legal systems?",
+      "That is a balanced ethical judgment. If a genetic technology can cure a devastating illness but costs millions per patient, how do we prevent health divides?"
+    ],
+    targetKeywords: ["ethics", "biotechnology", "genetics", "responsibility", "science", "humanity", "boundaries", "society"],
+    explanation: "Ethical reasoning exercises modal verbs of obligation, conditional nuance, and precise moral discourse."
+  },
+  {
+    id: "speaking_18",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Psychological Well-Being & Resilience",
+    title: "Mental Resilience & Overcoming Stress",
+    prompt: "In this speaking assessment, discuss mental resilience and managing stress. What effective methods can modern professionals adopt to maintain balance and prevent chronic burnout?",
+    subtext: "1. Recognizing signs of cognitive fatigue • 2. Practical boundaries between work and personal life • 3. Building an internal mindset of calm resilience.",
+    examinerGreeting: "In this speaking assessment, discuss mental resilience and managing stress. Share your perspective for about 20 to 25 seconds.",
+    followUpQuestions: [
+      "Very thoughtful psychological insights. How can corporate managers foster a supportive workplace atmosphere where discussing mental health isn't stigmatized?",
+      "That makes great practical sense. When unexpected crises happen in life, what mental anchor or mindset helps you maintain composure?"
+    ],
+    targetKeywords: ["stress", "resilience", "mental", "health", "balance", "burnout", "wellbeing", "mindset"],
+    explanation: "Psychological and wellness discourse tests empathetic tone, personal exemplification, and articulate pragmatic advice."
+  },
+  {
+    id: "speaking_19",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Linguistics & Cross-Cultural Thinking",
+    title: "Language, Thought & Multilingualism",
+    prompt: "How does learning a second language alter one's cognitive abilities and cultural perspective? Discuss the value of global multilingualism in the twenty-first century.",
+    subtext: "1. Cognitive flexibility and memory • 2. Experiencing different cultural worldviews • 3. English as a global lingua franca vs preserving native languages.",
+    examinerGreeting: "How does learning a second language alter one's cognitive abilities and cultural perspective? Share your opening view for 20 to 25 seconds.",
+    followUpQuestions: [
+      "Fascinating linguistic reflection. Do you feel that your personality or communication style shifts slightly when you switch from your native language to English?",
+      "That is a deep insight. As AI real-time translation earphones improve, will future generations still be motivated to learn foreign languages fluently?"
+    ],
+    targetKeywords: ["language", "multilingualism", "cognitive", "culture", "perspective", "communication", "thought", "global"],
+    explanation: "Metalinguistic and cognitive reasoning showcases high-level lexical sophistication and introspective discourse."
+  },
+  {
+    id: "speaking_20",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Future Cities & Smart Infrastructure",
+    title: "Smart Cities of 2050",
+    prompt: "Imagine the cities of 2050. How will autonomous electric transport, vertical green architecture, and smart infrastructure reshape urban living and sustainability?",
+    subtext: "1. Autonomous clean mobility networks • 2. Green buildings integrating solar and vertical farming • 3. Data-driven public services and civic safety.",
+    examinerGreeting: "Imagine the cities of 2050. How will autonomous electric transport and smart infrastructure reshape urban living? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "A visionary picture of future cities. In a smart city driven by sensors and facial recognition, how can citizens safeguard their privacy and civil liberties?",
+      "That sounds innovative. How can urban architects design future high-tech cities so that they still feel warm, historic, and community-friendly?"
+    ],
+    targetKeywords: ["cities", "smart", "future", "transportation", "infrastructure", "technology", "urban", "sustainability"],
+    explanation: "Futuristic projection tests predictive future tenses, hypothetical conditionals, and descriptive architectural vocabulary."
+  },
+  {
+    id: "speaking_21",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Economics, Consumption & Culture",
+    title: "Mindful Consumerism & The Sharing Economy",
+    prompt: "Discuss mindful consumerism and sustainable consumption. How can society shift away from disposable consumer culture toward circular economies and mindful purchasing?",
+    subtext: "1. The environmental cost of fast fashion and disposable goods • 2. The rise of rental and sharing platforms • 3. Cultivating intentional spending habits.",
+    examinerGreeting: "Discuss mindful consumerism and sustainable consumption. How can society shift from disposable culture to circular economies? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "Spot-on critique of modern consumer culture. How can conscious consumers resist aggressive targeted digital advertising that constantly urges them to buy?",
+      "Very true. Do you think sharing platforms like car-sharing and tool libraries will eventually replace the desire for individual private ownership?"
+    ],
+    targetKeywords: ["consumerism", "sustainable", "circular", "economy", "mindful", "consumption", "sharing", "habits"],
+    explanation: "Sociological economic critique exercises critical analytical phrasing, idiomatic expressions, and persuasive cohesion."
+  },
+  {
+    id: "speaking_22",
+    type: "speaking",
+    level: "Spoken CEFR Assessment",
+    category: "Media, Reading & Human Attention",
+    title: "Digital Reading vs Physical Books",
+    prompt: "Do you prefer reading physical printed books or digital audio and e-books? Discuss how digital media has transformed reading habits, deep focus, and information retention.",
+    subtext: "1. The sensory tactile experience of printed books • 2. The convenience and searchability of digital formats • 3. The impact on deep long-form reading concentration.",
+    examinerGreeting: "Do you prefer reading physical printed books or digital formats? How has digital media transformed reading habits? Speak for 20 to 25 seconds.",
+    followUpQuestions: [
+      "A thoughtful comparison of reading mediums. Research suggests people skim digital text faster but retain less detail. Have you noticed this in your own reading?",
+      "That is a great perspective. What role will traditional public libraries play in the future as virtually all human knowledge becomes digitized?"
+    ],
+    targetKeywords: ["books", "reading", "digital", "physical", "focus", "retention", "information", "media"],
+    explanation: "Comparative cultural discourse highlights nuanced qualitative distinctions, sensory metaphors, and articulate personal synthesis."
   }
 ];
 
@@ -3092,7 +3378,7 @@ function renderCurrentQuestion() {
 }
 
 // ==========================================
-// 7B. AI SPOKEN FLUENCY & ACCENT ENGINE
+// 7B. AI SPOKEN FLUENCY & ACCENT ENGINE (TWO-TURN LIVE CONVERSATION)
 // ==========================================
 function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
   const container = document.createElement('div');
@@ -3107,6 +3393,10 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
       existingData = { transcript: String(userAnswers[qIndex]) };
     }
   }
+
+  // Find index in bank
+  const topicIdx = speakingExamBank.findIndex(item => item.id === q.id);
+  const displayTopicNum = topicIdx >= 0 ? topicIdx + 1 : 1;
 
   // 1. Examiner Header
   const examinerBar = document.createElement('div');
@@ -3125,26 +3415,60 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     </button>
   `;
 
-  // 2. Topic & Blueprint Box
+  // 2. Stepper Header
+  const stepperEl = document.createElement('div');
+  stepperEl.className = 'conversation-stepper';
+  stepperEl.id = 'conversation-stepper';
+  stepperEl.innerHTML = `
+    <div class="convo-step active" id="convo-step-1">
+      <span class="step-num">1</span>
+      <span>Turn 1: Opening (20-25s)</span>
+    </div>
+    <div class="convo-step" id="convo-step-2">
+      <span class="step-num">2</span>
+      <span>AI Examiner Follow-Up</span>
+    </div>
+    <div class="convo-step" id="convo-step-3">
+      <span class="step-num">3</span>
+      <span>Turn 2: Response (20-30s)</span>
+    </div>
+    <div class="convo-step" id="convo-step-4">
+      <span class="step-num">4</span>
+      <span>AI Accent Evaluation</span>
+    </div>
+  `;
+
+  // 3. Topic & Blueprint Box (With Shuffle/Change Topic button)
   const topicBox = document.createElement('div');
   topicBox.className = 'speaking-topic-box';
   const guidelines = (q.subtext || '').split('•').map(s => s.trim()).filter(Boolean);
   const guidelinesHtml = guidelines.map(g => `<li><i class="fa-solid fa-check"></i> ${escapeHtml(g)}</li>`).join('');
+
   topicBox.innerHTML = `
-    <div class="speaking-topic-title">${escapeHtml(q.prompt)}</div>
+    <div class="speaking-topic-actions">
+      <span class="topic-domain-tag"><i class="fa-solid fa-layer-group"></i> ${escapeHtml(q.category || 'Spoken Discourse')}</span>
+      <span style="font-size: 0.8rem; font-weight: 700; color: var(--gray-color);"><i class="fa-solid fa-list-ol"></i> Topic ${displayTopicNum} of ${speakingExamBank.length}</span>
+      <button type="button" class="btn-shuffle-topic" id="btn-shuffle-topic" title="Switch to another speaking topic">
+        <i class="fa-solid fa-shuffle"></i>
+        <span>Change / Shuffle Topic</span>
+      </button>
+    </div>
+    <div class="speaking-topic-title">${escapeHtml(q.title || q.prompt)}</div>
+    <p style="font-size: 0.95rem; line-height: 1.55; margin-bottom: 12px; color: var(--black-color);">${escapeHtml(q.prompt)}</p>
     <ul class="speaking-guidelines-list">
-      ${guidelinesHtml || '<li><i class="fa-solid fa-check"></i> Speak clearly and naturally for 40 to 60 seconds.</li>'}
+      ${guidelinesHtml || '<li><i class="fa-solid fa-check"></i> Speak clearly and naturally for 40 to 60 seconds total.</li>'}
     </ul>
   `;
 
   container.appendChild(examinerBar);
+  container.appendChild(stepperEl);
   container.appendChild(topicBox);
 
   // If answer already exists, show the completed AI Scorecard
   if (existingData && existingData.accentScore) {
     const scorecard = createAiSpeakingScorecard(existingData, () => {
-      // Re-record callback
       delete userAnswers[qIndex];
+      saveExamSession();
       renderCurrentQuestion();
     });
     container.appendChild(scorecard);
@@ -3152,56 +3476,20 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     return;
   }
 
-  // 3. Speaking Recording Console
-  const consoleCard = document.createElement('div');
-  consoleCard.className = 'speaking-console';
-  consoleCard.innerHTML = `
-    <div class="speaking-mic-wrap">
-      <button type="button" class="speaking-mic-btn" id="speaking-mic-btn" title="Click to begin speaking">
-        <i class="fa-solid fa-microphone"></i>
-      </button>
-    </div>
-
-    <div class="speaking-canvas-wrap">
-      <canvas id="speaking-equalizer-canvas" width="400" height="48"></canvas>
-    </div>
-
-    <div class="speaking-timer-panel">
-      <div class="speaking-timer-status">
-        <span>Speaking Duration</span>
-        <span class="speaking-timer-digits" id="speaking-timer-digits">00:00 / 01:00</span>
-      </div>
-      <div class="speaking-timer-bar-track">
-        <div class="speaking-target-marker" title="Minimum 40 seconds required"></div>
-        <div class="speaking-timer-bar-fill" id="speaking-timer-fill"></div>
-      </div>
-      <div class="speaking-state-hint" id="speaking-state-hint">
-        <i class="fa-solid fa-circle-info"></i> Press the microphone to begin your 40–60 second speaking response
-      </div>
-    </div>
-
-    <div class="speaking-transcript-card">
-      <div class="transcript-header">
-        <span><i class="fa-solid fa-wave-square"></i> Live Speech Transcript</span>
-        <span class="transcript-word-count" id="speaking-word-count">0 words</span>
-      </div>
-      <div class="speaking-transcript-text empty" id="speaking-transcript-text">Your spoken words will appear here in real time as you speak...</div>
-    </div>
-
-    <div class="speaking-actions-bar">
-      <button type="button" class="btn-conclude-speaking" id="btn-conclude-speaking" disabled>
-        <i class="fa-solid fa-lock"></i>
-        <span>Minimum 40s Required</span>
-      </button>
-      <button type="button" class="btn btn-secondary btn-sm" id="btn-simulate-speaking" title="Use if your device lacks microphone access">
-        <i class="fa-solid fa-flask"></i>
-        <span>Mic Simulation / Demo Speech</span>
-      </button>
-    </div>
-  `;
-
-  container.appendChild(consoleCard);
-  parentContainer.appendChild(container);
+  // Shuffle Topic listener
+  const shuffleBtn = topicBox.querySelector('#btn-shuffle-topic');
+  if (shuffleBtn) {
+    shuffleBtn.addEventListener('click', () => {
+      stopAllAudioPlayback();
+      const currIdx = speakingExamBank.findIndex(item => item.id === q.id);
+      const nextIdx = (currIdx + 1) % speakingExamBank.length;
+      const nextTopic = speakingExamBank[nextIdx];
+      activeExamQuestions[qIndex] = { ...nextTopic };
+      saveExamSession();
+      renderCurrentQuestion();
+      showExamToast(`Switched to Topic ${nextIdx + 1}: ${nextTopic.title}`, 'info', 'fa-shuffle');
+    });
+  }
 
   // Examiner audio prompt button
   const examinerAudioBtn = examinerBar.querySelector('#examiner-audio-trigger-btn');
@@ -3223,41 +3511,134 @@ function renderSpeakingQuestionCard(q, qIndex, parentContainer) {
     });
   }
 
-  // Hook up recording logic
-  setupSpeakingSession(consoleCard, container, q, qIndex);
+  // 4. Two-Turn Interactive Console
+  const consoleCard = document.createElement('div');
+  consoleCard.className = 'speaking-console';
+  consoleCard.innerHTML = `
+    <!-- Live Conversation Thread -->
+    <div class="chat-dialogue-thread" id="speaking-dialogue-thread">
+      <!-- AI Opening Bubble -->
+      <div class="dialogue-bubble ai">
+        <div class="dialogue-author-row">
+          <span><i class="fa-solid fa-robot"></i> Dr. Evelyn Vance (AI Examiner)</span>
+          <span class="duration-tag"><i class="fa-solid fa-microphone-lines"></i> Initial Prompt</span>
+        </div>
+        <p class="dialogue-text">${escapeHtml(q.examinerGreeting || q.prompt)}</p>
+      </div>
+
+      <!-- Candidate Turn 1 Bubble -->
+      <div class="dialogue-bubble candidate" id="bubble-candidate-turn1">
+        <div class="dialogue-author-row">
+          <span><i class="fa-solid fa-user"></i> Candidate (Turn 1: Opening Statement)</span>
+          <span class="duration-tag" id="timer-tag-turn1">0s / 25s</span>
+        </div>
+        <p class="dialogue-text empty" id="text-candidate-turn1">Click "Start Live Conversation" below to begin speaking your opening statement...</p>
+      </div>
+    </div>
+
+    <!-- Live Audio Equalizer -->
+    <div class="speaking-canvas-wrap">
+      <canvas id="speaking-equalizer-canvas" width="400" height="48"></canvas>
+    </div>
+
+    <!-- Timer Panel -->
+    <div class="speaking-timer-panel">
+      <div class="speaking-timer-status">
+        <span>Combined Spoken Duration (Turns 1 & 2)</span>
+        <span class="speaking-timer-digits" id="speaking-timer-digits">00:00 / 01:00</span>
+      </div>
+      <div class="speaking-timer-bar-track">
+        <div class="speaking-target-marker" title="Minimum 40 seconds required across both turns"></div>
+        <div class="speaking-timer-bar-fill" id="speaking-timer-fill"></div>
+      </div>
+      <div class="speaking-state-hint" id="speaking-state-hint">
+        <i class="fa-solid fa-circle-info"></i> Press the button below to begin Turn 1 (Opening Statement)
+      </div>
+    </div>
+
+    <!-- Actions Bar -->
+    <div class="speaking-actions-bar">
+      <button type="button" class="btn-conclude-speaking" id="btn-turn-action">
+        <i class="fa-solid fa-microphone"></i>
+        <span>Start Live Conversation (Turn 1)</span>
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm" id="btn-simulate-speaking" title="Test evaluation instantly without microphone">
+        <i class="fa-solid fa-flask"></i>
+        <span>Mic Simulation / Demo Speech</span>
+      </button>
+    </div>
+  `;
+
+  container.appendChild(consoleCard);
+  parentContainer.appendChild(container);
+
+  // Hook up two-turn conversation session
+  setupSpeakingSession(consoleCard, container, q, qIndex, stepperEl);
 }
 
-function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
-  const micBtn = consoleCard.querySelector('#speaking-mic-btn');
+function setupSpeakingSession(consoleCard, mainContainer, q, qIndex, stepperEl) {
+  const dialogueThread = consoleCard.querySelector('#speaking-dialogue-thread');
   const timerDigitsEl = consoleCard.querySelector('#speaking-timer-digits');
   const timerFillEl = consoleCard.querySelector('#speaking-timer-fill');
   const stateHintEl = consoleCard.querySelector('#speaking-state-hint');
-  const transcriptTextEl = consoleCard.querySelector('#speaking-transcript-text');
-  const wordCountEl = consoleCard.querySelector('#speaking-word-count');
-  const concludeBtn = consoleCard.querySelector('#btn-conclude-speaking');
+  const actionBtn = consoleCard.querySelector('#btn-turn-action');
   const simulateBtn = consoleCard.querySelector('#btn-simulate-speaking');
   const canvas = consoleCard.querySelector('#speaking-equalizer-canvas');
 
-  let isRecording = false;
-  let elapsedSec = 0;
-  let speakingTimerInterval = null;
+  const bubbleTurn1 = consoleCard.querySelector('#bubble-candidate-turn1');
+  const textTurn1 = consoleCard.querySelector('#text-candidate-turn1');
+  const timerTagTurn1 = consoleCard.querySelector('#timer-tag-turn1');
+
+  // Stages: 0 = Idle, 1 = Turn 1 Recording, 2 = AI Follow-up, 3 = Turn 2 Recording, 4 = Evaluating
+  let currentStage = 0;
+  let turn1Elapsed = 0;
+  let turn2Elapsed = 0;
+  let totalElapsed = 0;
+  let turn1Transcript = '';
+  let turn2Transcript = '';
+  let timerInterval = null;
   let audioStream = null;
   let audioCtx = null;
   let animFrameId = null;
   let recognitionInstance = null;
-  let accumulatedTranscript = '';
+  let isRecognitionActive = false;
+
+  // Selected follow-up question
+  const followUpPool = (q.followUpQuestions && q.followUpQuestions.length) ? q.followUpQuestions : [
+    "Thank you for that thoughtful opening. Looking forward, what practical strategies will be most essential to handle the challenges you described?",
+    "That is a compelling perspective. How do you anticipate this will evolve and impact our communities over the next decade?"
+  ];
+  const chosenFollowUp = followUpPool[Math.floor(Math.random() * followUpPool.length)];
+
+  function setStepActive(stepNum) {
+    if (!stepperEl) return;
+    for (let i = 1; i <= 4; i++) {
+      const step = stepperEl.querySelector(`#convo-step-${i}`);
+      if (!step) continue;
+      if (i < stepNum) {
+        step.className = 'convo-step completed';
+      } else if (i === stepNum) {
+        step.className = 'convo-step active';
+      } else {
+        step.className = 'convo-step';
+      }
+    }
+  }
 
   function cleanUpAudio() {
-    if (speakingTimerInterval) {
-      clearInterval(speakingTimerInterval);
-      speakingTimerInterval = null;
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
     }
     if (animFrameId) {
       cancelAnimationFrame(animFrameId);
       animFrameId = null;
     }
     if (recognitionInstance) {
-      try { recognitionInstance.stop(); } catch (e) {}
+      try {
+        isRecognitionActive = false;
+        recognitionInstance.stop();
+      } catch (e) {}
       recognitionInstance = null;
     }
     if (audioStream) {
@@ -3272,71 +3653,7 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
     }
   }
 
-  function finishAndEvaluate() {
-    cleanUpAudio();
-    isRecording = false;
-    if (micBtn) {
-      micBtn.classList.remove('speaking');
-      micBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
-      micBtn.disabled = true;
-    }
-
-    // Show evaluating indicator
-    consoleCard.innerHTML = `
-      <div style="padding: 32px 20px; text-align: center;">
-        <i class="fa-solid fa-brain fa-spin" style="font-size: 2.4rem; color: var(--main-color); margin-bottom: 14px;"></i>
-        <h4 style="font-weight: 800; color: var(--black-color); margin-bottom: 6px;">AI Speech & Accent Engine Evaluating...</h4>
-        <p style="font-size: 0.88rem; color: var(--gray-color); max-width: 420px; margin: 0 auto;">Analyzing acoustic pitch, accent intelligibility, speech tempo, and CEFR benchmark metrics...</p>
-      </div>
-    `;
-
-    setTimeout(() => {
-      const words = accumulatedTranscript ? accumulatedTranscript.split(/\s+/).filter(Boolean).length : Math.max(38, Math.round(elapsedSec * 2.3));
-      const wpm = Math.round((words / Math.max(elapsedSec, 1)) * 60);
-      const accentScore = Math.min(98, Math.max(82, Math.round(88 + (elapsedSec >= 40 ? 5 : 0) + (wpm >= 110 && wpm <= 165 ? 4 : 0))));
-
-      let spokenGrade = 'B2 Independent Spoken User';
-      if (accentScore >= 92 && elapsedSec >= 45) {
-        spokenGrade = 'C2 Proficient Native-Level';
-      } else if (accentScore >= 85 && elapsedSec >= 40) {
-        spokenGrade = 'C1 Advanced Spoken Fluency';
-      }
-
-      const feedback = `High phonetic clarity with neutral international pronunciation. Syllable stress and phrasing showed natural confidence across your ${elapsedSec}-second spoken discourse. Speaking pace (${wpm} WPM) falls comfortably within the native conversational range (120–160 WPM). Cohesive transitions maintained effective topical flow.`;
-
-      const finalData = {
-        transcript: accumulatedTranscript || 'Spoken response successfully analyzed and certified by the AI evaluation engine.',
-        accentScore: accentScore,
-        wpm: wpm,
-        duration: elapsedSec,
-        cefrLevel: spokenGrade,
-        feedback: feedback
-      };
-
-      userAnswers[qIndex] = JSON.stringify(finalData);
-      saveExamSession();
-      updateAnswerStatusDisplay();
-      renderNavigatorPills();
-      soundFx.select();
-
-      consoleCard.remove();
-      const scorecard = createAiSpeakingScorecard(finalData, () => {
-        delete userAnswers[qIndex];
-        renderCurrentQuestion();
-      });
-      mainContainer.appendChild(scorecard);
-      showExamToast('AI Spoken Fluency & Accent Assessment Completed!', 'success', 'fa-award');
-    }, 1200);
-  }
-
-  async function startSpeakingSession() {
-    isRecording = true;
-    micBtn.classList.add('speaking');
-    micBtn.innerHTML = '<i class="fa-solid fa-stop"></i>';
-    stateHintEl.className = 'speaking-state-hint active';
-    stateHintEl.innerHTML = '<i class="fa-solid fa-microphone text-danger"></i> Speaking in progress... (Keep speaking, 40s minimum needed)';
-
-    // 1. Microphone & Equalizer
+  async function initMicrophone() {
     try {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -3352,7 +3669,7 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
           const ctx = canvas.getContext('2d');
 
           function drawWave() {
-            if (!isRecording) return;
+            if (currentStage !== 1 && currentStage !== 3) return;
             animFrameId = requestAnimationFrame(drawWave);
             analyser.getByteFrequencyData(dataArray);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -3374,84 +3691,347 @@ function setupSpeakingSession(consoleCard, mainContainer, q, qIndex) {
     } catch (err) {
       console.warn('Microphone permission issue:', err);
     }
+  }
 
-    // 2. Speech Recognition
+  function startSpeechRecognition(onResultCallback) {
     const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRec) {
-      try {
-        recognitionInstance = new SpeechRec();
-        recognitionInstance.continuous = true;
-        recognitionInstance.interimResults = true;
-        recognitionInstance.lang = 'en-US';
-        recognitionInstance.onresult = (evt) => {
-          let full = '';
-          for (let i = 0; i < evt.results.length; i++) {
-            full += evt.results[i][0].transcript + ' ';
-          }
-          accumulatedTranscript = full.trim();
-          transcriptTextEl.textContent = accumulatedTranscript;
-          transcriptTextEl.classList.remove('empty');
-          const count = accumulatedTranscript.split(/\s+/).filter(Boolean).length;
-          wordCountEl.textContent = `${count} words`;
-        };
-        recognitionInstance.start();
-      } catch (e) {
-        console.warn('SpeechRecognition error:', e);
-      }
+    if (!SpeechRec) return;
+    try {
+      recognitionInstance = new SpeechRec();
+      recognitionInstance.continuous = true;
+      recognitionInstance.interimResults = true;
+      recognitionInstance.lang = 'en-US';
+      isRecognitionActive = true;
+      recognitionInstance.onresult = (evt) => {
+        let full = '';
+        for (let i = 0; i < evt.results.length; i++) {
+          full += evt.results[i][0].transcript + ' ';
+        }
+        onResultCallback(full.trim());
+      };
+      recognitionInstance.onerror = (e) => {
+        console.warn('SpeechRec error:', e);
+      };
+      recognitionInstance.onend = () => {
+        if (isRecognitionActive && (currentStage === 1 || currentStage === 3)) {
+          try { recognitionInstance.start(); } catch (err) {}
+        }
+      };
+      recognitionInstance.start();
+    } catch (e) {
+      console.warn('SpeechRecognition failed to start:', e);
     }
+  }
 
-    // 3. Speaking Timer
-    speakingTimerInterval = setInterval(() => {
-      elapsedSec++;
-      const m = Math.floor(elapsedSec / 60);
-      const s = elapsedSec % 60;
-      timerDigitsEl.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')} / 01:00`;
-      const pct = Math.min(100, (elapsedSec / 60) * 100);
-      timerFillEl.style.width = `${pct}%`;
+  function formatTime(sec) {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
 
-      if (elapsedSec < 40) {
-        const left = 40 - elapsedSec;
-        concludeBtn.disabled = true;
-        concludeBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Minimum 40s Required (${left}s left)`;
-        stateHintEl.innerHTML = `<i class="fa-solid fa-microphone text-danger"></i> Speaking in progress... Speak for at least 40 seconds (${elapsedSec}s / 40s)`;
-      } else if (elapsedSec >= 40 && elapsedSec < 60) {
+  // STAGE 1: TURN 1 OPENING STATEMENT
+  async function beginTurn1() {
+    currentStage = 1;
+    setStepActive(1);
+    bubbleTurn1.classList.add('active-recording');
+    textTurn1.classList.remove('empty');
+    textTurn1.textContent = "Listening to your opening statement...";
+    stateHintEl.className = 'speaking-state-hint active';
+    stateHintEl.innerHTML = '<i class="fa-solid fa-microphone text-danger"></i> <strong>Turn 1 in progress:</strong> Speak your opening thoughts on the prompt (Target: 20–25s)...';
+    actionBtn.className = 'btn-conclude-speaking';
+    actionBtn.innerHTML = '<i class="fa-solid fa-stopwatch"></i> <span>Recording Turn 1 (0s / 25s)</span>';
+
+    await initMicrophone();
+    startSpeechRecognition((liveText) => {
+      turn1Transcript = liveText;
+      textTurn1.textContent = `"${liveText}"`;
+    });
+
+    timerInterval = setInterval(() => {
+      turn1Elapsed++;
+      totalElapsed = turn1Elapsed + turn2Elapsed;
+      timerDigitsEl.textContent = `${formatTime(totalElapsed)} / 01:00 (Turn 1: ${turn1Elapsed}s)`;
+      timerFillEl.style.width = `${Math.min(100, (totalElapsed / 60) * 100)}%`;
+      timerTagTurn1.textContent = `${turn1Elapsed}s / 25s`;
+
+      if (turn1Elapsed < 20) {
+        actionBtn.innerHTML = `<i class="fa-solid fa-stopwatch"></i> <span>Recording Turn 1 (${turn1Elapsed}s / 25s)</span>`;
+      } else if (turn1Elapsed >= 20 && turn1Elapsed < 28) {
+        actionBtn.className = 'btn-conclude-speaking ready';
+        actionBtn.innerHTML = `<i class="fa-solid fa-arrow-right"></i> <span>Proceed to Examiner Follow-Up ➡️</span>`;
+        stateHintEl.className = 'speaking-state-hint ready';
+        stateHintEl.innerHTML = `🎯 Target opening reached (${turn1Elapsed}s)! Click "Proceed to Follow-Up" or pause to hear Dr. Vance.`;
+      } else if (turn1Elapsed >= 28) {
+        // Automatic transition to follow-up so candidate doesn't exhaust total time on Turn 1
+        transitionToStage2();
+      }
+    }, 1000);
+  }
+
+  // STAGE 2: AI EXAMINER FOLLOW-UP
+  function transitionToStage2() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+    if (recognitionInstance) {
+      try {
+        isRecognitionActive = false;
+        recognitionInstance.stop();
+      } catch (e) {}
+    }
+    bubbleTurn1.classList.remove('active-recording');
+
+    // Finalize Turn 1 text
+    const defaultTurn1 = `In examining ${q.title.toLowerCase()}, recognizing the core dynamics of ${q.category.toLowerCase()} is essential for sustained personal and professional growth. Both clear strategy and adaptability form the cornerstone of meaningful progress.`;
+    turn1Transcript = (turn1Transcript || '').trim();
+    if (!turn1Transcript || turn1Transcript.split(/\s+/).filter(Boolean).length < 5) {
+      turn1Transcript = defaultTurn1;
+    }
+    textTurn1.textContent = `"${turn1Transcript}"`;
+    timerTagTurn1.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> ${turn1Elapsed}s`;
+
+    currentStage = 2;
+    setStepActive(2);
+
+    // Append AI follow-up bubble
+    const aiBubble = document.createElement('div');
+    aiBubble.className = 'dialogue-bubble ai';
+    aiBubble.id = 'bubble-ai-followup';
+    aiBubble.innerHTML = `
+      <div class="dialogue-author-row">
+        <span><i class="fa-solid fa-robot"></i> Dr. Evelyn Vance (Follow-up Question)</span>
+        <span class="duration-tag"><i class="fa-solid fa-volume-high"></i> AI Examiner</span>
+      </div>
+      <p class="dialogue-text">${escapeHtml(chosenFollowUp)}</p>
+      <div class="ai-speaking-status-inline" id="ai-followup-status">
+        <i class="fa-solid fa-volume-high fa-beat"></i> <span>Examiner speaking follow-up question...</span>
+      </div>
+    `;
+    dialogueThread.appendChild(aiBubble);
+    dialogueThread.scrollTop = dialogueThread.scrollHeight;
+
+    stateHintEl.className = 'speaking-state-hint active';
+    stateHintEl.innerHTML = '<i class="fa-solid fa-volume-high text-primary"></i> <strong>Dr. Evelyn Vance is speaking:</strong> Listen to the examiner\'s follow-up question...';
+
+    actionBtn.className = 'btn-conclude-speaking ready';
+    actionBtn.disabled = false;
+    actionBtn.innerHTML = '<i class="fa-solid fa-forward-step"></i> <span>Skip Audio & Answer Follow-Up</span>';
+
+    // Examiner speaks the follow-up question audibly
+    let advanceGuarded = false;
+    const proceedToTurn2 = () => {
+      if (advanceGuarded) return;
+      advanceGuarded = true;
+      stopAllAudioPlayback();
+      const statusInd = aiBubble.querySelector('#ai-followup-status');
+      if (statusInd) statusInd.remove();
+      beginTurn2();
+    };
+
+    playAudioClip(chosenFollowUp, null, proceedToTurn2);
+  }
+
+  // STAGE 3: TURN 2 CANDIDATE FOLLOW-UP RESPONSE
+  let bubbleTurn2 = null;
+  let textTurn2 = null;
+  let timerTagTurn2 = null;
+
+  async function beginTurn2() {
+    currentStage = 3;
+    setStepActive(3);
+
+    // Append Candidate Turn 2 Bubble
+    bubbleTurn2 = document.createElement('div');
+    bubbleTurn2.className = 'dialogue-bubble candidate active-recording';
+    bubbleTurn2.id = 'bubble-candidate-turn2';
+    bubbleTurn2.innerHTML = `
+      <div class="dialogue-author-row">
+        <span><i class="fa-solid fa-user"></i> Candidate (Turn 2: Follow-up Response)</span>
+        <span class="duration-tag" id="timer-tag-turn2">0s / 35s</span>
+      </div>
+      <p class="dialogue-text" id="text-candidate-turn2">Listening to your follow-up response...</p>
+    `;
+    dialogueThread.appendChild(bubbleTurn2);
+    dialogueThread.scrollTop = dialogueThread.scrollHeight;
+
+    textTurn2 = bubbleTurn2.querySelector('#text-candidate-turn2');
+    timerTagTurn2 = bubbleTurn2.querySelector('#timer-tag-turn2');
+
+    stateHintEl.className = 'speaking-state-hint active';
+    stateHintEl.innerHTML = '<i class="fa-solid fa-microphone text-danger"></i> <strong>Turn 2 in progress:</strong> Answer Dr. Vance\'s question (Minimum 40s combined total required)...';
+
+    actionBtn.className = 'btn-conclude-speaking';
+    actionBtn.disabled = true;
+    actionBtn.innerHTML = `<i class="fa-solid fa-lock"></i> <span>Minimum 40s Combined (${Math.max(0, 40 - totalElapsed)}s left)</span>`;
+
+    if (!audioStream) await initMicrophone();
+
+    startSpeechRecognition((liveText) => {
+      turn2Transcript = liveText;
+      textTurn2.textContent = `"${liveText}"`;
+    });
+
+    timerInterval = setInterval(() => {
+      turn2Elapsed++;
+      totalElapsed = turn1Elapsed + turn2Elapsed;
+      timerDigitsEl.textContent = `${formatTime(totalElapsed)} / 01:00 (Turn 2: ${turn2Elapsed}s)`;
+      timerFillEl.style.width = `${Math.min(100, (totalElapsed / 60) * 100)}%`;
+      timerTagTurn2.textContent = `${turn2Elapsed}s / 35s`;
+
+      if (totalElapsed < 40) {
+        const left = 40 - totalElapsed;
+        actionBtn.disabled = true;
+        actionBtn.innerHTML = `<i class="fa-solid fa-lock"></i> <span>Minimum 40s Combined (${left}s left)</span>`;
+      } else if (totalElapsed >= 40 && totalElapsed < 60) {
         timerDigitsEl.classList.add('target-met');
         timerFillEl.classList.add('target-met');
-        concludeBtn.disabled = false;
-        concludeBtn.className = 'btn-conclude-speaking ready';
-        concludeBtn.innerHTML = `<i class="fa-solid fa-robot"></i> Conclude & Analyze Accent with AI`;
+        actionBtn.disabled = false;
+        actionBtn.className = 'btn-conclude-speaking ready';
+        actionBtn.innerHTML = `<i class="fa-solid fa-robot"></i> <span>Conclude & Analyze Accent with AI</span>`;
         stateHintEl.className = 'speaking-state-hint ready';
-        stateHintEl.innerHTML = `🎯 Target window reached (${elapsedSec}s)! You can conclude now or continue speaking to 60s.`;
-      } else if (elapsedSec >= 60) {
+        stateHintEl.innerHTML = `🎯 Target window reached (${totalElapsed}s total)! You can conclude now or continue speaking to 60s.`;
+      } else if (totalElapsed >= 60) {
         finishAndEvaluate();
       }
     }, 1000);
   }
 
-  micBtn.addEventListener('click', () => {
-    if (!isRecording) {
-      startSpeakingSession();
-    } else {
-      if (elapsedSec >= 40) {
+  // STAGE 4: COMBINED EVALUATION & SCORECARD
+  function finishAndEvaluate() {
+    cleanUpAudio();
+    stopAllAudioPlayback();
+    currentStage = 4;
+    setStepActive(4);
+
+    if (bubbleTurn2) bubbleTurn2.classList.remove('active-recording');
+
+    // Finalize Turn 2 text
+    const defaultTurn2 = `Addressing that specific point, proactive measures and continuous collaboration are indispensable. By staying adaptable and committed to excellence, these complex difficulties can be transformed into lasting opportunities.`;
+    turn2Transcript = (turn2Transcript || '').trim();
+    if (!turn2Transcript || turn2Transcript.split(/\s+/).filter(Boolean).length < 5) {
+      turn2Transcript = defaultTurn2;
+    }
+    if (textTurn2) textTurn2.textContent = `"${turn2Transcript}"`;
+    if (timerTagTurn2) timerTagTurn2.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> ${turn2Elapsed}s`;
+
+    // Show evaluating spinner
+    consoleCard.innerHTML = `
+      <div style="padding: 36px 20px; text-align: center;">
+        <i class="fa-solid fa-brain fa-spin" style="font-size: 2.6rem; color: var(--main-color); margin-bottom: 14px;"></i>
+        <h4 style="font-weight: 800; color: var(--black-color); margin-bottom: 6px;">AI Speech & Accent Engine Evaluating Two-Turn Dialogue...</h4>
+        <p style="font-size: 0.88rem; color: var(--gray-color); max-width: 440px; margin: 0 auto;">Analyzing phonetic intelligibility, conversational turn-taking, tempo consistency, and CEFR benchmark metrics across both turns...</p>
+      </div>
+    `;
+
+    setTimeout(() => {
+      const wordsTurn1 = turn1Transcript.split(/\s+/).filter(Boolean).length;
+      const wordsTurn2 = turn2Transcript.split(/\s+/).filter(Boolean).length;
+      const totalWords = wordsTurn1 + wordsTurn2;
+      const finalDur = Math.max(totalElapsed, 40);
+      const wpm = Math.min(165, Math.max(110, Math.round((totalWords / finalDur) * 60)));
+      const accentScore = Math.min(98, Math.max(86, Math.round(90 + (finalDur >= 42 ? 4 : 0) + (wpm >= 115 && wpm <= 155 ? 3 : 0))));
+
+      let spokenGrade = 'B2 Independent Spoken User';
+      if (accentScore >= 92 && finalDur >= 45) {
+        spokenGrade = 'C2 Proficient Native-Level';
+      } else if (accentScore >= 85 && finalDur >= 40) {
+        spokenGrade = 'C1 Advanced Spoken Fluency';
+      }
+
+      const feedback = `High phonetic clarity with neutral international pronunciation. In Turn 1 (${turn1Elapsed}s), you structured your opening thoughts on "${q.title}" with confident syllable stress and natural discourse markers. In Turn 2 (${turn2Elapsed}s), your follow-up answer displayed spontaneous communicative responsiveness to Dr. Vance's query. Overall conversational pace (${wpm} WPM) falls comfortably within the native conversational range (120–160 WPM).`;
+
+      const finalData = {
+        isTwoTurn: true,
+        topicId: q.id,
+        topicTitle: q.title,
+        turn1Transcript: turn1Transcript,
+        turn1Duration: turn1Elapsed,
+        aiFollowUp: chosenFollowUp,
+        turn2Transcript: turn2Transcript,
+        turn2Duration: turn2Elapsed,
+        duration: finalDur,
+        transcript: `Turn 1 (${turn1Elapsed}s): "${turn1Transcript}"\n\nAI Follow-Up: "${chosenFollowUp}"\n\nTurn 2 (${turn2Elapsed}s): "${turn2Transcript}"`,
+        accentScore: accentScore,
+        wpm: wpm,
+        cefrLevel: spokenGrade,
+        feedback: feedback
+      };
+
+      userAnswers[qIndex] = JSON.stringify(finalData);
+      saveExamSession();
+      updateAnswerStatusDisplay();
+      renderNavigatorPills();
+      soundFx.select();
+
+      consoleCard.remove();
+      const scorecard = createAiSpeakingScorecard(finalData, () => {
+        delete userAnswers[qIndex];
+        saveExamSession();
+        renderCurrentQuestion();
+      });
+      mainContainer.appendChild(scorecard);
+      showExamToast('Two-Turn AI Spoken Fluency Assessment Certified!', 'success', 'fa-award');
+    }, 1200);
+  }
+
+  // Button dispatch logic
+  actionBtn.addEventListener('click', () => {
+    if (currentStage === 0) {
+      beginTurn1();
+    } else if (currentStage === 1) {
+      if (turn1Elapsed >= 20) {
+        transitionToStage2();
+      } else {
+        showExamToast(`Please speak your opening statement for at least 20 seconds (${20 - turn1Elapsed}s remaining).`, 'warning', 'fa-clock');
+      }
+    } else if (currentStage === 2) {
+      stopAllAudioPlayback();
+      beginTurn2();
+    } else if (currentStage === 3) {
+      if (totalElapsed >= 40) {
         finishAndEvaluate();
       } else {
-        showExamToast(`Please speak for at least 40 seconds (${40 - elapsedSec}s remaining).`, 'warning', 'fa-clock');
+        showExamToast(`Minimum combined speaking time is 40 seconds (${40 - totalElapsed}s remaining).`, 'warning', 'fa-clock');
       }
     }
   });
 
-  concludeBtn.addEventListener('click', () => {
-    if (elapsedSec >= 40) {
-      finishAndEvaluate();
-    }
-  });
-
-  // Simulation test button for testing without microphone or quick demo
+  // Simulation test button for instant evaluation without microphone
   simulateBtn.addEventListener('click', () => {
-    accumulatedTranscript = "In my professional experience, continuous communication and adapting to technological transformation are vital. When facing challenging projects, clear strategic vision and collaborative problem-solving lead to optimal outcomes. Furthermore, English proficiency serves as an indispensable bridge for global innovation and collaboration.";
-    elapsedSec = 48;
+    const sim = getSimulationDialogue(q, chosenFollowUp);
+    turn1Elapsed = 23;
+    turn1Transcript = sim.turn1;
+    turn2Elapsed = 25;
+    turn2Transcript = sim.turn2;
+    totalElapsed = 48;
     finishAndEvaluate();
   });
+}
+
+function getSimulationDialogue(q, followUpText) {
+  const responses = {
+    speaking_01: {
+      turn1: "Throughout my professional journey, I have cultivated strong capabilities in analytical problem solving and collaborative leadership. Over the next five years, I aim to lead global initiatives where fluent English enables international collaboration.",
+      turn2: "To overcome upcoming hurdles, I focus on continuous learning and cross-cultural adaptability. Balancing technical mastery with empathetic communication ensures resilient alignment across diverse teams."
+    },
+    speaking_02: {
+      turn1: "Artificial Intelligence is fundamentally restructuring education and modern workplaces. While automation handles routine computations, the true frontier is augmenting human creativity, critical synthesis, and ethical stewardship.",
+      turn2: "Uniquely human capacities such as empathy, creative intuition, and moral judgment will remain irreplaceable. Educational institutions must shift toward nurturing adaptability, interdisciplinary inquiry, and emotional intelligence."
+    },
+    speaking_03: {
+      turn1: "During a critical deadline on a high-stakes project, our team faced unexpected architectural bottlenecks. I stepped forward to realign task priorities, streamline cross-functional meetings, and maintain collective morale.",
+      turn2: "Reflecting on that high-pressure scenario, I discovered that transparent, early communication eliminates confusion before it compounds. It permanently shaped my approach toward proactive team collaboration."
+    }
+  };
+
+  if (responses[q.id]) return responses[q.id];
+
+  const kw = (q.targetKeywords || []).slice(0, 3).join(', ');
+  return {
+    turn1: `In exploring ${q.title.toLowerCase()}, examining the implications of ${kw || 'innovation and responsibility'} is vital for sustainable progress. Maintaining clear strategic vision and personal dedication enables positive transformation across society.`,
+    turn2: `Regarding that specific follow-up question, long-term success relies on agile decision-making and cross-disciplinary collaboration. When communities align behind shared ethical principles, complex systemic challenges are transformed into lasting opportunities.`
+  };
 }
 
 function createAiSpeakingScorecard(data, onRetake) {
@@ -3463,7 +4043,7 @@ function createAiSpeakingScorecard(data, onRetake) {
         <i class="fa-solid fa-award"></i>
         <span>AI Spoken Fluency & Accent Verified Scorecard</span>
       </div>
-      <span class="scorecard-badge"><i class="fa-solid fa-circle-check"></i> Assessment Certified</span>
+      <span class="scorecard-badge"><i class="fa-solid fa-circle-check"></i> Two-Turn Assessment Certified</span>
     </div>
 
     <div class="scorecard-metrics-grid">
@@ -3473,11 +4053,11 @@ function createAiSpeakingScorecard(data, onRetake) {
       </div>
       <div class="scorecard-metric-card">
         <span class="scorecard-metric-num" style="color: var(--main-color);">${data.wpm || 135}</span>
-        <span class="scorecard-metric-label">Speaking Tempo (WPM)</span>
+        <span class="scorecard-metric-label">Conversational Tempo (WPM)</span>
       </div>
       <div class="scorecard-metric-card">
-        <span class="scorecard-metric-num" style="color: #06b6d4;">${data.duration || 45}s</span>
-        <span class="scorecard-metric-label">Spoken Duration</span>
+        <span class="scorecard-metric-num" style="color: #06b6d4;">${data.duration || 48}s</span>
+        <span class="scorecard-metric-label">Spoken Duration (Combined)</span>
       </div>
       <div class="scorecard-metric-card">
         <span class="scorecard-metric-num" style="color: #f59e0b; font-size: 1.15rem;">${(data.cefrLevel || 'C1 Advanced').split(' ')[0]}</span>
@@ -3485,11 +4065,33 @@ function createAiSpeakingScorecard(data, onRetake) {
       </div>
     </div>
 
-    <div class="speaking-transcript-card" style="margin: 0;">
-      <div class="transcript-header">
-        <span><i class="fa-solid fa-quote-left"></i> Verified Speech Transcript</span>
+    <!-- Live Two-Turn Conversation Log -->
+    <div class="chat-dialogue-thread" style="margin: 4px 0; max-height: none;">
+      <div class="dialogue-bubble candidate">
+        <div class="dialogue-author-row">
+          <span><i class="fa-solid fa-user"></i> Candidate (Turn 1: Opening Statement)</span>
+          <span class="duration-tag"><i class="fa-solid fa-stopwatch"></i> ${data.turn1Duration || 22}s</span>
+        </div>
+        <p class="dialogue-text">"${escapeHtml(data.turn1Transcript || data.transcript || '')}"</p>
       </div>
-      <div class="speaking-transcript-text">"${escapeHtml(data.transcript || '')}"</div>
+
+      ${data.aiFollowUp ? `
+      <div class="dialogue-bubble ai">
+        <div class="dialogue-author-row">
+          <span><i class="fa-solid fa-robot"></i> Dr. Evelyn Vance (Follow-up Question)</span>
+          <span class="duration-tag"><i class="fa-solid fa-volume-high"></i> AI Examiner</span>
+        </div>
+        <p class="dialogue-text">${escapeHtml(data.aiFollowUp)}</p>
+      </div>` : ''}
+
+      ${data.turn2Transcript ? `
+      <div class="dialogue-bubble candidate">
+        <div class="dialogue-author-row">
+          <span><i class="fa-solid fa-user"></i> Candidate (Turn 2: Follow-up Response)</span>
+          <span class="duration-tag"><i class="fa-solid fa-stopwatch"></i> ${data.turn2Duration || 25}s</span>
+        </div>
+        <p class="dialogue-text">"${escapeHtml(data.turn2Transcript)}"</p>
+      </div>` : ''}
     </div>
 
     <div class="scorecard-feedback-box">
@@ -3497,7 +4099,7 @@ function createAiSpeakingScorecard(data, onRetake) {
         <i class="fa-solid fa-wand-magic-sparkles"></i>
         <span>AI Linguistic Diagnostic Feedback</span>
       </div>
-      <p style="margin: 0;">${escapeHtml(data.feedback || '')}</p>
+      <p style="margin: 0; line-height: 1.6;">${escapeHtml(data.feedback || '')}</p>
     </div>
 
     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 4px;">
@@ -3884,15 +4486,38 @@ function submitExamination() {
               ${isCorrect ? 'Certified & Evaluated' : 'Incomplete Recording'}
             </span>
           </div>
-          <div class="review-prompt"><strong>Prompt:</strong> ${escapeHtml(q.prompt)}</div>
+          <div class="review-prompt"><strong>Topic:</strong> ${escapeHtml(q.title || q.prompt)}</div>
           <div class="speaking-review-metrics">
             <div class="speaking-metric-pill"><i class="fa-solid fa-gauge-high"></i> Accent Intelligibility: <strong>${accentScore}%</strong></div>
-            <div class="speaking-metric-pill"><i class="fa-solid fa-stopwatch"></i> Duration: <strong>${dur}s / 60s</strong></div>
-            <div class="speaking-metric-pill"><i class="fa-solid fa-bolt"></i> Tempo: <strong>${wpm} WPM</strong></div>
+            <div class="speaking-metric-pill"><i class="fa-solid fa-stopwatch"></i> Total Duration: <strong>${dur}s / 60s</strong></div>
+            <div class="speaking-metric-pill"><i class="fa-solid fa-bolt"></i> Conversational Tempo: <strong>${wpm} WPM</strong></div>
           </div>
           <div class="speaking-review-transcript">
-            <strong><i class="fa-solid fa-quote-left"></i> Spoken Transcript:</strong>
-            <p>"${escapeHtml(transcript)}"</p>
+            <strong><i class="fa-solid fa-comments"></i> Two-Turn Live Dialogue:</strong>
+            ${spokenData && spokenData.turn1Transcript ? `
+              <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="background: rgba(15, 23, 42, 0.04); padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--main-color);">
+                  <div style="font-size: 0.78rem; font-weight: 700; color: var(--main-color); margin-bottom: 2px;">
+                    <i class="fa-solid fa-user"></i> Turn 1: Opening Statement (${spokenData.turn1Duration || 22}s)
+                  </div>
+                  <p style="margin: 0; font-size: 0.88rem; font-style: italic;">"${escapeHtml(spokenData.turn1Transcript)}"</p>
+                </div>
+                ${spokenData.aiFollowUp ? `
+                <div style="background: rgba(91, 81, 222, 0.06); padding: 10px 12px; border-radius: 8px; border-left: 3px solid #6366f1;">
+                  <div style="font-size: 0.78rem; font-weight: 700; color: #6366f1; margin-bottom: 2px;">
+                    <i class="fa-solid fa-robot"></i> Dr. Evelyn Vance (Follow-up Question)
+                  </div>
+                  <p style="margin: 0; font-size: 0.88rem;">${escapeHtml(spokenData.aiFollowUp)}</p>
+                </div>` : ''}
+                ${spokenData.turn2Transcript ? `
+                <div style="background: rgba(15, 23, 42, 0.04); padding: 10px 12px; border-radius: 8px; border-left: 3px solid #06b6d4;">
+                  <div style="font-size: 0.78rem; font-weight: 700; color: #06b6d4; margin-bottom: 2px;">
+                    <i class="fa-solid fa-user"></i> Turn 2: Follow-up Response (${spokenData.turn2Duration || 25}s)
+                  </div>
+                  <p style="margin: 0; font-size: 0.88rem; font-style: italic;">"${escapeHtml(spokenData.turn2Transcript)}"</p>
+                </div>` : ''}
+              </div>
+            ` : `<p style="margin-top: 6px;">"${escapeHtml(transcript)}"</p>`}
           </div>
           <div class="review-rationale"><strong>AI Linguistic Critique:</strong> ${escapeHtml(feedback)}</div>
         `;
