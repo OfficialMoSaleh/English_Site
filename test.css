@@ -3180,3 +3180,326 @@ body.dark-theme .speaking-topic-actions {
     max-width: 96%;
   }
 }
+
+/* ==================================================
+   READ-ALOUD SPOKEN PRONUNCIATION & LIVE ERROR TRACKER
+   ================================================== */
+.read-aloud-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.read-aloud-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.read-aloud-instruction {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.read-aloud-model-btn {
+  background: rgba(91, 81, 222, 0.08);
+  border: 1px solid rgba(91, 81, 222, 0.25);
+  color: var(--main-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.read-aloud-model-btn:hover {
+  background: var(--main-color);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.read-aloud-model-btn.playing {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+}
+
+/* The Target Passage Card where words light up */
+.reading-passage-container {
+  background: linear-gradient(135deg, rgba(91, 81, 222, 0.03), rgba(6, 182, 212, 0.03));
+  border: 1.5px solid rgba(91, 81, 222, 0.2);
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+  font-size: 1.25rem;
+  line-height: 2.1;
+  font-weight: 500;
+  color: var(--black-color);
+  word-spacing: 0.18em;
+  letter-spacing: 0.01em;
+  user-select: none;
+  min-height: 120px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme .reading-passage-container {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.reading-passage-container.recording {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px rgba(91, 81, 222, 0.15);
+}
+
+/* Individual Interactive Word Spans */
+.read-word {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px 3px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: default;
+}
+
+.read-word.pending {
+  color: var(--black-color);
+  opacity: 0.85;
+}
+
+.read-word.current {
+  background: linear-gradient(135deg, rgba(91, 81, 222, 0.18), rgba(6, 182, 212, 0.18));
+  border-color: var(--main-color);
+  color: var(--main-color);
+  font-weight: 700;
+  transform: scale(1.06);
+  box-shadow: 0 2px 8px rgba(91, 81, 222, 0.2);
+  animation: wordPulse 1.2s infinite;
+}
+
+@keyframes wordPulse {
+  0%, 100% { transform: scale(1.06); box-shadow: 0 2px 8px rgba(91, 81, 222, 0.2); }
+  50% { transform: scale(1.1); box-shadow: 0 4px 14px rgba(91, 81, 222, 0.35); }
+}
+
+/* Correctly Pronounced Words (Green) */
+.read-word.correct {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.45);
+  color: #059669;
+  font-weight: 700;
+}
+
+body.dark-theme .read-word.correct {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #34d399;
+}
+
+/* Imperfect / Mispronounced Words (Orange / Amber) */
+.read-word.imperfect {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #d97706;
+  font-weight: 700;
+  text-decoration: underline wavy #f59e0b 1.5px;
+}
+
+body.dark-theme .read-word.imperfect {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+
+/* Missed / Skipped Words (Red / Dashed) */
+.read-word.missed {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  border-style: dashed;
+  color: #dc2626;
+  opacity: 0.75;
+}
+
+body.dark-theme .read-word.missed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+/* Real-Time Live Speech Transcription Panel */
+.live-speech-monitor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+}
+
+body.dark-theme .live-speech-monitor {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.live-speech-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray-color);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.live-speech-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+
+.speech-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(91, 81, 222, 0.1);
+  color: var(--main-color);
+  font-size: 0.78rem;
+}
+
+.speech-stat-badge.green {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.live-speech-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--black-color);
+  min-height: 28px;
+  font-style: italic;
+}
+
+.live-speech-text.empty {
+  color: var(--gray-color);
+  font-style: normal;
+}
+
+/* Pronunciation Legend */
+.pronunciation-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-color);
+  flex-wrap: wrap;
+  padding: 4px 2px;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot.correct { background: #10b981; }
+.legend-dot.imperfect { background: #f59e0b; }
+.legend-dot.missed { background: #ef4444; }
+
+/* Word Error Detail Card in Scorecard */
+.word-analysis-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.word-analysis-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--black-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.word-chips-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  line-height: 2;
+  font-size: 1.05rem;
+}
+
+.imperfect-words-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.imperfect-word-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.imperfect-word-row strong {
+  color: #d97706;
+}
+
+body.dark-theme .imperfect-word-row strong {
+  color: #fbbf24;
+}
+
+.phonetic-tip {
+  font-size: 0.8rem;
+  color: var(--gray-color);
+  font-family: monospace;
+}
