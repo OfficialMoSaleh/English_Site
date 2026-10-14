@@ -15,7 +15,7 @@
 ```javascript
 /**
  * =======================================================
- * Google Apps Script Webhook for NovaSpeak CEFR Exam
+ * Google Apps Script Webhook for NovaSpeak CEFR Exam & Traffic
  * =======================================================
  */
 
@@ -26,20 +26,20 @@ function doPost(e) {
     // إنشاء عناوين الأعمدة وتنسيقها تلقائياً إذا كان الشيت فارغاً
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
-        "تاريخ ووقت التسجيل (UTC)",
         "التاريخ والوقت المحلي",
-        "نوع الحدث (Event)",
-        "اسم المرشح (Candidate)",
-        "المستوى الكامل (CEFR Label)",
-        "رمز المستوى (Code)",
-        "الدرجة الخام (Score)",
+        "نوع الحدث (Event Type)",
+        "اسم الزائر / الطالب",
+        "حالة الإجابات (كم سؤال تم حله)",
+        "الدرجة النهائية (Score)",
         "النسبة المئوية (%)",
+        "مستوى CEFR",
         "درجة النطق والتحدث (%)",
         "درجة القواعد (%)",
         "درجة المفردات (%)",
         "الزمن المستغرق",
-        "رقم الشهادة (Cert ID)",
-        "جهاز ومتصفح الطالب"
+        "تفاصيل النشاط والإحصائيات",
+        "نوع الجهاز",
+        "رقم الشهادة (Cert ID)"
       ]);
       
       // تنسيق صف العناوين بألوان المنصة
@@ -60,28 +60,36 @@ function doPost(e) {
     var formattedDate = Utilities.formatDate(now, "GMT+2", "yyyy-MM-dd HH:mm:ss");
 
     sheet.appendRow([
-      now.toISOString(),
       formattedDate,
-      data.action || "exam_completed",
-      data.candidateName || "Anonymous",
-      data.cefrLevel || "N/A",
-      data.cefrCode || "N/A",
-      data.scoreText || (data.rawScore ? data.rawScore + " / " + (data.total || 30) : "N/A"),
-      (data.percentage !== undefined ? data.percentage + "%" : "N/A"),
-      (data.speakingScore !== undefined ? data.speakingScore + "%" : "N/A"),
-      (data.grammarScore !== undefined ? data.grammarScore + "%" : "N/A"),
-      (data.vocabScore !== undefined ? data.vocabScore + "%" : "N/A"),
-      data.timeTaken || "N/A",
-      data.certificateId || "N/A",
-      data.userAgent || ""
+      data.eventType || (data.action === "exam_completed" ? "🏆 أنهى الامتحان وسلم الإجابات" : (data.action === "exam_started" ? "📝 بدأ الامتحان" : "👀 زائر للموقع")),
+      data.candidateName || "زائر للموقع",
+      data.answeredSummary || (data.answeredCount !== undefined ? data.answeredCount + " من " + (data.total || 30) : "—"),
+      data.scoreText || "—",
+      data.percentage || "—",
+      (data.cefrCode && data.cefrCode !== "—" ? data.cefrCode + " (" + (data.cefrLevel || "") + ")" : (data.cefrLevel || "—")),
+      data.speakingScore || "—",
+      data.grammarScore || "—",
+      data.vocabScore || "—",
+      data.timeTaken || "—",
+      data.details || "—",
+      data.deviceType || "—",
+      data.certificateId || "—"
     ]);
 
-    // تلوين الصفوف بناءً على نوع الحدث
+    // تلوين وتنسيق الصف بحسب نوع الحدث
     var lastRow = sheet.getLastRow();
+    var rowRange = sheet.getRange(lastRow, 1, 1, 14);
+    var badgeRange = sheet.getRange(lastRow, 2);
+
     if (data.action === "exam_completed") {
-      sheet.getRange(lastRow, 3).setBackground("#DCFCE7").setFontColor("#15803D").setFontWeight("bold");
+      rowRange.setBackground("#F0FDF4"); // خلفية خضراء ناعمة جداً
+      badgeRange.setBackground("#DCFCE7").setFontColor("#15803D").setFontWeight("bold");
+    } else if (data.action === "exam_started") {
+      rowRange.setBackground("#FFFBEB"); // خلفية صفراء ناعمة
+      badgeRange.setBackground("#FEF3C7").setFontColor("#B45309").setFontWeight("bold");
     } else {
-      sheet.getRange(lastRow, 3).setBackground("#E0E7FF").setFontColor("#3730A3");
+      rowRange.setBackground("#F8FAFC"); // خلفية رمادية هادئة للزيارات
+      badgeRange.setBackground("#E2E8F0").setFontColor("#475569");
     }
 
     return ContentService.createTextOutput(JSON.stringify({ status: "success", row: lastRow }))

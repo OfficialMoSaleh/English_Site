@@ -4649,6 +4649,7 @@ function submitExamination() {
 
   const total = activeExamQuestions.length;
   let rawScore = 0;
+  let answeredCount = 0;
   let grammarCorrect = 0, grammarTotal = 0;
   let vocabCorrect = 0, vocabTotal = 0;
   let fillCorrect = 0, fillTotal = 0;
@@ -4660,6 +4661,9 @@ function submitExamination() {
 
   activeExamQuestions.forEach((q, idx) => {
     const userAns = userAnswers[idx];
+    const isAnswered = userAns !== undefined && userAns !== null && String(userAns).trim() !== '';
+    if (isAnswered) answeredCount++;
+
     let isCorrect = false;
     let correctText = '';
 
@@ -4939,6 +4943,9 @@ function submitExamination() {
 
   // Telemetry: Log to Google Analytics 4 & Google Sheets Webhook
   if (window.NovaAnalytics) {
+    const skippedCount = total - answeredCount;
+    const wrongCount = total - rawScore;
+
     window.NovaAnalytics.trackExamCompletion({
       candidateName: certName,
       cefrCode: cefrCode,
@@ -4946,12 +4953,16 @@ function submitExamination() {
       scoreText: `${rawScore} / ${total}`,
       rawScore: rawScore,
       total: total,
+      answeredCount: answeredCount,
+      skippedCount: skippedCount,
+      wrongCount: wrongCount,
       percentage: percentage,
       speakingScore: spokenFinalPct,
       grammarScore: grammarPct,
       vocabScore: vocabPct,
       timeTaken: timeTakenStr,
-      certificateId: lastCertificateData.id
+      certificateId: lastCertificateData.id,
+      details: `حل ${answeredCount} من ${total} سؤال (صحيح: ${rawScore} | خطأ: ${wrongCount} | لم يُحل: ${skippedCount})`
     });
   }
 

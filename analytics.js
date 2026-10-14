@@ -173,7 +173,7 @@
     },
 
     /**
-     * 1. Track Page View
+     * 1. Track Page View (Logs visitor to both GA4 and Google Sheets)
      */
     trackPageView(pageTitle = document.title, pagePath = window.location.pathname) {
       trackGA4Event('page_view', {
@@ -181,16 +181,67 @@
         page_location: window.location.href,
         page_path: pagePath
       });
+
+      // Avoid flooding with multiple rows on rapid refresh within the same session
+      const normPath = pagePath.includes('test') ? 'exam_page' : 'homepage';
+      const sessionVisitKey = `novaspeak_visited_${normPath}`;
+      if (!sessionStorage.getItem(sessionVisitKey)) {
+        sessionStorage.setItem(sessionVisitKey, '1');
+
+        const isMobile = window.innerWidth <= 768;
+        const deviceType = isMobile ? 'موبايل (Mobile)' : 'كمبيوتر (Desktop)';
+        const cleanTitle = (pageTitle || document.title).split('|')[0].trim();
+        const pageLabel = normPath === 'exam_page' ? 'صفحة الاختبار (Exam Page)' : 'الصفحة الرئيسية (Homepage)';
+
+        const payload = {
+          action: 'site_visit',
+          eventType: '👀 زائر للموقع',
+          candidateName: 'زائر جديد',
+          answeredSummary: '—',
+          scoreText: '—',
+          percentage: '—',
+          cefrCode: '—',
+          cefrLevel: cleanTitle,
+          speakingScore: '—',
+          grammarScore: '—',
+          vocabScore: '—',
+          timeTaken: '—',
+          details: `تصفح: ${pageLabel}`,
+          deviceType: deviceType,
+          certificateId: '—',
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        };
+
+        sendToGoogleSheets(payload);
+        saveToLocalHistory(payload);
+      }
     },
 
     /**
      * 2. Track Exam Start (Candidate clicks Begin Exam)
      */
     trackExamStart(details = {}) {
+      const isMobile = window.innerWidth <= 768;
+      const deviceType = isMobile ? 'موبايل (Mobile)' : 'كمبيوتر (Desktop)';
+
       const payload = {
         action: 'exam_started',
-        candidateName: details.candidateName || 'Candidate',
+        eventType: '📝 بدأ الامتحان',
+        candidateName: details.candidateName || 'مرشح جديد',
+        answeredSummary: 'بدأ الاختبار (30 سؤالاً)',
+        scoreText: 'قيد الحل...',
+        percentage: '0%',
+        cefrCode: 'جارٍ...',
+        cefrLevel: 'قيد الامتحان',
+        speakingScore: '—',
+        grammarScore: '—',
+        vocabScore: '—',
+        timeTaken: 'بدأ الآن (30:00)',
+        details: `بدأ الامتحان الرسمي - في انتظار إنهاء الأسئلة والتسليم`,
+        deviceType: deviceType,
         totalQuestions: details.totalQuestions || 30,
+        certificateId: '—',
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent
       };
@@ -215,23 +266,39 @@
     },
 
     /**
-     * 4. Track Exam Completion (Final Submission)
+     * 4. Track Exam Completion (Final Submission with rich questions answered/skipped stats)
      */
     trackExamCompletion(results = {}) {
+      const isMobile = window.innerWidth <= 768;
+      const deviceType = isMobile ? 'موبايل (Mobile)' : 'كمبيوتر (Desktop)';
+
+      const total = results.total || 30;
+      const answered = results.answeredCount !== undefined ? results.answeredCount : total;
+      const skipped = results.skippedCount !== undefined ? results.skippedCount : (total - answered);
+      const correct = results.rawScore !== undefined ? results.rawScore : 0;
+      const wrong = results.wrongCount !== undefined ? results.wrongCount : (total - correct);
+
+      const answeredSummary = `أجاب ${answered} من ${total} (لم يجب: ${skipped})`;
+      const detailsText = results.details || `أجاب: ${answered} | صحيح: ${correct} | خطأ: ${wrong} | تخطى: ${skipped}`;
+
       const payload = {
         action: 'exam_completed',
+        eventType: '🏆 أنهى الامتحان وسلم الإجابات',
         candidateName: results.candidateName || 'Candidate',
+        answeredSummary: answeredSummary,
+        scoreText: results.scoreText || `${correct} / ${total}`,
+        rawScore: correct,
+        total: total,
+        percentage: (results.percentage !== undefined ? results.percentage : 0) + '%',
         cefrCode: results.cefrCode || 'B2',
         cefrLevel: results.cefrLevel || 'Upper-Intermediate',
-        scoreText: results.scoreText || `${results.rawScore || 0} / ${results.total || 30}`,
-        rawScore: results.rawScore || 0,
-        total: results.total || 30,
-        percentage: results.percentage !== undefined ? results.percentage : 0,
-        speakingScore: results.speakingScore !== undefined ? results.speakingScore : 0,
-        grammarScore: results.grammarScore !== undefined ? results.grammarScore : 0,
-        vocabScore: results.vocabScore !== undefined ? results.vocabScore : 0,
-        timeTaken: results.timeTaken || '00:00',
-        certificateId: results.certificateId || 'CEFR-CERT',
+        speakingScore: (results.speakingScore !== undefined ? results.speakingScore : 0) + '%',
+        grammarScore: (results.grammarScore !== undefined ? results.grammarScore : 0) + '%',
+        vocabScore: (results.vocabScore !== undefined ? results.vocabScore : 0) + '%',
+        timeTaken: results.timeTaken ? `${results.timeTaken} دقيقة` : '—',
+        details: detailsText,
+        deviceType: deviceType,
+        certificateId: results.certificateId || '—',
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent
       };
@@ -240,11 +307,12 @@
       trackGA4Event('exam_completed', {
         candidate_name: payload.candidateName,
         cefr_code: payload.cefrCode,
-        percentage: payload.percentage,
+        percentage: results.percentage,
         raw_score: payload.rawScore,
-        speaking_score: payload.speakingScore,
+        answered_count: answered,
+        speaking_score: results.speakingScore,
         duration: payload.timeTaken,
-        value: payload.percentage, // Numeric value for conversion reporting
+        value: results.percentage, // Numeric value for conversion reporting
         currency: 'PTS'
       });
 
@@ -298,6 +366,15 @@
   // Initialize immediately on load
   initGA4();
   setTimeout(flushPendingQueue, 2000);
+
+  // Auto-track page view (Site visitor logging)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      NovaAnalytics.trackPageView(document.title, window.location.pathname);
+    });
+  } else {
+    NovaAnalytics.trackPageView(document.title, window.location.pathname);
+  }
 
   // Expose globally
   window.NovaAnalytics = NovaAnalytics;
