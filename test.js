@@ -3276,6 +3276,10 @@ function renderCurrentQuestion() {
   if (qCounterBadge) qCounterBadge.textContent = `Question ${currentQIndex + 1} of ${activeExamQuestions.length}`;
   if (qLevelBadge) qLevelBadge.textContent = q.level;
 
+  if (q.type === 'speaking' && window.NovaAnalytics) {
+    window.NovaAnalytics.trackMilestone(`speaking_tier_${q.tier || 1}`, currentQIndex + 1);
+  }
+
   let typeLabel = 'Multiple Choice';
   if (q.type === 'fill') typeLabel = 'Sentence Completion';
   if (q.type === 'audio') typeLabel = q.audioFormat === 'dictation' ? 'Audio Dictation' : 'Listening Comprehension';
@@ -4554,6 +4558,15 @@ function beginExamination() {
   startCountdownTimer();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   soundFx.select();
+
+  // Telemetry: Track exam start event
+  if (window.NovaAnalytics) {
+    window.NovaAnalytics.trackExamStart({
+      candidateName: candidateName,
+      totalQuestions: activeExamQuestions.length
+    });
+  }
+
   showExamToast(`Good luck, ${candidateName.split(' ')[0]}! Your 30-minute examination has started.`, 'info', 'fa-pen-clip');
 }
 
@@ -4923,6 +4936,24 @@ function submitExamination() {
   // Automatically save to local storage for permanent retrieval
   saveCertificateToStorage(lastCertificateData);
   updateCertificatePageHistoryButton();
+
+  // Telemetry: Log to Google Analytics 4 & Google Sheets Webhook
+  if (window.NovaAnalytics) {
+    window.NovaAnalytics.trackExamCompletion({
+      candidateName: certName,
+      cefrCode: cefrCode,
+      cefrLevel: cefrSub,
+      scoreText: `${rawScore} / ${total}`,
+      rawScore: rawScore,
+      total: total,
+      percentage: percentage,
+      speakingScore: spokenFinalPct,
+      grammarScore: grammarPct,
+      vocabScore: vocabPct,
+      timeTaken: timeTakenStr,
+      certificateId: lastCertificateData.id
+    });
+  }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
   showExamToast(`Examination complete! Placed at ${cefrCode} (${percentage}%) - Certificate saved locally.`, 'success', 'fa-award');
@@ -5299,6 +5330,11 @@ async function downloadCertificate() {
         resolve();
       }, 'image/png');
     });
+
+    if (window.NovaAnalytics) {
+      window.NovaAnalytics.trackCertificateAction('download', lastCertificateData);
+    }
+
     showExamToast('Certificate downloaded successfully.', 'success', 'fa-download');
   } catch (err) {
     console.error('Certificate download failed:', err);
@@ -5726,6 +5762,10 @@ async function shareCertificate(certData) {
     text: `Verified CEFR ${certData.code} English Proficiency Certificate for ${certData.name}. Open this link on any device:`,
     url: url
   };
+
+  if (window.NovaAnalytics) {
+    window.NovaAnalytics.trackCertificateAction('share', certData);
+  }
 
   if (navigator.share && navigator.canShare && navigator.canShare(sharePayload)) {
     try {
