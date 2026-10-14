@@ -18,9 +18,7 @@
     gaMeasurementId: 'G-XXXXXXXXXX',
 
     // 2. Google Sheets Webhook URL (from Google Apps Script deployment)
-    // Paste your Web App Executable URL here:
-    // e.g., 'https://script.google.com/macros/s/AKfycb.../exec'
-    googleSheetsWebhookUrl: '',
+    googleSheetsWebhookUrl: 'https://script.google.com/macros/s/AKfycbxe-seBYqSH59qQ10iFE3uKt73KQdMqaqLHgSlBigrnoxRa5So9rnh8KKljPyIJTUIL/exec',
 
     // Local logging & debug mode
     debug: false
